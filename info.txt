@@ -1,0 +1,3 @@
+git checkout  (branch name)
+git branch    (shows all branches)
+git merge branchname   (combines files together)
