@@ -1,21 +1,21 @@
-INFO
+# INFO #
 ---------------------
 Hidden for now / NDA only until more info/code is created
 
 
-Stack
+## Stack ##
 -------------------
 
-Frontend
+### Frontend ###
 ------------
-React with babel + webpack
-Redux for state management
-Less for css
-Lottie animations?
-TypeScript? for future proofing?
+* React with babel + webpack
+* Redux for state management
+* Less.js for css
+* Lottie animations?
+* TypeScript? for future proofing?
 
-Backend
+### Backend ### 
 -----------
-Django with Django rest
-SQL lite to start then move to postgrSQL later
+* Django with Django rest
+* SQL lite to start then move to postgrSQL later
 
