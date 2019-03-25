@@ -1,0 +1,35 @@
+{
+  "name": "gtvr",
+  "version": "1.0.0",
+  "description": "---------------------\r Hidden for now / NDA only until more info/code is created",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaGaffney/GTVR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaGaffney/GTVR/issues"
+  },
+  "homepage": "https://github.com/JaGaffney/GTVR#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  }
+}

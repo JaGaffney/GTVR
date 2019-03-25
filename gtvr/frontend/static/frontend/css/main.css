@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #dfe8fe;
+  color: #575757;
+}
+.reset {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: #5f85e3;
+}
