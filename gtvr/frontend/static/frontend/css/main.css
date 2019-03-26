@@ -1,3 +1,7 @@
+.reset {
+  margin: 0;
+  padding: 0;
+}
 body {
   margin: 0;
   padding: 0;
@@ -5,12 +9,57 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #dfe8fe;
-  color: #575757;
+  color: #292e31;
 }
-.reset {
+.App {
   margin: 0;
   padding: 0;
+  display: grid;
+  background-color: #dfe8fe;
+  color: #292e31;
+  grid-template-columns: 100%;
+  grid-template-rows: 0.5fr minmax(55rem, auto) 1fr;
+  grid-template-areas: "headerArea" "mainArea" "footerArea";
 }
-h1 {
-  color: #5f85e3;
+.area__header {
+  grid-area: headerArea;
+}
+.area__main {
+  grid-area: mainArea;
+}
+.area__footer {
+  grid-area: footerArea;
+}
+.area__main {
+  display: grid;
+  grid-template-columns: 10% 70% auto;
+  grid-template-rows: 100%;
+  grid-template-areas: "space mainSection space2";
+}
+.homepage__div-Area {
+  width: 100%;
+  grid-area: mainSection;
+}
+.homepage__div-info {
+  width: 100%;
+  min-height: 30rem;
+  background-color: #aec4fa;
+}
+.about__div {
+  width: 100%;
+  min-height: 30rem;
+  background-color: #fff4dc;
+}
+.lessonDashboard__div {
+  width: 100%;
+  min-height: 30rem;
+  background-color: #dfe8fe;
+}
+.about__div-Area {
+  width: 100%;
+  grid-area: mainSection;
+}
+.lessonDashboard__div-Area {
+  width: 100%;
+  grid-area: mainSection;
 }

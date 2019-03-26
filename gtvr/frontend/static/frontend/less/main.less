@@ -1,21 +1,4 @@
-// Variables
-@background-color: #efeeee;
-@font-family: Tahoma;
-
-@primary-color: #5f85e3;
-@secondary-color: #85a4f3;
-@tertiary-color: #aec4fa;
-@quad-color: #dfe8fe;
-
-@primary-color-comp: #ffc959;
-@secondary-color-comp: #ffd57d;
-@tertiary-color-comp: #ffe2a8;
-@quad-color-comp: #fff4dc;
-
-@light-color: #efeeee;
-@dark-color: #575757;
-@line-height: 1rem + 1em;
-
+@import "context.less";
 
 body {
     .reset;
@@ -26,11 +9,73 @@ body {
     color: @dark-color;
 }
 
-.reset{
-    margin: 0;
-    padding: 0;
+// main app
+.App{
+    .reset;
+    display: grid;
+    background-color: @quad-color;
+    color: @dark-color;
+    grid-template-columns: 100%;
+    grid-template-rows: 0.5fr minmax(55rem, auto) 1fr;
+    grid-template-areas:    "headerArea" 
+                            "mainArea"
+                            "footerArea"
 }
 
-h1{
-    color: @primary-color;
+// Setting grid areas
+.area__header{
+    grid-area: headerArea;
+}
+
+.area__main{
+    grid-area: mainArea;
+}
+
+.area__footer{
+    grid-area: footerArea;
+}
+
+
+// Main area
+.area__main{
+    display: grid;
+    grid-template-columns: 10% 70% auto;
+    grid-template-rows: 100%;
+    grid-template-areas: "space mainSection space2" 
+}
+
+//Home page
+.homepage__div-Area{
+    width:100%;
+    grid-area: mainSection;
+}
+
+.homepage__div-info{
+    width: 100%;
+    min-height: 30rem;
+    background-color: @tertiary-color;
+}
+
+.about__div{
+    width:100%;
+    min-height: 30rem;
+    background-color: @quad-color-comp;
+}
+
+.lessonDashboard__div{
+    width:100%;
+    min-height: 30rem;
+    background-color: @quad-color;
+}
+
+//About
+.about__div-Area{
+    width:100%;
+    grid-area: mainSection;
+}
+
+//Lessons
+.lessonDashboard__div-Area{
+    width:100%;
+    grid-area: mainSection;
 }
