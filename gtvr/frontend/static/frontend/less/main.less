@@ -13,13 +13,14 @@ body {
 .App{
     .reset;
     display: grid;
-    background-color: @quad-color;
+    background-color: @primary-color-comp;
     color: @dark-color;
     grid-template-columns: 100%;
-    grid-template-rows: 0.5fr minmax(55rem, auto) 1fr;
+    grid-template-rows: auto minmax(55rem, auto) auto;
     grid-template-areas:    "headerArea" 
                             "mainArea"
-                            "footerArea"
+                            "footerArea";
+    grid-gap: 5px;           
 }
 
 // Setting grid areas
@@ -39,43 +40,105 @@ body {
 // Main area
 .area__main{
     display: grid;
-    grid-template-columns: 10% 70% auto;
+    grid-template-columns: 100%;
     grid-template-rows: 100%;
-    grid-template-areas: "space mainSection space2" 
+    grid-template-areas: "mainSection" 
 }
 
 //Home page
 .homepage__div-Area{
     width:100%;
     grid-area: mainSection;
+    background-color: @quad-color;
+    display: flex;
+    flex-direction: column;
 }
 
 .homepage__div-info{
     width: 100%;
     min-height: 30rem;
-    background-color: @tertiary-color;
+    background-color: @quad-color;
+    
 }
 
 .about__div{
     width:100%;
     min-height: 30rem;
-    background-color: @quad-color-comp;
 }
 
 .lessonDashboard__div{
     width:100%;
     min-height: 30rem;
-    background-color: @quad-color;
 }
 
 //About
 .about__div-Area{
     width:100%;
     grid-area: mainSection;
+    background-color: @light-color;
 }
 
 //Lessons
 .lessonDashboard__div-Area{
     width:100%;
     grid-area: mainSection;
+    background-color: @quad-color;
+}
+
+.lessons_div{
+    min-height: 30rem;
+    background-color: @quad-color;
+}
+
+.lessonDashboard__div-container,
+.lessonLesson__div-container{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.lessonDashboard__card{
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 28%;
+    background-color: @quad-color-comp;
+    cursor: pointer;
+    margin: 1rem;
+    &:hover{
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        background-color: @secondary-color-comp;
+    }   
+}
+
+.lessonDashboard__card-container,
+.lessonLesson__card-container{
+    padding: 2px 16px;
+}
+
+.lessonLesson__card{
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 15rem;
+    background-color: @quad-color-comp;
+    cursor: pointer;
+    margin: 1rem;
+    &:hover{
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        background-color: @secondary-color-comp;
+    } 
+}
+
+.temp-div-img{
+    background-color: @primary-color;
+    height: 12rem;
+    width: 100%;
+}
+
+.temp-div-youtube{
+    background-color: @primary-color;
+    height: 120px;
+    width: 213px;
 }

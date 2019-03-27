@@ -19,8 +19,8 @@
     float: right; 
 }
   
-.header__nav-li a,
-.header__nav-li-right a {
+.header__nav-li,
+.header__nav-li-right{
     display: block;
     color: @light-color;
     text-align: center;
@@ -28,7 +28,9 @@
     text-decoration: none;
 }
   
-.header__nav-li-right a:hover {
+.header__nav-li-right:hover,
+.active {
     background-color: @primary-color-comp;
     color: @dark-color;
 }
+

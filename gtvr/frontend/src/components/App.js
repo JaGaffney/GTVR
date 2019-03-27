@@ -11,6 +11,8 @@ import Footer from './layout/Footer'
 // pages
 import Home from './home/Home'
 import About from './common/About'
+import Case from './common/Case'
+import Contact from './common/Contact'
 import LessonDashboard from './lessons/LessonDashboard'
 
 // Redux store
@@ -34,6 +36,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/lessons" component={LessonDashboard} />
+                <Route exact path="/case" component={Case} />
+                <Route exact path="/contact" component={Contact} />
               </Switch>
             </div>
 
