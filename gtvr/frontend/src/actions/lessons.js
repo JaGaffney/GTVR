@@ -2,7 +2,7 @@ import axios from "axios";
 // import { createMessage, returnError } from './messages'
 // import { tokenConfig } from './auth'
 
-import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON } from "./types";
+import { GET_LESSONS, GET_LESSON, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO } from "./types";
 
 // GET_LESSONS
 export const getLessons = () => dispatch => {
@@ -11,6 +11,19 @@ export const getLessons = () => dispatch => {
         .then(res => {
             dispatch({
                 type: GET_LESSONS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+// GET_VIDEO gets a single lesson, needs optimising to only get single video
+export const getVideo = (id) => dispatch => {
+    axios
+        .get(`/api/videos/${id}/`)
+        .then(res => {
+            dispatch({
+                type: GET_VIDEO,
                 payload: res.data
             })
         })

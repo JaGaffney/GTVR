@@ -1,7 +1,8 @@
-import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON } from '../actions/types.js'
+import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO } from '../actions/types.js'
 
 const initialState = {
-    lessons: []
+    lessons: [],
+    video: []
 }
 
 // set lesson
@@ -24,6 +25,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 lessons: action.payload
+            }
+        case GET_VIDEO:
+            return {
+                ...state,
+                video: action.payload
             }
         case DELETE_LESSON:
             return {

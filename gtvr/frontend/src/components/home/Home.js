@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import About from '../common/About'
-import Case from './common/Case'
+import Case from '../common/Case'
 //import Contact from './common/Contact'
 
 

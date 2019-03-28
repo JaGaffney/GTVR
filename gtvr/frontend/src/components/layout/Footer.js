@@ -8,9 +8,7 @@ export class Footer extends Component {
       <footer className="footer-distributed">
 
         <div className="footer-left">
-
           <h3><span>logo here</span></h3>
-
           <p className="footer-links">
             <Link to="/">Home</Link>
             ·
@@ -18,7 +16,9 @@ export class Footer extends Component {
             ·
             <Link to="/about">About</Link>
             ·
-            <a href="#">Contact (soon)</a>
+            <Link to="/case">Case Study</Link>
+            .
+            <Link to="/contact">Contact</Link>
           </p>
 
           <p className="footer-company-name">Great Teacher VR &copy; 2019</p>
@@ -38,7 +38,6 @@ export class Footer extends Component {
         </div>
 
         <div className="footer-right">
-
           <p className="footer-company-about">
             <span>About Great Teacher VR</span>
             Info here
@@ -56,7 +55,7 @@ export class Footer extends Component {
 
         </div>
 
-        </footer>
+      </footer>
     )
   }
 }

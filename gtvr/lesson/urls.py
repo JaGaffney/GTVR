@@ -5,4 +5,6 @@ from lesson import views
 urlpatterns = [
     path('api/lessons/', views.LessonsViewSet.as_view()),
     path('api/lessons/<int:pk>/', views.LessonsDetail.as_view()),
+    path('api/videos/', views.VideosViewSet.as_view()),
+    path('api/videos/<int:pk>/', views.VideosDetail.as_view()),
 ]
