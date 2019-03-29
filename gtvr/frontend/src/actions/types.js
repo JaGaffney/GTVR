@@ -7,3 +7,6 @@ export const UPDATE_LESSON = "UPDATE_LESSON";
 
 // Video Data
 export const GET_VIDEO = "GET_VIDEO";
+export const ADD_VIDEO = "ADD_VIDEO";
+export const UPDATE_VIDEO = "UPDATE_VIDEO";
+export const DELETE_VIDEO = "DELETE_VIDEO";

@@ -1,9 +1,10 @@
 import axios from "axios";
 // import { createMessage, returnError } from './messages'
-// import { tokenConfig } from './auth'
+import { tokenConfig } from './auth'
 
-import { GET_LESSONS, GET_LESSON, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO } from "./types";
+import { GET_LESSONS, GET_LESSON, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
 
+/// LESSONS
 // GET_LESSONS
 export const getLessons = () => dispatch => {
     axios
@@ -17,6 +18,33 @@ export const getLessons = () => dispatch => {
         .catch(err => console.log(err));
 }
 
+// DELETE_LESSON
+export const deleteLesson = id => dispatch => {
+    axios
+        .delete(`/api/lessons/${id}/`, tokenConfig())
+        .then(res => {
+            dispatch({
+            type: DELETE_LESSON,
+            payload: id
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+// ADD_LESSON
+export const addLesson = (lesson) => dispatch => {
+    axios
+        .post("/api/lessons/", lesson, tokenConfig())
+        .then(res => {
+            dispatch({
+                type: ADD_LESSON,
+                payload: res.data
+            })
+        })
+        .catch(err => dispatch(returnError(err.response.data, err.response.status)))
+}
+
+////// VIDEOS
 // GET_VIDEO gets a single lesson, needs optimising to only get single video
 export const getVideo = (id) => dispatch => {
     axios
@@ -30,43 +58,45 @@ export const getVideo = (id) => dispatch => {
         .catch(err => console.log(err));
 }
 
-// DELETE_LESSON
-export const deleteLesson = id => (dispatch, getState) => {
+// ADD_VIDEO
+export const addVideo = (video) => dispatch => {
+    console.log("got here addVideo")
+    console.log(video)
     axios
-        .delete(`/api/lesson/${id}/`)
+        .post("/api/videos/", video, tokenConfig())
         .then(res => {
             dispatch({
-            type: DELETE_LESSON,
-            payload: id
-            })
-        })
-        .catch(err => console.log(err));
-}
-
-// ADD_LESSON
-export const addLesson = (lesson) => (dispatch, getState) => {
-    axios
-        .post("/api/lessons", lesson)
-        .then(res => {
-            dispatch({
-                type: ADD_LESSON,
+                type: ADD_VIDEO,
                 payload: res.data
             })
         })
         .catch(err => dispatch(returnError(err.response.data, err.response.status)))
 }
 
+// DELETE_VIDEO
+export const deleteVideo = id => dispatch => {
+    axios
+        .delete(`/api/videos/${id}/`, tokenConfig())
+        .then(res => {
+            dispatch({
+            type: DELETE_VIDEO,
+            payload: id
+            })
+        })
+        .catch(err => console.log(err));
+}
 
-// // Update Job
-// export const updateLead = (id, lead) => (dispatch, getState) => {
-//     axios
-//         .put(`/api/leads/${id}/`, lead, tokenConfig(getState))
-//         .then(res => {
-//             dispatch(createMessage({ addLead: 'Lead Updated' }))
-//             dispatch({
-//             type: UPDATE_LEAD,
-//             payload: lead 
-//             })
-//         })
-//         .catch(err => console.log(err));
-// }
+// // Update Video
+export const updateVideo = (id, video) => (dispatch) => {
+    console.log(video)
+    console.log(tokenConfig())
+    axios
+        .put(`/api/videos/${id}/`, JSON.stringify(video), tokenConfig())
+        .then(res => {
+            dispatch({
+                type: UPDATE_VIDEO,
+                payload: video 
+            })
+        })
+        .catch(err => console.log(err));
+}

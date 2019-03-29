@@ -22,6 +22,14 @@ body {
   grid-template-areas: "headerArea" "mainArea" "footerArea";
   grid-gap: 5px;
 }
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+}
 .area__header {
   grid-area: headerArea;
 }
@@ -43,6 +51,7 @@ body {
   background-color: #dfe8fe;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 .homepage__div-info {
   width: 100%;
@@ -75,6 +84,7 @@ body {
 .lessonLesson__div-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 1rem;
   margin-top: 1rem;
 }
@@ -107,6 +117,18 @@ body {
 .lessonLesson__card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffd57d;
+}
+.lessonDashboard__card-deleteBtn {
+  float: right;
+  cursor: grab;
+  border: 0;
+  padding: 0;
+  font-size: 100%;
+  color: #5f85e3;
+  background-color: inherit;
+}
+.lessonDashboard__card-deleteBtn:hover {
+  color: #5f85e3;
 }
 .temp-div-img {
   background-color: #5f85e3;

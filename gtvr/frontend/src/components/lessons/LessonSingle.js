@@ -3,7 +3,7 @@ import YouTube from 'react-youtube';
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getVideo } from '../../actions/lessons'
+import { getVideo, updateVideo } from '../../actions/lessons'
 
 // Issues
 // 1. If video is already playing on load it will crash due to not player existing yet
@@ -26,6 +26,7 @@ export class LessonSingle extends Component {
     this.onPauseVideo = this.onPauseVideo.bind(this);
     this.onStopVideo = this.onStopVideo.bind(this);
     this.onFullScreen = this.onFullScreen.bind(this);
+    this.onPlayButtonHandler = this.onPlayButtonHandler.bind(this);
   }
 
   componentWillMount(){
@@ -43,7 +44,7 @@ export class LessonSingle extends Component {
         play: this.props.video.play
       })
     }
-    this.props.getVideo(this.props.videoInfo.id), 5000
+    this.props.getVideo(this.props.videoInfo.id), 10000
     });
   }
 
@@ -65,8 +66,6 @@ export class LessonSingle extends Component {
         pausedVideo: false
       });
     }
-
-
   }
 
   onPauseVideo() {
@@ -78,6 +77,8 @@ export class LessonSingle extends Component {
   }
 
   onStopVideo() {
+    const playInfo = { play: false }
+    this.props.updateVideo(this.props.videoInfo.id, playInfo)
     this.state.player.stopVideo();
   }
 
@@ -89,6 +90,15 @@ export class LessonSingle extends Component {
 
   onFullScreen(){
     console.log(this.state.player)
+  }
+
+  onPlayButtonHandler(){
+    this.setState({ 
+      playingVideo: false 
+    })
+    const playInfo = { play: true }
+    this.props.updateVideo(this.props.videoInfo.id, playInfo)
+    this.onPlayVideo()
   }
 
   render() {
@@ -105,7 +115,7 @@ export class LessonSingle extends Component {
       <div>
         <h1>{this.props.videoInfo.title}</h1>
         <div className="LessonSingle__video-controls">
-          <button onClick={this.onPlayVideo}>Play</button>
+          <button onClick={this.onPlayButtonHandler}>Play</button>
           <button onClick={this.onPauseVideo}>Pause</button>
           <button onClick={this.onStopVideo}>Stop</button>
           <button onClick={this.onFullScreen}>Fullscreen</button>
@@ -126,4 +136,4 @@ const mapStateToProps = state => ({
   video: state.lessons.video
 })
 
-export default connect(mapStateToProps, { getVideo } )(LessonSingle)
+export default connect(mapStateToProps, { getVideo, updateVideo } )(LessonSingle)

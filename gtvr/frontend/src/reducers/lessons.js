@@ -1,4 +1,4 @@
-import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO } from '../actions/types.js'
+import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
     lessons: [],
@@ -6,17 +6,17 @@ const initialState = {
 }
 
 // set lesson
-// let updateStateInfo = (stateArray, action) => {
-//   let updatedLesson = []
-//   stateArray.filter(lesson => {
-//     if (lesson.id === action.payload.id) {
-//         updatedLesson = [...updatedLesson, action.payload]
-//     } else {
-//         updatedLesson = [...updatedLesson, lesson]
-//     }
-//   })
-//   return updatedLesson
-// }
+let updateStateInfo = (stateArray, action) => {
+  let updatedLesson = []
+  stateArray.filter(lesson => {
+    if (lesson.id === action.payload.id) {
+        updatedLesson = [...updatedLesson, action.payload]
+    } else {
+        updatedLesson = [...updatedLesson, lesson]
+    }
+  })
+  return updatedLesson
+}
 
 export default function(state = initialState, action) {
     // common convetion is to use a switch with cases
@@ -40,6 +40,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 lessons: [...state.lessons, action.payload]
+            }
+        case UPDATE_VIDEO:
+            return {
+                ...state,
+                video: updateStateInfo(state.video, action)
             }
         default:
             return state

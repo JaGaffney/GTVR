@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addLesson } from "../../actions/lessons";
+import { addVideo } from "../../actions/lessons";
 
-export class LessonForm extends Component {
+export class LessonVideoForm extends Component {
 
   static propTypes = {
-    addLesson: PropTypes.func.isRequired
+    addVideo: PropTypes.func.isRequired
   }
 
   state = {
-    name: "",
-    subject: ""
+    title: "",
+    link: "",
+    play: false
   }
 
   // checks for changes inside the form
@@ -21,50 +22,55 @@ export class LessonForm extends Component {
 
   // on submit button click
   onSubmit = e => {
-    console.log("got here")
     e.preventDefault()
     // data gathering
-    let { name, subject } = this.state
+    let { title, link, play } = this.state
+
+    // will need a better filter for extracting the youtube id data
+    let youtubeLink = link.split('watch?v=')
+    let youtubeLinkFilter = youtubeLink[1].split("&")
+    link = youtubeLinkFilter[0]
+
+    console.log(link)
 
     // creates a valid object that can be sent to the API
-    let videos = [{}]
-    const lesson = { name, subject, videos }
-    this.props.addLesson(lesson)
+    const video = { lesson: this.props.lessonId, title, link, play }
+    this.props.addVideo(video)
 
     // resetting data back to default values
     this.setState({
-        name: '',
-        subject: ''
+        title: "",
+        link: ""
     })
   }
 
   render() {
-    const { name, subject } = this.state;
+    const { title, link } = this.state;
 
     return (
       <div className="LessonForm-div">
-        <h1>Add new Lesson</h1>
+        <h1>Add new Video</h1>
 
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Title</label>
             <input
               className="form-control"
               type="text"
-              name="name"
+              name="title"
               onChange={this.onChange}
-              value={name}
+              value={title}
             />
           </div>
 
           <div className="form-group">
-            <label>Subject</label>
+            <label>Link</label>
             <input
               className="form-control"
               type="text"
-              name="subject"
+              name="link"
               onChange={this.onChange}
-              value={subject}
+              value={link}
             />
           </div>
 
@@ -77,4 +83,4 @@ export class LessonForm extends Component {
   }
 }
 
-export default connect(null, { addLesson })(LessonForm)
+export default connect(null, { addVideo })(LessonVideoForm)

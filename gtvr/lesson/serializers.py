@@ -36,10 +36,7 @@ class LessonsSerializer(serializers.ModelSerializer):
         for video_data in videos_data:
             # checks to see if the foreign key passed in an id which the data will be changed
             item_id = video_data.get('id', None)
-            print('video_data')
-            print(video_data)
             # if an id has been passed
-            item_id = 11
             if item_id:
                 # looks for the id in the Video model, passes in the id and data on the Lesson from the instance
                 video_item = Videos.objects.get(id=item_id, lesson=instance)
