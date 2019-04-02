@@ -1,0 +1,33 @@
+.reset {
+  margin: 0;
+  padding: 0;
+}
+.header__nav-ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #5f85e3;
+  font-size: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.header__nav-li {
+  float: left;
+}
+.header__nav-li-right {
+  float: right;
+}
+.header__nav-li,
+.header__nav-li-right {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 1rem;
+  text-decoration: none;
+}
+.header__nav-li-right:hover,
+.active {
+  background-color: #ffc959;
+  color: #292e31;
+}

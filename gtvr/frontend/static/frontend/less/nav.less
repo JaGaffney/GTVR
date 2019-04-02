@@ -1,0 +1,36 @@
+@import "context.less";
+
+// Navigation banner
+.header__nav-ul {
+    .reset;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: @primary-color;
+    font-size: 1.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+.header__nav-li {
+    float: left; 
+}
+
+.header__nav-li-right{
+    float: right; 
+}
+  
+.header__nav-li,
+.header__nav-li-right{
+    display: block;
+    color: @light-color;
+    text-align: center;
+    padding: 1rem 1rem;
+    text-decoration: none;
+}
+  
+.header__nav-li-right:hover,
+.active {
+    background-color: @primary-color-comp;
+    color: @dark-color;
+}
+
