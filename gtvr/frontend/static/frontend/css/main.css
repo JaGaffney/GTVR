@@ -96,6 +96,7 @@ body {
   background-color: #fff4dc;
   cursor: pointer;
   margin: 1rem;
+  border: solid 5px #5f85e3;
 }
 .lessonDashboard__card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -113,6 +114,7 @@ body {
   background-color: #fff4dc;
   cursor: pointer;
   margin: 1rem;
+  border: solid 5px #5f85e3;
 }
 .lessonLesson__card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -120,7 +122,7 @@ body {
 }
 .lessonDashboard__card-deleteBtn {
   float: right;
-  cursor: grab;
+  cursor: pointer;
   border: 0;
   padding: 0;
   font-size: 100%;
@@ -128,7 +130,7 @@ body {
   background-color: inherit;
 }
 .lessonDashboard__card-deleteBtn:hover {
-  color: #5f85e3;
+  color: red;
 }
 .temp-div-img {
   background-color: #5f85e3;
@@ -136,7 +138,97 @@ body {
   width: 100%;
 }
 .temp-div-youtube {
-  background-color: #5f85e3;
+  background-color: black;
   height: 120px;
   width: 213px;
+}
+.btn {
+  background-color: #5f85e3;
+  color: #ffffff;
+  border: solid 5px #ffc959;
+  width: 25%;
+  min-width: 17rem;
+  height: 4rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #fff4dc;
+  color: #292e31;
+  border: solid 5px #5f85e3;
+}
+.modalForm-div {
+  z-index: 1000;
+  width: 50%;
+  height: 40%;
+  min-height: 20rem;
+  min-width: 20rem;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  display: flex;
+  background-color: #dfe8fe;
+}
+.modalForm-container {
+  width: 100%;
+  border: solid 5px #ffc959;
+  justify-content: center;
+}
+.form-group {
+  justify-content: center;
+  border: none;
+  padding: 0.5rem;
+}
+.form-group label {
+  float: left;
+  text-align: right;
+  margin-right: 15px;
+  width: 100px;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+.form-group input {
+  width: 100%;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+.close-container {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.leftright {
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: #ffc959;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+.rightleft {
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: #ffc959;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+.close {
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #5f85e3;
+}
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #5f85e3;
 }

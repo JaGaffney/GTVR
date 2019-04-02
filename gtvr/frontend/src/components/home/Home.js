@@ -12,6 +12,10 @@ export class Home extends Component {
 
         <div className="homepage__div-info">
 
+        <div className="homepage__div-hero">
+        <h1>Hero image</h1>
+        </div>
+
         <div className="homepage__div-title">
           <h1>Homepage</h1>
         </div>

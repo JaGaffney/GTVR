@@ -42,36 +42,46 @@ export class LessonForm extends Component {
     const { name, subject } = this.state;
 
     return (
-      <div className="LessonForm-div">
-        <h1>Add new Lesson</h1>
+      <div className="modalForm-div">
 
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              onChange={this.onChange}
-              value={name}
-            />
+        <div className="modalForm-container">  
+
+          <div className="close-container" onClick={this.props.formHandler}>
+            <div className="leftright"></div>
+            <div className="rightleft"></div>
           </div>
 
-          <div className="form-group">
-            <label>Subject</label>
-            <input
-              className="form-control"
-              type="text"
-              name="subject"
-              onChange={this.onChange}
-              value={subject}
-            />
-          </div>
+          <h1>Add new Lesson</h1>
 
-          <div className="form-group">
-              <button type="submit" className="btn">Submit</button>
-          </div>
-        </form>
+          <form onSubmit={this.onSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                onChange={this.onChange}
+                value={name}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Subject</label>
+              <input
+                className="form-control"
+                type="text"
+                name="subject"
+                onChange={this.onChange}
+                value={subject}
+              />
+            </div>
+
+            <div className="form-group">
+                <button type="submit" className="btn">Submit</button>
+                <button className="btn" onClick={this.props.formHandler}>Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

@@ -16,7 +16,7 @@ body {
     background-color: @primary-color-comp;
     color: @dark-color;
     grid-template-columns: 100%;
-    grid-template-rows: auto minmax(55rem, auto) auto;
+    grid-template-rows: auto minmax(55rem; auto) auto;
     grid-template-areas:    "headerArea" 
                             "mainArea"
                             "footerArea";
@@ -29,7 +29,7 @@ body {
     left: 0;
     height: 100vh;
     width: 100%;
-    background: rgba(0, 0, 0, 0.75)
+    background: rgba(0; 0; 0; 0.75)
 }
 
 // Setting grid areas
@@ -111,14 +111,15 @@ body {
 
 .lessonDashboard__card{
     padding: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0;0;0;0.2);
     transition: 0.3s;
     width: 28%;
     background-color: @quad-color-comp;
     cursor: pointer;
     margin: 1rem;
+    border: solid 5px @primary-color;
     &:hover{
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
     }   
 }
@@ -130,30 +131,30 @@ body {
 
 .lessonLesson__card{
     padding: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0;0;0;0.2);
     transition: 0.3s;
     width: 15rem;
     background-color: @quad-color-comp;
     cursor: pointer;
     margin: 1rem;
+    border: solid 5px @primary-color;
     &:hover{
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
     } 
 }
 
 .lessonDashboard__card-deleteBtn{
     float: right;
-    cursor: grab;
+    cursor: pointer;
     border: 0;
     padding: 0;
     font-size: 100%;
     color: @primary-color;
     background-color: inherit;
     &:hover{
-        color: @primary-color;
+        color: red;
     }
-
 }
 
 .temp-div-img{
@@ -163,8 +164,113 @@ body {
 }
 
 .temp-div-youtube{
-    background-color: @primary-color;
+    background-color: black;
     height: 120px;
     width: 213px;
 }
+
+.btn{
+    background-color: @primary-color;
+    color: @light-color;
+    border: solid 5px @primary-color-comp;
+    width: 25%;
+    min-width: 17rem;
+    height: 4rem;
+    font-size: 2rem;
+    cursor: pointer;
+    &:hover{
+        background-color: @quad-color-comp;
+        color: @dark-color;
+        border: solid 5px @primary-color;
+    }
+}
+
+// Modal
+.modalForm-div{
+    z-index: 1000;
+    width: 50%;
+    height: 40%;
+    min-height: 20rem;
+    min-width: 20rem;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: flex;
+    background-color: @quad-color;
+}
+
+.modalForm-container{
+    width: 100%;
+    border: solid 5px @primary-color-comp;
+    justify-content: center;
+    
+}
+
+.form-group{
+    justify-content: center;
+    border: none;
+    padding: 0.5rem;
+    label{
+        float: left;
+        text-align: right;
+        margin-right: 15px;
+        width: 100px;   
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+    input{
+        width: 100%;
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+    button{
+    }
+}
+
+// close button
+.close-container{
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  
+  .leftright{
+    height: 4px;
+    width: 50px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: @primary-color-comp;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all .3s ease-in;
+  }
+  
+  .rightleft{
+    height: 4px;
+    width: 50px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: @primary-color-comp;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all .3s ease-in;
+  }
+  
+  .close{
+    margin: 60px 0 0 5px;
+    position: absolute;
+  }
+  
+  .close-container:hover .leftright{
+    transform: rotate(-45deg);
+    background-color: @primary-color;
+  }
+  .close-container:hover .rightleft{
+    transform: rotate(45deg);
+    background-color: @primary-color;
+  }
+
 

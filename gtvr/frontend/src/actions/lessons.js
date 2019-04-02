@@ -60,8 +60,6 @@ export const getVideo = (id) => dispatch => {
 
 // ADD_VIDEO
 export const addVideo = (video) => dispatch => {
-    console.log("got here addVideo")
-    console.log(video)
     axios
         .post("/api/videos/", video, tokenConfig())
         .then(res => {

@@ -8,7 +8,7 @@ export class Footer extends Component {
       <footer className="footer-distributed">
 
         <div className="footer-left">
-          <h3><span>logo here</span></h3>
+          <h3><span>Great Teacher VR</span></h3>
           <p className="footer-links">
             <Link to="/">Home</Link>
             ·
@@ -17,7 +17,7 @@ export class Footer extends Component {
             <Link to="/about">About</Link>
             ·
             <Link to="/case">Case Study</Link>
-            .
+            ·
             <Link to="/contact">Contact</Link>
           </p>
 
@@ -40,7 +40,7 @@ export class Footer extends Component {
         <div className="footer-right">
           <p className="footer-company-about">
             <span>About Great Teacher VR</span>
-            Info here
+            Bringing VR control back to the teachers
           </p>
 
           <div className="footer-icons">

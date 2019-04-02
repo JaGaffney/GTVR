@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addVideo } from "../../actions/lessons";
+import { addVideo, getLessons } from "../../actions/lessons";
 
 export class LessonVideoForm extends Component {
 
   static propTypes = {
-    addVideo: PropTypes.func.isRequired
+    addVideo: PropTypes.func.isRequired,
+    getLessons: PropTypes.func.isRequired
   }
 
   state = {
     title: "",
     link: "",
     play: false
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0)
   }
 
   // checks for changes inside the form
@@ -36,51 +41,66 @@ export class LessonVideoForm extends Component {
     // creates a valid object that can be sent to the API
     const video = { lesson: this.props.lessonId, title, link, play }
     this.props.addVideo(video)
+    this.props.getLessons()
 
     // resetting data back to default values
     this.setState({
         title: "",
         link: ""
     })
+    this.props.formHandler()
   }
 
   render() {
     const { title, link } = this.state;
 
     return (
-      <div className="LessonForm-div">
+      <>
+      <div className="modalForm-div">
+        
+        <div className="modalForm-container">
+
+        <div className="close-container"  onClick={this.props.formHandler}>
+          <div className="leftright"></div>
+          <div className="rightleft"></div>
+        </div>
+
         <h1>Add new Video</h1>
+        
+          <form onSubmit={this.onSubmit}>
+          
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="title"
+                onChange={this.onChange}
+                value={title}
+                placeholder="Title"
+              />
+            </div>
 
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Title</label>
-            <input
-              className="form-control"
-              type="text"
-              name="title"
-              onChange={this.onChange}
-              value={title}
-            />
-          </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                type="text"
+                name="link"
+                onChange={this.onChange}
+                value={link}
+                placeholder="Youtube Link"
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Link</label>
-            <input
-              className="form-control"
-              type="text"
-              name="link"
-              onChange={this.onChange}
-              value={link}
-            />
-          </div>
-
-          <div className="form-group">
-              <button type="submit" className="btn">Submit</button>
-          </div>
-        </form>
+            <div className="form-group">
+                <button type="submit" className="btn">Submit</button>
+                <button className="btn" onClick={this.props.formHandler}>Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
+      </>
     )
   }
 }
 
-export default connect(null, { addVideo })(LessonVideoForm)
+export default connect(null, { getLessons, addVideo })(LessonVideoForm)

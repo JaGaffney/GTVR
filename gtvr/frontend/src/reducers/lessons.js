@@ -1,4 +1,4 @@
-import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
+import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
     lessons: [],
@@ -18,6 +18,21 @@ let updateStateInfo = (stateArray, action) => {
   return updatedLesson
 }
 
+// sets the state for nested states
+let updateNestedStateInfo = (stateArray, action) => {
+    // filter out the nested element you want to update
+    let lessons = stateArray.filter(item => item.id === action.payload.lesson)
+    // update the payload with the new data
+    lessons[0].videos = [...lessons[0].videos, action.payload]
+    // update the state with the new payload data
+    stateArray.map((item, index) => {
+        if (item === lessons[0].id) {
+            stateArray[index] = lessons[0]
+        }
+    })
+    return stateArray
+}
+
 export default function(state = initialState, action) {
     // common convetion is to use a switch with cases
     switch(action.type) {
@@ -25,11 +40,6 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 lessons: action.payload
-            }
-        case GET_VIDEO:
-            return {
-                ...state,
-                video: action.payload
             }
         case DELETE_LESSON:
             return {
@@ -40,6 +50,21 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 lessons: [...state.lessons, action.payload]
+            }
+        case GET_VIDEO:
+            return {
+                ...state,
+                video: action.payload
+            }
+        case ADD_VIDEO:
+            return {
+                ...state,
+                lessons: updateNestedStateInfo(state.lessons, action)
+            } 
+        case DELETE_VIDEO:
+            return {
+                ...state,
+                lessons: updateNestedStateInfo(state.lessons, action)
             }
         case UPDATE_VIDEO:
             return {

@@ -6,6 +6,8 @@ import { getLessons, deleteLesson } from '../../actions/lessons'
 import Lessons from './Lessons'
 import LessonForm from './LessonForm'
 
+import Backdrop from '../layout/Backdrop'
+
 export class LessonDashboard extends Component {
   static propTypes = {
     lessons: PropTypes.array.isRequired,
@@ -17,6 +19,7 @@ export class LessonDashboard extends Component {
       loadSingle: false,
       lessonData: "",
       loadForm: false,
+      tempID: 0
   }
 
   // switches between states for show/add form button
@@ -36,7 +39,8 @@ export class LessonDashboard extends Component {
     this.setState({
         loadSingle: true,
         lessonData: lesson,
-        loadForm: false
+        loadForm: false,
+        tempID: lesson.id
     })
   }
 
@@ -49,7 +53,6 @@ export class LessonDashboard extends Component {
 
   onDeleteLesson = (id) => {
     this.props.deleteLesson(id)
-    console.log("got here")
   }
 
   tableGenerator(){
@@ -58,7 +61,9 @@ export class LessonDashboard extends Component {
         <>
           { this.props.lessons.map(lesson => (
             <div className="lessonDashboard__card" key={lesson['id']}>
-            <button className="lessonDashboard__card-deleteBtn" onClick={this.onDeleteLesson.bind(this, lesson.id)}><i className="fa fa-close"></i></button>
+
+            <button className="lessonDashboard__card-deleteBtn" onClick={this.onDeleteLesson.bind(this, lesson.id)}><i className="fa fa-trash"></i></button>
+            <br></br>
               <div className="lessonDashboard__card-container"  onClick={this.loadLesson.bind(this, lesson)}>
                 <div className="temp-div-img"></div>
                 <h4><strong>Name: </strong>{lesson['name']}</h4>
@@ -76,18 +81,25 @@ export class LessonDashboard extends Component {
 
   render() {
     return (
+      <>
+
       <div className="lessonDashboard__div-Area">
+
+      {( this.state.loadForm && <Backdrop formHandler={this.onFormHandler.bind(this)} /> )}
+      {( this.state.loadForm && <LessonForm formHandler={this.onFormHandler.bind(this)} /> )}
+
         <div className="lessonDashboard__div">
           <br></br>
           {(!this.state.loadSingle && <button className="btn" onClick={this.onFormHandler.bind(this)}>{this.state.loadForm ? 'Hide' : 'Add'} new Lesson</button> )}
-          {(this.state.loadForm && <LessonForm /> )}
+          
+          
           <div className="lessonDashboard__div-container">
-            
-            {(this.state.loadSingle && <Lessons lessonInfo={this.state.lessonData} /> )}
+            {(this.state.loadSingle && <Lessons lessonInfo={this.state.lessonData} lessonID={this.state.tempID} /> )}
             {(!this.state.loadSingle && this.tableGenerator() )}
           </div>
         </div>
       </div>
+      </>
     )
   }
 }

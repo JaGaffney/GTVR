@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { deleteVideo } from '../../actions/lessons'
+import { deleteVideo, getLessons } from '../../actions/lessons'
 
 import YouTube from 'react-youtube';
 
@@ -11,6 +11,12 @@ import LessonVideoForm from './LessonVideoForm'
 import Backdrop from '../layout/Backdrop'
 
 export class Lessons extends Component {
+
+  static propTypes = {
+    deleteVideo: PropTypes.func.isRequired,
+    getLessons: PropTypes.func.isRequired
+  }
+
   state = {
     loadSingle: false,
     videoData: "",
@@ -35,17 +41,24 @@ export class Lessons extends Component {
 
   onDeleteVideo = (id) => {
     this.props.deleteVideo(id)
+    this.props.getLessons()
   }
 
   lessonGeneration(video){
     const opts = {
       height: '120',
       width: '213',
-    }
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        modestbranding: 1
 
+      }
+    }
     return (
       <div className="lessonLesson__card" key={video.id}>
-        <button className="lessonDashboard__card-deleteBtn" onClick={this.onDeleteVideo.bind(this, video.id)}><i className="fa fa-close"></i></button>
+        <button className="lessonDashboard__card-deleteBtn" onClick={this.onDeleteVideo.bind(this, video.id)}><i className="fa fa-trash"></i></button>
+        <br></br>
         <div className="lessonLesson__card-container" onClick={this.loadSingleLesson.bind(this, video)}>
           <div className="temp-div-youtube">
             <YouTube 
@@ -61,14 +74,15 @@ export class Lessons extends Component {
   }
 
   render() {
+    let lessons = this.props.lessons.filter(item => item.id === this.props.lessonID);
 
     let LessonsPage = <div>
-      <h1>Lesson: {this.props.lessonInfo.name}</h1>
+      <h1>Lesson: {lessons[0].name}</h1>
       <h2>Teacher: Alicia</h2>
-      <h2>Subject: {this.props.lessonInfo.subject}</h2>
+      <h2>Subject: {lessons[0].subject}</h2>
       <button className="btn" onClick={this.onFormHandler.bind(this)}>{this.state.loadForm ? 'Hide' : 'Add'} new Video</button>
       <div className="lessonLesson__div-container">
-        { this.props.lessonInfo.videos.map(lesson => (
+        { lessons[0].videos.map(lesson => (
           this.lessonGeneration(lesson)
         ))}
       </div>
@@ -76,7 +90,8 @@ export class Lessons extends Component {
 
     return (
       <>
-      {( this.state.loadForm && <LessonVideoForm lessonId={this.props.lessonInfo.id}/> )}
+      {( this.state.loadForm && <Backdrop formHandler={this.onFormHandler.bind(this)} /> )}
+      {( this.state.loadForm && <LessonVideoForm lessonId={this.props.lessonInfo.id} formHandler={this.onFormHandler.bind(this)} /> )}
       <br></br>
 
       {(!this.state.loadSingle && LessonsPage )}
@@ -87,5 +102,9 @@ export class Lessons extends Component {
   }
 }
 
-export default connect(null, { deleteVideo } )(Lessons)
+const mapStateToProps = state => ({
+  lessons: state.lessons.lessons
+})
+
+export default connect(mapStateToProps, { getLessons, deleteVideo } )(Lessons)
 
