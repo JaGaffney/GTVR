@@ -1,90 +1,97 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addLesson } from "../../actions/lessons";
+import { getSubjects, addLesson } from "../../actions/lessons";
 
-export class LessonForm extends Component {
+const LessonForm = props => {
 
-  static propTypes = {
-    addLesson: PropTypes.func.isRequired
+  const propTypes = {
+    addLesson: PropTypes.func.isRequired,
+    getSubjects: PropTypes.func.isRequired
   }
 
-  state = {
-    name: "",
-    subject: ""
-  }
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [description, setDescription] = useState("");
 
-  // checks for changes inside the form
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
 
   // on submit button click
-  onSubmit = e => {
-    console.log("got here")
+  const onSubmit = e => {
     e.preventDefault()
-    // data gathering
-    let { name, subject } = this.state
 
     // creates a valid object that can be sent to the API
+    setNumber(parseInt(number))
     let videos = [{}]
-    const lesson = { name, subject, videos }
-    this.props.addLesson(lesson)
-
+    const lesson = { name, number, subject: props.subjectID, description, videos }
+    props.addLesson(lesson)
+    props.getSubjects()
+    
     // resetting data back to default values
-    this.setState({
-        name: '',
-        subject: ''
-    })
+    setName("");
+    setNumber("");
+    setDescription("");
+
+    // closes the form modal
+    props.formHandler()
   }
 
-  render() {
-    const { name, subject } = this.state;
+  return (
+    <div className="modalForm-div">
 
-    return (
-      <div className="modalForm-div">
+      <div className="modalForm-container">  
 
-        <div className="modalForm-container">  
+        <div className="close-container" onClick={props.formHandler}>
+          <div className="leftright"></div>
+          <div className="rightleft"></div>
+        </div>
 
-          <div className="close-container" onClick={this.props.formHandler}>
-            <div className="leftright"></div>
-            <div className="rightleft"></div>
+        <h1>Add new Lesson</h1>
+
+        <form onSubmit={onSubmit} autoComplete="off">
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              onChange={e => setName(e.target.value)}
+              value={name}
+              placeholder={'Name'}
+              required
+            />
           </div>
 
-          <h1>Add new Lesson</h1>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="number"
+              name="number"
+              onChange={e => setNumber(e.target.value)}
+              value={number}
+              placeholder={'Lesson number'}
+              required 
+            />
+          </div>
 
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Name</label>
-              <input
-                className="form-control"
-                type="text"
-                name="name"
-                onChange={this.onChange}
-                value={name}
-              />
-            </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="description"
+              onChange={e => setDescription(e.target.value)}
+              value={description}
+              placeholder={'Description'}
+              required 
+            />
+          </div>
 
-            <div className="form-group">
-              <label>Subject</label>
-              <input
-                className="form-control"
-                type="text"
-                name="subject"
-                onChange={this.onChange}
-                value={subject}
-              />
-            </div>
-
-            <div className="form-group">
-                <button type="submit" className="btn">Submit</button>
-                <button className="btn" onClick={this.props.formHandler}>Cancel</button>
-            </div>
-          </form>
-        </div>
+          <div className="form-group">
+              <button type="submit" className="btn">Submit</button>
+              <button className="btn" onClick={props.formHandler}>Cancel</button>
+          </div>
+        </form>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-export default connect(null, { addLesson })(LessonForm)
+export default connect(null, { getSubjects, addLesson })(LessonForm)

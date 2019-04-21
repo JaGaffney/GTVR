@@ -1,7 +1,25 @@
 from rest_framework import generics, permissions
 
-from .models import Lessons, Videos
-from .serializers import LessonsSerializer, VideosSerializer
+from .models import Subject, Lessons, Videos
+from .serializers import SubjectsSerializer, LessonsSerializer, VideosSerializer
+
+
+class SubjectsViewSet(generics.ListCreateAPIView):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectsSerializer
+
+    permission_classes = [
+        permissions.AllowAny,
+    ]
+
+# allows for POST, PUT and DELETE requests to the api of the user is Authenticated
+class SubjectsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectsSerializer
+
+    permission_classes = [
+        permissions.AllowAny,
+    ]
 
 # displays a list of all Jobs no matter which user made it, may be a better a way to display this infomration?
 class LessonsViewSet(generics.ListCreateAPIView):

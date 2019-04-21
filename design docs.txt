@@ -1,0 +1,5 @@
+Design docs
+
+Problem:
+Students start the videos at different times due to varrying ability to use the VR system, which means some students end up finishing early
+and then end up waiting/getting bored so do other things before the other students finish.

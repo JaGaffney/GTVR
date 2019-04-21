@@ -14,6 +14,7 @@ import About from './common/About'
 import Case from './common/Case'
 import Contact from './common/Contact'
 import LessonDashboard from './lessons/LessonDashboard'
+import SubjectDashboard from './subject/SubjectDashboard'
 
 // Redux store
 import { Provider } from 'react-redux'
@@ -37,6 +38,7 @@ class App extends Component {
                 <Route exact path="/lessons" component={LessonDashboard} />
                 <Route exact path="/case" component={Case} />
                 <Route exact path="/contact" component={Contact} />
+                <Route exact path="/subjects" component={SubjectDashboard} />
               </Switch>
             </div>
 

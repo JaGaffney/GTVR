@@ -11,7 +11,7 @@ export class Header extends Component {
           <li><NavLink to="/contact" activeClassName=" active" className="header__nav-li-right">Contact</NavLink></li>
           <li><NavLink to="/case" activeClassName=" active" className="header__nav-li-right">Case Study</NavLink></li>
           <li><NavLink to="/about" activeClassName="active" className="header__nav-li-right">About</NavLink></li>
-          <li><NavLink to="/lessons" activeClassName="active" className="header__nav-li-right">Lessons</NavLink></li>
+          <li><NavLink to="/subjects" activeClassName="active" className="header__nav-li-right">Subjects</NavLink></li>
         </ul>
       </nav>
     )

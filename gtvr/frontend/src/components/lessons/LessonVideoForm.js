@@ -1,106 +1,96 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addVideo, getLessons } from "../../actions/lessons";
 
-export class LessonVideoForm extends Component {
+const LessonVideoForm = props =>  {
 
-  static propTypes = {
+  const propTypes = {
     addVideo: PropTypes.func.isRequired,
     getLessons: PropTypes.func.isRequired
   }
 
-  state = {
-    title: "",
-    link: "",
-    play: false
-  }
+  const [ title, setTitle ] = useState("");
+  const [ link, setLink ] = useState("");
+  const [ play, setPlay] = useState(false);
 
-  componentDidMount() {
+  useEffect(() => {
     window.scrollTo(0, 0)
-  }
-
-  // checks for changes inside the form
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+  }, [])
 
   // on submit button click
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault()
-    // data gathering
-    let { title, link, play } = this.state
 
     // will need a better filter for extracting the youtube id data
     let youtubeLink = link.split('watch?v=')
     let youtubeLinkFilter = youtubeLink[1].split("&")
-    link = youtubeLinkFilter[0]
+    setLink(youtubeLinkFilter[0])
 
     console.log(link)
 
     // creates a valid object that can be sent to the API
-    const video = { lesson: this.props.lessonId, title, link, play }
-    this.props.addVideo(video)
-    this.props.getLessons()
+    const video = { lesson: props.lessonId, title, link, play }
+    props.addVideo(video)
+    props.getLessons()
 
     // resetting data back to default values
-    this.setState({
-        title: "",
-        link: ""
-    })
-    this.props.formHandler()
+    setTitle("");
+    setLink("");
+
+    // closes the modal form
+    props.formHandler()
   }
 
-  render() {
-    const { title, link } = this.state;
+  return (
+    <>
+    <div className="modalForm-div">
+      
+      <div className="modalForm-container">
 
-    return (
-      <>
-      <div className="modalForm-div">
-        
-        <div className="modalForm-container">
-
-        <div className="close-container"  onClick={this.props.formHandler}>
-          <div className="leftright"></div>
-          <div className="rightleft"></div>
-        </div>
-
-        <h1>Add new Video</h1>
-        
-          <form onSubmit={this.onSubmit}>
-          
-            <div className="form-group">
-              <input
-                className="form-control"
-                type="text"
-                name="title"
-                onChange={this.onChange}
-                value={title}
-                placeholder="Title"
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                className="form-control"
-                type="text"
-                name="link"
-                onChange={this.onChange}
-                value={link}
-                placeholder="Youtube Link"
-              />
-            </div>
-
-            <div className="form-group">
-                <button type="submit" className="btn">Submit</button>
-                <button className="btn" onClick={this.props.formHandler}>Cancel</button>
-            </div>
-          </form>
-        </div>
+      <div className="close-container"  onClick={props.formHandler}>
+        <div className="leftright"></div>
+        <div className="rightleft"></div>
       </div>
-      </>
-    )
-  }
+
+      <h1>Add new Video</h1>
+      
+        <form onSubmit={onSubmit} autoComplete="off">
+        
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="title"
+              onChange={e => setTitle(e.target.value) }
+              value={title}
+              placeholder="Title"
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              name="link"
+              onChange={e => setLink(e.target.value) }
+              value={link}
+              placeholder="Youtube Link"
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+              <button type="submit" className="btn">Submit</button>
+              <button className="btn" onClick={props.formHandler}>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </>
+  )
 }
+
 
 export default connect(null, { getLessons, addVideo })(LessonVideoForm)

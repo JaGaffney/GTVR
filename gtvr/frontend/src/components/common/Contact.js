@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-export class Contact extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+const Contact = props => {
+  return (
+    <div>
+      
+    </div>
+  )
 }
 
 export default Contact

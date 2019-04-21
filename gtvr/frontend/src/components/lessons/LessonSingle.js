@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import YouTube from 'react-youtube';
 
 import { connect } from 'react-redux'
@@ -9,127 +9,105 @@ import { getVideo, updateVideo } from '../../actions/lessons'
 // 1. If video is already playing on load it will crash due to not player existing yet
 // 2. Pause,Play/stop dont work yet as they dont send requets to api
 
-export class LessonSingle extends Component {
-  constructor(props) {
-    super(props);
+const LessonSingle = props => {
 
-    this.state = {
-      videoId: null,
-      player: null,
-      play: false,
-      playingVideo: false,
-      pausedVideo: false
-    }
+  const [videoIDCode, setVideoID] = useState(null)
+  const [player, setPlayer] = useState(null)
+  const [play, setPlay] = useState(false)
+  const [playingVideo, setPlayingVideo] = useState(false)
+  const [pausedVideo, setPausedVideo] = useState(false)
 
-    this.onReady = this.onReady.bind(this);
-    this.onPlayVideo = this.onPlayVideo.bind(this);
-    this.onPauseVideo = this.onPauseVideo.bind(this);
-    this.onStopVideo = this.onStopVideo.bind(this);
-    this.onFullScreen = this.onFullScreen.bind(this);
-    this.onPlayButtonHandler = this.onPlayButtonHandler.bind(this);
-  }
+  useEffect(() => {
+    setVideoID(props.videoInfo.link)
+    console.log("here")
+  }, [])
+  // componentWillMount(){
+  //   this.setState({
+  //     videoId: this.props.videoInfo.link
+  //   })
+  // }
 
-  componentWillMount(){
-    this.setState({
-      videoId: this.props.videoInfo.link
-    })
-  }
-
-  componentDidMount(){
-    // need to look into using sockets
-    this.timer = setInterval( () => {
-      
-    if (Object.keys(this.props.video).length > 0){
-      this.setState({
-        play: this.props.video.play
-      })
-    }
-    this.props.getVideo(this.props.videoInfo.id), 10000
+  useEffect(() => {
+    let timer = setInterval( () => {
+      if (Object.keys(props.video).length > 0){
+        setPlay(props.video.play)
+      }
+      //props.getVideo(props.videoInfo.id), 10000
     });
-  }
+    return () => {
+      clearInterval(timer);
+      timer = null;
+    }
+  }, [])
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-    this.timer = null;
-  }
-
-  onPlayVideo() {
+  const onPlayVideo = () => {
     // stops repitition of playing video
-    if (!this.state.playingVideo){
+    if (!playingVideo){
       setTimeout(() => {
-        this.state.player.playVideo();
+        player.playVideo();
       }, 4000);
       
       console.log("got here onPlayVideo")
-      this.setState({
-        playingVideo: true,
-        pausedVideo: false
-      });
+      setPlayingVideo(true)
+      setPausedVideo(false)
     }
   }
 
-  onPauseVideo() {
-    this.state.player.pauseVideo();
-    this.setState({
-      playingVideo: false,
-      pausedVideo: true
-    });
+  const onPauseVideo = () => {
+    player.pauseVideo();
+    setPlayingVideo(false)
+    setPausedVideo(true)
   }
 
-  onStopVideo() {
+  const onStopVideo = () => {
     const playInfo = { play: false }
-    this.props.updateVideo(this.props.videoInfo.id, playInfo)
-    this.state.player.stopVideo();
+    props.updateVideo(props.videoInfo.id, playInfo)
+    player.stopVideo();
   }
 
-  onReady(event) {
-    this.setState({
-      player: event.target,
-    });
+  const onReady = (event) => {
+    setPlayer(event.target)
   }
 
-  onFullScreen(){
-    console.log(this.state.player)
+  const onFullScreen = () => {
+    console.log("Coming soon")
   }
 
-  onPlayButtonHandler(){
-    this.setState({ 
-      playingVideo: false 
-    })
+  const onPlayButtonHandler = () => {
+    setPlayingVideo(false)
+
     const playInfo = { play: true }
-    this.props.updateVideo(this.props.videoInfo.id, playInfo)
-    this.onPlayVideo()
+    props.updateVideo(props.videoInfo.id, playInfo)
+    onPlayVideo()
   }
 
-  render() {
-    const opts = {
-      height: '720',
-      width: '1280',
-    }
+  const opts = {
+    height: '720',
+    width: '1280',
+  }
 
-    if (this.state.play){
-      this.onPlayVideo()
-    }
+  if (play){
+    onPlayVideo()
+  }
 
-    return (
-      <div>
-        <h1>{this.props.videoInfo.title}</h1>
-        <div className="LessonSingle__video-controls">
-          <button onClick={this.onPlayButtonHandler}>Play</button>
-          <button onClick={this.onPauseVideo}>Pause</button>
-          <button onClick={this.onStopVideo}>Stop</button>
-          <button onClick={this.onFullScreen}>Fullscreen</button>
-        </div>
-        <div className="LessonSingle__video-card">
-          <YouTube 
-            videoId={this.state.videoId}
-            opts={opts}
-            onReady={this.onReady}
-          />
-        </div>
+  return (
+    <div>
+      <h1>{props.videoInfo.title}</h1>
+      <div className="LessonSingle__video-controls">
+        <button onClick={onPlayButtonHandler}>Play</button>
+        <button onClick={onPauseVideo}>Pause</button>
+        <button onClick={onStopVideo}>Stop</button>
+        <button onClick={onFullScreen}>Fullscreen</button>
       </div>
-    )
-  }
+      <div className="LessonSingle__video-card">
+        <YouTube 
+          videoId={videoIDCode}
+          opts={opts}
+          onReady={onReady}
+        />
+      </div>
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({
