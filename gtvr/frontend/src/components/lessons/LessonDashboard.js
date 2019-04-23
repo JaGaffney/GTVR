@@ -59,7 +59,7 @@ const LessonDashboard = props => {
             <button className="lessonDashboard__card-deleteBtn" onClick={onDeleteLesson.bind(null, lesson['id'])}>&times;</button>
             <br></br>
               <div className="lessonDashboard__card-container" onClick={loadLesson.bind(null, lesson, props.subjectInfo.teacher)}>
-                <div className="temp-div-img"></div>
+                <div className="lesson-img"><img src={"https://unsplash.it/2000/10" + lesson['id']}></img></div>
                 <h4><strong>Name: </strong>{lesson['name']}</h4>
                 <h4><strong>Teacher: </strong>{props.subjectInfo.teacher}</h4>
                 <h4><strong>Number: </strong>{lesson['number']}</h4>

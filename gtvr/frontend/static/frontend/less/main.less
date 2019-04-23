@@ -67,12 +67,23 @@ body {
 
 .homepage__div-info{
     width: 100%;
-    min-height: 30rem;
-    background-color: @quad-color;
-    
+    min-height: 20rem;
+    background-color: @quad-color; 
+}
+
+.hero-header{
+    padding: 1rem;
+    color: @dark-color;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.5);
 }
 
 .about__div{
+    width:100%;
+    min-height: 30rem;
+}
+
+.case__div{
     width:100%;
     min-height: 30rem;
 }
@@ -159,10 +170,15 @@ body {
     }
 }
 
-.temp-div-img{
+.lesson-img{
     background-color: @primary-color;
     height: 12rem;
     width: 100%;
+    border: solid 3px @primary-color;
+    img{
+        height: 12rem;
+        width: 100%;
+    }
 }
 
 .temp-div-youtube{
@@ -274,4 +290,16 @@ body {
     background-color: @primary-color;
   }
 
+
+
+@media all and (max-width: 770px) {
+    .lessonLesson__card{
+        flex: 1;
+        width: 33%;
+    }
+
+    .lessonDashboard__card{
+        width: 100%;
+    }
+}
 

@@ -48,7 +48,7 @@ const SubjectDashboard = props => {
             <button className="lessonDashboard__card-deleteBtn">&times;</button>
             <br></br>
               <div className="lessonDashboard__card-container" onClick={loadSubject.bind(this, subject)}>
-                <div className="temp-div-img"></div>
+              <div className="lesson-img"><img src={"https://unsplash.it/2000/10" + subject['id']}></img></div>
                 <h4><strong>Name: </strong>{subject['name']}</h4>
                 <h4><strong>Teacher: </strong>{subject['teacher']}</h4>
                 <p><strong>Total Lessons: {subject['lessons'].length}</strong></p>

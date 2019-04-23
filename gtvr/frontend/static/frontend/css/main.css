@@ -56,10 +56,21 @@ body {
 }
 .homepage__div-info {
   width: 100%;
-  min-height: 30rem;
+  min-height: 20rem;
   background-color: #dfe8fe;
 }
+.hero-header {
+  padding: 1rem;
+  color: #292e31;
+  background: #cccccc;
+  /* Fallback for older browsers without RGBA-support */
+  background: rgba(204, 204, 204, 0.5);
+}
 .about__div {
+  width: 100%;
+  min-height: 30rem;
+}
+.case__div {
   width: 100%;
   min-height: 30rem;
 }
@@ -134,8 +145,13 @@ body {
 .lessonDashboard__card-deleteBtn:hover {
   color: red;
 }
-.temp-div-img {
+.lesson-img {
   background-color: #5f85e3;
+  height: 12rem;
+  width: 100%;
+  border: solid 3px #5f85e3;
+}
+.lesson-img img {
   height: 12rem;
   width: 100%;
 }
@@ -233,4 +249,13 @@ body {
 .close-container:hover .rightleft {
   transform: rotate(45deg);
   background-color: #5f85e3;
+}
+@media all and (max-width: 770px) {
+  .lessonLesson__card {
+    flex: 1;
+    width: 33%;
+  }
+  .lessonDashboard__card {
+    width: 100%;
+  }
 }
