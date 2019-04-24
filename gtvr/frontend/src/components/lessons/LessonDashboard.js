@@ -20,11 +20,17 @@ const LessonDashboard = props => {
   const [loadForm, setLoadForm] = useState(false);
   const [lessonID, setLessonID] = useState(0);
   const [teacherName, setTeacherName] = useState("");
+  const [spinner, setSpinner] = useState(false)
 
   useEffect(() => {
     props.getSubjects();
     props.getLessons();
   }, []);
+
+  const handleImageLoaded = () => {
+    console.log("Image is loaded")
+    setSpinner(false)
+  }
 
   // switches between states for show/add form button
   const onFormHandler = () => {
@@ -59,7 +65,11 @@ const LessonDashboard = props => {
             <button className="lessonDashboard__card-deleteBtn" onClick={onDeleteLesson.bind(null, lesson['id'])}>&times;</button>
             <br></br>
               <div className="lessonDashboard__card-container" onClick={loadLesson.bind(null, lesson, props.subjectInfo.teacher)}>
-                <div className="lesson-img"><img src={"https://unsplash.it/2000/10" + lesson['id']}></img></div>
+                <div className="lesson-img">
+                {spinner ? <i className="fa fa-spinner fa-spin" /> : <img src={"https://unsplash.it/2000/10" + lesson['id']} onLoad={handleImageLoaded.bind(null)}></img>}
+                  
+                  
+                </div>
                 <h4><strong>Name: </strong>{lesson['name']}</h4>
                 <h4><strong>Teacher: </strong>{props.subjectInfo.teacher}</h4>
                 <h4><strong>Number: </strong>{lesson['number']}</h4>

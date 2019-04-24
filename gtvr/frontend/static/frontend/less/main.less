@@ -57,7 +57,7 @@ body {
 
 //Home page
 .homepage__div-Area{
-    width:100%;
+    width: 100%;
     grid-area: mainSection;
     background-color: @quad-color;
     display: flex;
@@ -65,10 +65,61 @@ body {
     flex-wrap: wrap;
 }
 
+.homepage__div-container{
+    border-top: solid 3px @primary-color-comp;
+    border-bottom: solid 3px @primary-color-comp;
+    min-height: 50rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:    "mainTitle mainImage" 
+                            "mainInfo mainImage";
+}
+
+.homepage__div-image{
+    grid-area: mainImage;
+    height: 100%;
+    width: 100%;
+}
+
+.homepage__div-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img{
+        border: solid 2px @primary-color;
+        height: 80%;
+        width: 80%;
+    }
+}
+
+.homepage__div-title{
+    grid-area: mainTitle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    h1{
+       color: @primary-color; 
+    }
+    h4{
+        color: @secondary-color; 
+    }
+}
+
 .homepage__div-info{
+    grid-area: mainInfo;
     width: 100%;
     min-height: 20rem;
-    background-color: @quad-color; 
+}
+
+.homepage__div-info-container{
+    font-size: 1.5rem;
+    background-color: @tertiary-color; 
+    p{
+        padding-left: 5%;
+    }
 }
 
 .hero-header{
@@ -78,29 +129,121 @@ body {
     background: rgba(204, 204, 204, 0.5);
 }
 
-.about__div{
-    width:100%;
-    min-height: 30rem;
-}
-
-.case__div{
-    width:100%;
-    min-height: 30rem;
-}
-
-.lessonDashboard__div{
-    width:100%;
-    min-height: 30rem;
-}
-
-//About
+// ABOUT page
 .about__div-Area{
-    width:100%;
+    min-height: 50rem;
+    width: 100%;
     grid-area: mainSection;
     background-color: @light-color;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-//Lessons
+.about__div-container{
+    border-top: solid 3px @primary-color-comp;
+    border-bottom: solid 3px @primary-color-comp;
+    min-height: 50rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:    "aboutImage aboutTitle" 
+                            "aboutImage aboutInfo";
+}
+
+.about__div-image{
+    grid-area: aboutImage;
+    height: 100%;
+    width: 100%;
+}
+
+.about__div-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img{
+        border: solid 2px @primary-color;
+        height: 80%;
+        width: 80%;
+    }
+}
+
+.about__div-title{
+    grid-area: aboutTitle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    h1{
+       color: @primary-color; 
+    }
+    h4{
+        color: @secondary-color; 
+    }
+}
+
+.about__div-info{
+    grid-area: aboutInfo;
+    width: 100%;
+    min-height: 20rem;
+}
+
+.about__div-info-container{
+    font-size: 1.5rem;
+    background-color: @quad-color; 
+    p{
+        padding-left: 5%;
+    }
+}
+
+// CASE pages
+// CASE studies/Testmonials
+.case__div-Area{
+    width: 100%;
+    min-height: 50rem;
+    background-color: @quad-color;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+
+}
+
+.case__div-carousel{
+    background-color: @quad-color-comp;
+    border: solid 2px @primary-color;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:    "caseTitle caseImage" 
+                            "caseBody caseImage";
+    min-height: 60vh;
+    img{
+        border: solid 2px @primary-color;
+        background-color: @quad-color;
+        height: 90%;
+        width: 90%;
+    }
+
+}
+
+.case__div-carousel-image{
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    grid-area: caseImage;
+}
+
+.case__div-carousel-title{
+    padding-left: 9%;
+    grid-area: caseTitle;
+}
+
+.case__div-carousel-body{
+    padding-left: 3%;
+    grid-area: caseBody;
+}
+
+// LESSONS page
 .lessonDashboard__div-Area{
     width:100%;
     grid-area: mainSection;
@@ -254,7 +397,7 @@ body {
     cursor: pointer;
   }
   
-  .leftright{
+.leftright{
     height: 4px;
     width: 50px;
     position: absolute;
@@ -263,9 +406,9 @@ body {
     border-radius: 2px;
     transform: rotate(45deg);
     transition: all .3s ease-in;
-  }
-  
-  .rightleft{
+}
+
+.rightleft{
     height: 4px;
     width: 50px;
     position: absolute;
@@ -274,23 +417,51 @@ body {
     border-radius: 2px;
     transform: rotate(-45deg);
     transition: all .3s ease-in;
-  }
-  
-  .close{
+}
+
+.close{
     margin: 60px 0 0 5px;
     position: absolute;
-  }
-  
-  .close-container:hover .leftright{
+}
+
+.close-container:hover .leftright{
     transform: rotate(-45deg);
     background-color: @primary-color;
-  }
-  .close-container:hover .rightleft{
+}
+.close-container:hover .rightleft{
     transform: rotate(45deg);
     background-color: @primary-color;
-  }
+}
 
 
+@media all and (max-width: 1000px){
+    .homepage__div-container{
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 40% 40%;
+        grid-template-areas:    "mainTitle" 
+                                "mainImage"
+                                "mainInfo";
+        min-height: 100vh;
+    }
+
+    .about__div-container{
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 40% 40%;
+        grid-template-areas:    "aboutTitle" 
+                                "aboutImage"
+                                "aboutInfo";
+        min-height: 100vh;
+    }
+
+    .case__div-carousel{
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 30% 60%;
+        grid-template-areas:    "caseTitle" 
+                                "caseBody"
+                                "caseImage";
+        min-height: 100vh;
+    }
+}
 
 @media all and (max-width: 770px) {
     .lessonLesson__card{
