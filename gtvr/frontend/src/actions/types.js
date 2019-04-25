@@ -1,6 +1,11 @@
-// LEsson data
+// Subject data
+export const GET_SUBJECTS = "GET_SUBJECTS";
+export const DELETE_SUBJECT = 'DELETE_SUBJECT';
+export const ADD_SUBJECT = "ADD_SUBJECT";
+export const UPDATE_SUBJECT = "UPDATE_SUBJECT";
+
+// SUBJECT data
 export const GET_LESSONS = "GET_LESSONS";
-export const GET_LESSON = "GET_LESSON";
 export const DELETE_LESSON = 'DELETE_LESSON';
 export const ADD_LESSON = "ADD_LESSON";
 export const UPDATE_LESSON = "UPDATE_LESSON";

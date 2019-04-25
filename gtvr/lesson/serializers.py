@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from lesson.models import Lessons, Videos
+from lesson.models import Subject, Lessons, Videos
 
 class VideosSerializer(serializers.ModelSerializer):
 
@@ -52,3 +52,17 @@ class LessonsSerializer(serializers.ModelSerializer):
                 Videos.objects.create(lesson=lesson, **video_data)
             
         return instance
+
+class SubjectsSerializer(serializers.ModelSerializer):
+    lessons = LessonsSerializer(many=True)
+
+    class Meta:
+        model = Subject
+        fields = '__all__'
+
+    def create(self, validated_data):
+        subjects_data = validated_data.pop('lessons')
+        subject = Subject.objects.create(**validated_data)
+        for subject_data in subjects_data:
+            Subject.objects.create(subject=subject, **subject_data)
+        return subject

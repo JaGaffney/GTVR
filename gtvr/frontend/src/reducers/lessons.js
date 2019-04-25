@@ -1,6 +1,7 @@
-import { GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
+import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
+    subjects: [],
     lessons: [],
     video: []
 }
@@ -36,6 +37,16 @@ let updateNestedStateInfo = (stateArray, action) => {
 export default function(state = initialState, action) {
     // common convetion is to use a switch with cases
     switch(action.type) {
+        case GET_SUBJECTS:
+            return {
+                ...state,
+                subjects: action.payload
+            }
+        case ADD_SUBJECT:
+            return {
+                ...state,
+                subjects: [...state.subjects, action.payload]
+            }
         case GET_LESSONS:
             return {
                 ...state,

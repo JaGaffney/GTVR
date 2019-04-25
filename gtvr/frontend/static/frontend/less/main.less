@@ -9,7 +9,7 @@ body {
     color: @dark-color;
 }
 
-// main app
+// main app ///////////////////////////////////////////////////////////////////////////////
 .App{
     .reset;
     display: grid;
@@ -29,10 +29,11 @@ body {
     left: 0;
     height: 100vh;
     width: 100%;
-    background: rgba(0; 0; 0; 0.75)
+    background: rgba(0; 0; 0; 0.75);
+    pointer-events: none;
 }
 
-// Setting grid areas
+// Setting grid areas ///////////////////////////////////////////////////////////////////////////////
 .area__header{
     grid-area: headerArea;
 }
@@ -46,7 +47,7 @@ body {
 }
 
 
-// Main area
+// Main area ///////////////////////////////////////////////////////////////////////////////
 .area__main{
     display: grid;
     grid-template-columns: 100%;
@@ -54,9 +55,9 @@ body {
     grid-template-areas: "mainSection" 
 }
 
-//Home page
+//Home page ///////////////////////////////////////////////////////////////////////////////
 .homepage__div-Area{
-    width:100%;
+    width: 100%;
     grid-area: mainSection;
     background-color: @quad-color;
     display: flex;
@@ -64,31 +65,244 @@ body {
     flex-wrap: wrap;
 }
 
-.homepage__div-info{
+.homepage__div-container{
+    border-top: solid 3px @primary-color-comp;
+    border-bottom: solid 3px @primary-color-comp;
+    min-height: 50rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:    "mainTitle mainImage" 
+                            "mainInfo mainImage";
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+}
+
+.homepage__div-image{
+    grid-area: mainImage;
+    height: 100%;
     width: 100%;
-    min-height: 30rem;
-    background-color: @quad-color;
+}
+
+.homepage__div-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img{
+        border: solid 2px @primary-color;
+        height: 80%;
+        width: 80%;
+        border-radius: 30px 0 0 30px;
+    }
+}
+
+.homepage__div-title{
+    grid-area: mainTitle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    h1{
+       color: @primary-color; 
+    }
+    h4{
+        color: @secondary-color; 
+    }
+}
+
+.homepage__div-info{
+    grid-area: mainInfo;
+    width: 100%;
+    min-height: 20rem;
+    padding-left: 5%;
+}
+
+.homepage__div-info-container{
+    font-size: 1.5rem;
+    background-color: @tertiary-color; 
+    border: solid 1px @dark-color;
+    border-radius: 0 30px 30px 0;
+    p{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+}
+
+.hero-header{
+    padding: 1rem;
+    color: @dark-color;
+    border-radius: 30px 0 30px 0;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.7);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    text-transform: uppercase;
     
+
 }
 
-.about__div{
-    width:100%;
-    min-height: 30rem;
-}
-
-.lessonDashboard__div{
-    width:100%;
-    min-height: 30rem;
-}
-
-//About
+// ABOUT page ///////////////////////////////////////////////////////////////////////////////
 .about__div-Area{
-    width:100%;
+    min-height: 50rem;
+    width: 100%;
     grid-area: mainSection;
     background-color: @light-color;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-//Lessons
+.about__div-container{
+    border-top: solid 3px @primary-color-comp;
+    border-bottom: solid 3px @primary-color-comp;
+    min-height: 50rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:    "aboutImage aboutTitle" 
+                            "aboutImage aboutInfo";
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+}
+
+.about__div-image{
+    grid-area: aboutImage;
+    height: 100%;
+    width: 100%;
+}
+
+.about__div-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    img{
+        border: solid 2px @primary-color;
+        height: 80%;
+        width: 80%;
+        border-radius: 0 30px 30px 0;
+    }
+}
+
+.about__div-title{
+    grid-area: aboutTitle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
+    h1{
+       color: @primary-color; 
+    }
+    h4{
+        color: @secondary-color; 
+    }
+}
+
+.about__div-info{
+    grid-area: aboutInfo;
+
+    height: 100%;
+    min-height: 30rem;
+    margin-right: 5%;
+}
+
+.about__div-info-container{
+    font-size: 1.5rem;
+    background-color: @quad-color; 
+    border: solid 1px @dark-color;
+    border-radius: 30px 0 0 30px;
+    p{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+}
+
+// CASE pages ///////////////////////////////////////////////////////////////////////////////
+// CASE studies/Testmonials ///////////////////////////////////////////////////////////////////////////////
+.case__div-Area{
+    width: 100%;
+    min-height: 50rem;
+    background-color: @quad-color;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
+}
+
+.case__div-carousel{
+    background-color: @quad-color-comp;
+    border: solid 2px @primary-color;
+    border-radius: 0 30px 0 30px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:    "caseTitle caseImage" 
+                            "caseBody caseImage";
+    min-height: 60vh;
+    img{
+        border: solid 2px @primary-color;
+        background-color: @quad-color;
+        height: 90%;
+        width: 90%;
+    }
+}
+
+.case__div-carousel-image{
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    grid-area: caseImage;
+    img{
+        border-radius:30px 0 30px 0;
+    }
+}
+
+.case__div-carousel-title{
+    padding-left: 9%;
+    grid-area: caseTitle;
+}
+
+.case__div-carousel-body{
+    padding-left: 3%;
+    grid-area: caseBody;
+}
+
+// Contact page ///////////////////////////////////////////////////////////////////////////////
+.contact__div-Area{
+    width: 100%;
+    min-height: 50rem;
+    background-color: @quad-color;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contact__div{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 15% 25% 60%;
+    grid-template-areas:    ". contactTitle ." 
+                            ". contactBody ." 
+                            ". contactForm ."; 
+    min-height: 90vh;
+}
+
+.contact__div-title{
+    grid-area: contactTitle;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contact__div-body{
+    grid-area: contactBody;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
+}
+
+.contact__div-form{
+    grid-area: contactForm;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+// LESSONS page ///////////////////////////////////////////////////////////////////////////////
 .lessonDashboard__div-Area{
     width:100%;
     grid-area: mainSection;
@@ -118,10 +332,14 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
+    border-radius: 30px 0 30px 30PX;
     &:hover{
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
     }   
+    img{
+        border-radius: 0 30px 0 0;
+    }
 }
 
 .lessonDashboard__card-container,
@@ -138,6 +356,7 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
+    border-radius: 30px 0 30px 30PX;
     &:hover{
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
@@ -149,7 +368,8 @@ body {
     cursor: pointer;
     border: 0;
     padding: 0;
-    font-size: 100%;
+    font-size: 1.25rem;
+    font-weight: bold;
     color: @primary-color;
     background-color: inherit;
     &:hover{
@@ -157,10 +377,16 @@ body {
     }
 }
 
-.temp-div-img{
+.lesson-img{
     background-color: @primary-color;
     height: 12rem;
     width: 100%;
+    border: solid 3px @primary-color;
+    border-radius: 0 30px 0 0;
+    img{
+        height: 12rem;
+        width: 100%;
+    }
 }
 
 .temp-div-youtube{
@@ -185,13 +411,13 @@ body {
     }
 }
 
-// Modal
+// Modal ///////////////////////////////////////////////////////////////////////////////
 .modalForm-div{
     z-index: 1000;
     width: 50%;
-    height: 40%;
-    min-height: 20rem;
-    min-width: 20rem;
+    height: 40rem;
+    max-width: 80%;
+    max-height: 80%;
     position: absolute;
     top: 25%;
     left: 25%;
@@ -203,7 +429,6 @@ body {
     width: 100%;
     border: solid 5px @primary-color-comp;
     justify-content: center;
-    
 }
 
 .form-group{
@@ -223,11 +448,9 @@ body {
         height: 2rem;
         font-size: 1.5rem;
     }
-    button{
-    }
 }
 
-// close button
+// close button ///////////////////////////////////////////////////////////////////////////////
 .close-container{
     position: absolute;
     right: 32px;
@@ -237,7 +460,7 @@ body {
     cursor: pointer;
   }
   
-  .leftright{
+.leftright{
     height: 4px;
     width: 50px;
     position: absolute;
@@ -246,9 +469,9 @@ body {
     border-radius: 2px;
     transform: rotate(45deg);
     transition: all .3s ease-in;
-  }
-  
-  .rightleft{
+}
+
+.rightleft{
     height: 4px;
     width: 50px;
     position: absolute;
@@ -257,20 +480,61 @@ body {
     border-radius: 2px;
     transform: rotate(-45deg);
     transition: all .3s ease-in;
-  }
-  
-  .close{
+}
+
+.close{
     margin: 60px 0 0 5px;
     position: absolute;
-  }
-  
-  .close-container:hover .leftright{
+}
+
+.close-container:hover .leftright{
     transform: rotate(-45deg);
     background-color: @primary-color;
-  }
-  .close-container:hover .rightleft{
+}
+.close-container:hover .rightleft{
     transform: rotate(45deg);
     background-color: @primary-color;
-  }
+}
 
+
+// Media Queriers ///////////////////////////////////////////////////////////////////////////////
+@media all and (max-width: 1000px){
+    .homepage__div-container{
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 40% 40%;
+        grid-template-areas:    "mainTitle" 
+                                "mainImage"
+                                "mainInfo";
+        min-height: 100vh;
+    }
+
+    .about__div-container{
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 40% 40%;
+        grid-template-areas:    "aboutTitle" 
+                                "aboutImage"
+                                "aboutInfo";
+        min-height: 100vh;
+    }
+
+    .case__div-carousel{
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 30% 60%;
+        grid-template-areas:    "caseTitle" 
+                                "caseBody"
+                                "caseImage";
+        min-height: 100vh;
+    }
+}
+
+@media all and (max-width: 770px) {
+    .lessonLesson__card{
+        flex: 1;
+        width: 33%;
+    }
+
+    .lessonDashboard__card{
+        width: 100%;
+    }
+}
 

@@ -2,7 +2,34 @@ import axios from "axios";
 // import { createMessage, returnError } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_LESSONS, GET_LESSON, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
+import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
+
+// SUBJECTS
+// GET_SUBJECTS
+export const getSubjects = () => dispatch => {
+    axios
+        .get("/api/subjects/")
+        .then(res => {
+            dispatch({
+                type: GET_SUBJECTS,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+// ADD_Subject
+export const addSubject = (subject) => dispatch => {
+    axios
+        .post("/api/subjects/", subject, tokenConfig())
+        .then(res => {
+            dispatch({
+                type: ADD_SUBJECT,
+                payload: res.data
+            })
+        })
+        .catch(err => dispatch(returnError(err.response.data, err.response.status)))
+}
+
 
 /// LESSONS
 // GET_LESSONS
@@ -84,10 +111,8 @@ export const deleteVideo = id => dispatch => {
         .catch(err => console.log(err));
 }
 
-// // Update Video
+// Update Video
 export const updateVideo = (id, video) => (dispatch) => {
-    console.log(video)
-    console.log(tokenConfig())
     axios
         .put(`/api/videos/${id}/`, JSON.stringify(video), tokenConfig())
         .then(res => {

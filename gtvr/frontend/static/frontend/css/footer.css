@@ -10,6 +10,10 @@
   text-align: left;
   font: bold 1rem 'Source Sans Pro', sans-serif;
   padding: 2.8rem 3rem;
+  display: grid;
+  grid-template-columns: 40% 35% 20%;
+  grid-template-rows: 100%;
+  grid-template-areas: "leftSec centerSec rightSec";
 }
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
@@ -19,7 +23,7 @@
 }
 /* Footer left */
 .footer-distributed .footer-left {
-  width: 40%;
+  grid-area: leftSec;
 }
 /* The company logo */
 .footer-distributed h3 {
@@ -53,7 +57,7 @@
 }
 /* Footer Center */
 .footer-distributed .footer-center {
-  width: 35%;
+  grid-area: centerSec;
 }
 .footer-distributed .footer-center i {
   background-color: #292e31;
@@ -92,7 +96,7 @@
 }
 /* Footer Right */
 .footer-distributed .footer-right {
-  width: 20%;
+  grid-area: rightSec;
 }
 .footer-distributed .footer-company-about {
   line-height: 20px;
@@ -130,4 +134,21 @@
 }
 .footer-distributed .footer-icons a:hover {
   color: #ffc959;
+}
+@media all and (max-width: 1000px) {
+  .footer-distributed {
+    font-size: 0.7rem;
+    margin: 0;
+    padding: 0;
+    padding: 1rem;
+  }
+}
+@media all and (max-width: 770px) {
+  .footer-distributed {
+    font-size: 1rem;
+    grid-template-columns: 100%;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-areas: "leftSec" "centerSec" "rightSec";
+    justify-self: center;
+  }
 }

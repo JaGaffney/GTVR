@@ -1,36 +1,90 @@
 @import "context.less";
 
 // Navigation banner
-.header__nav-ul {
-    .reset;
-    list-style-type: none;
-    overflow: hidden;
-    background-color: @primary-color;
-    font-size: 1.5rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-  
-.header__nav-li {
-    float: left; 
+
+.hamburger{
+    background: none;
+    border: none;
+    float: right;
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    margin-bottom: 0.4rem;
+    color: @primary-color-comp;
 }
 
-.header__nav-li-right{
-    float: right; 
+header {
+    .reset;
+    background-color: @primary-color;
+    min-height: 2rem;
+    text-align: center;
 }
-  
+
+.header__nav-ul {
+    .reset;
+    display: flex;
+    flex-direction: row-reverse;
+    list-style-type: none;  
+    font-size: 1.5rem;
+}
+
+.header__nav-ul-logo{
+    .reset;
+    display: flex;
+    list-style-type: none;  
+    font-size: 1.5rem; 
+}
+
+.header__nav-li {
+    flex: 1;
+}
+
 .header__nav-li,
 .header__nav-li-right{
-    display: block;
     color: @light-color;
-    text-align: center;
-    padding: 1rem 1rem;
+    text-align: center; 
     text-decoration: none;
+    padding: 1rem 1rem;
 }
-  
+
 .header__nav-li-right:hover,
 .active {
     background-color: @primary-color-comp;
     color: @dark-color;
 }
+
+@media all and (max-width: 770px) {
+    .header__nav-ul {
+        .reset;
+        flex-wrap: wrap; 
+        padding-left: 3rem;
+        padding-right: 3rem;
+        li{
+            flex: 1 1 50%;
+        }
+    }
+
+    .header__nav-li,
+    .header__nav-li-right{
+        flex-basis: 50%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        padding: 0;
+    }
+
+    .header__nav-li-right:hover,
+    .active {
+        color: @primary-color-comp;
+        background-color: inherit;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .header__nav-ul > li {
+        flex: 1 1 100%;
+        padding: 1rem 1rem;
+    }
+
+}
+
+
 

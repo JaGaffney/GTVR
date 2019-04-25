@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getSubjects, addLesson } from "../../actions/lessons";
+import { getSubjects, addSubject} from "../../actions/lessons";
 
-const LessonForm = props => {
+const SubjectForm = props => {
 
   const propTypes = {
-    addLesson: PropTypes.func.isRequired,
+    addSubject: PropTypes.func.isRequired,
     getSubjects: PropTypes.func.isRequired
   }
 
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [teacher, setTeacher] = useState("");
   const [description, setDescription] = useState("");
 
 
@@ -20,15 +20,14 @@ const LessonForm = props => {
     e.preventDefault()
 
     // creates a valid object that can be sent to the API
-    setNumber(parseInt(number))
-    let videos = [{}]
-    const lesson = { name, number, subject: props.subjectID, description, videos }
-    props.addLesson(lesson)
+    let lessons = []
+    const subject = { name, teacher, description, lessons }
+    props.addSubject(subject)
     props.getSubjects()
     
     // resetting data back to default values
     setName("");
-    setNumber("");
+    setTeacher("");
     setDescription("");
 
     // closes the form modal
@@ -63,11 +62,11 @@ const LessonForm = props => {
           <div className="form-group">
             <input
               className="form-control"
-              type="number"
-              name="number"
-              onChange={e => setNumber(e.target.value)}
-              value={number}
-              placeholder={'Lesson number'}
+              type="text"
+              name="teacher"
+              onChange={e => setTeacher(e.target.value)}
+              value={teacher}
+              placeholder={'Teacher'}
               required 
             />
           </div>
@@ -94,4 +93,4 @@ const LessonForm = props => {
   )
 }
 
-export default connect(null, { getSubjects, addLesson })(LessonForm)
+export default connect(null, { getSubjects, addSubject })(SubjectForm)
