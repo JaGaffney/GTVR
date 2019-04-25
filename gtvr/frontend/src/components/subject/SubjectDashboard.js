@@ -5,6 +5,7 @@ import { getSubjects } from '../../actions/lessons'
 
 import Backdrop from '../layout/Backdrop'
 import LessonDashboard from '../lessons/LessonDashboard'
+import SubjectForm from './SubjectForm'
 
 const SubjectDashboard = props => {
   const propTypes = {
@@ -31,6 +32,11 @@ const SubjectDashboard = props => {
     setSubjectData(subject)
     setLoadForm(false)
     setSubjectID(subject.id)
+  }
+
+  // switches between states for show/add form button
+  const onFormHandler = () => {
+    setLoadForm(!loadForm)
   }
 
   // closes down the single page component
@@ -67,12 +73,12 @@ const SubjectDashboard = props => {
     <div className="lessonDashboard__div-Area">
 
     {( loadForm && <Backdrop formHandler={onFormHandler.bind(this)} /> )}
-    {/* {( this.state.loadForm && <subjectForm formHandler={this.onFormHandler.bind(this)} /> )} */}
+    {( loadForm && <SubjectForm formHandler={onFormHandler.bind(this)} /> )}
 
       <div className="lessonDashboard__div">
         <br></br>
-        {/* {(!this.state.loadSingle && <button className="btn" onClick={this.onFormHandler.bind(this)}>{this.state.loadForm ? 'Hide' : 'Add'} new subject</button> )}
-          */}
+        {(!loadSingle && <button className="btn" onClick={onFormHandler.bind(this)}>{loadForm ? 'Hide' : 'Add'} new subject</button> )}
+         
         
         <div className="lessonDashboard__div-container">
           {(loadSingle && <LessonDashboard subjectInfo={subjectData} subjectID={subjectID} /> )}

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 import InfiniteCarousel from 'react-leaf-carousel';
 
 const Case = props => {
+
   let tempArray = [1,2,3,4,5,6,7]
 
   const generateImage = (item) => {

@@ -2,7 +2,7 @@ import axios from "axios";
 // import { createMessage, returnError } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_SUBJECTS, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
+import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
 
 // SUBJECTS
 // GET_SUBJECTS
@@ -16,6 +16,18 @@ export const getSubjects = () => dispatch => {
             })
         })
         .catch(err => console.log(err));
+}
+// ADD_Subject
+export const addSubject = (subject) => dispatch => {
+    axios
+        .post("/api/subjects/", subject, tokenConfig())
+        .then(res => {
+            dispatch({
+                type: ADD_SUBJECT,
+                payload: res.data
+            })
+        })
+        .catch(err => dispatch(returnError(err.response.data, err.response.status)))
 }
 
 
@@ -48,7 +60,6 @@ export const deleteLesson = id => dispatch => {
 
 // ADD_LESSON
 export const addLesson = (lesson) => dispatch => {
-    console.log(lesson)
     axios
         .post("/api/lessons/", lesson, tokenConfig())
         .then(res => {

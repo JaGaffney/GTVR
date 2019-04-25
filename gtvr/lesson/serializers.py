@@ -59,3 +59,10 @@ class SubjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
         fields = '__all__'
+
+    def create(self, validated_data):
+        subjects_data = validated_data.pop('lessons')
+        subject = Subject.objects.create(**validated_data)
+        for subject_data in subjects_data:
+            Subject.objects.create(subject=subject, **subject_data)
+        return subject

@@ -9,7 +9,7 @@ body {
     color: @dark-color;
 }
 
-// main app
+// main app ///////////////////////////////////////////////////////////////////////////////
 .App{
     .reset;
     display: grid;
@@ -33,7 +33,7 @@ body {
     pointer-events: none;
 }
 
-// Setting grid areas
+// Setting grid areas ///////////////////////////////////////////////////////////////////////////////
 .area__header{
     grid-area: headerArea;
 }
@@ -47,7 +47,7 @@ body {
 }
 
 
-// Main area
+// Main area ///////////////////////////////////////////////////////////////////////////////
 .area__main{
     display: grid;
     grid-template-columns: 100%;
@@ -55,7 +55,7 @@ body {
     grid-template-areas: "mainSection" 
 }
 
-//Home page
+//Home page ///////////////////////////////////////////////////////////////////////////////
 .homepage__div-Area{
     width: 100%;
     grid-area: mainSection;
@@ -74,6 +74,8 @@ body {
     grid-template-rows: 20% 80%;
     grid-template-areas:    "mainTitle mainImage" 
                             "mainInfo mainImage";
+    padding-bottom: 7rem;
+    padding-top: 7rem;
 }
 
 .homepage__div-image{
@@ -91,6 +93,7 @@ body {
         border: solid 2px @primary-color;
         height: 80%;
         width: 80%;
+        border-radius: 30px 0 0 30px;
     }
 }
 
@@ -112,24 +115,33 @@ body {
     grid-area: mainInfo;
     width: 100%;
     min-height: 20rem;
+    padding-left: 5%;
 }
 
 .homepage__div-info-container{
     font-size: 1.5rem;
     background-color: @tertiary-color; 
+    border: solid 1px @dark-color;
+    border-radius: 0 30px 30px 0;
     p{
-        padding-left: 5%;
+        padding-left: 1%;
+        padding-right: 1%;
     }
 }
 
 .hero-header{
     padding: 1rem;
     color: @dark-color;
+    border-radius: 30px 0 30px 0;
     background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
-    background: rgba(204, 204, 204, 0.5);
+    background: rgba(204, 204, 204, 0.7);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    text-transform: uppercase;
+    
+
 }
 
-// ABOUT page
+// ABOUT page ///////////////////////////////////////////////////////////////////////////////
 .about__div-Area{
     min-height: 50rem;
     width: 100%;
@@ -149,6 +161,8 @@ body {
     grid-template-rows: 20% 80%;
     grid-template-areas:    "aboutImage aboutTitle" 
                             "aboutImage aboutInfo";
+    padding-bottom: 7rem;
+    padding-top: 7rem;
 }
 
 .about__div-image{
@@ -166,6 +180,7 @@ body {
         border: solid 2px @primary-color;
         height: 80%;
         width: 80%;
+        border-radius: 0 30px 30px 0;
     }
 }
 
@@ -185,32 +200,37 @@ body {
 
 .about__div-info{
     grid-area: aboutInfo;
-    width: 100%;
-    min-height: 20rem;
+
+    height: 100%;
+    min-height: 30rem;
+    margin-right: 5%;
 }
 
 .about__div-info-container{
     font-size: 1.5rem;
     background-color: @quad-color; 
+    border: solid 1px @dark-color;
+    border-radius: 30px 0 0 30px;
     p{
-        padding-left: 5%;
+        padding-left: 1%;
+        padding-right: 1%;
     }
 }
 
-// CASE pages
-// CASE studies/Testmonials
+// CASE pages ///////////////////////////////////////////////////////////////////////////////
+// CASE studies/Testmonials ///////////////////////////////////////////////////////////////////////////////
 .case__div-Area{
     width: 100%;
     min-height: 50rem;
     background-color: @quad-color;
     padding-bottom: 2rem;
-    padding-top: 2rem;
-
+    padding-top: 5rem;
 }
 
 .case__div-carousel{
     background-color: @quad-color-comp;
     border: solid 2px @primary-color;
+    border-radius: 0 30px 0 30px;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 10% 90%;
@@ -223,7 +243,6 @@ body {
         height: 90%;
         width: 90%;
     }
-
 }
 
 .case__div-carousel-image{
@@ -231,6 +250,9 @@ body {
     padding-right: 5%;
     padding-bottom: 5%;
     grid-area: caseImage;
+    img{
+        border-radius:30px 0 30px 0;
+    }
 }
 
 .case__div-carousel-title{
@@ -243,7 +265,44 @@ body {
     grid-area: caseBody;
 }
 
-// LESSONS page
+// Contact page ///////////////////////////////////////////////////////////////////////////////
+.contact__div-Area{
+    width: 100%;
+    min-height: 50rem;
+    background-color: @quad-color;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contact__div{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 15% 25% 60%;
+    grid-template-areas:    ". contactTitle ." 
+                            ". contactBody ." 
+                            ". contactForm ."; 
+    min-height: 90vh;
+}
+
+.contact__div-title{
+    grid-area: contactTitle;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contact__div-body{
+    grid-area: contactBody;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
+}
+
+.contact__div-form{
+    grid-area: contactForm;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+// LESSONS page ///////////////////////////////////////////////////////////////////////////////
 .lessonDashboard__div-Area{
     width:100%;
     grid-area: mainSection;
@@ -273,10 +332,14 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
+    border-radius: 30px 0 30px 30PX;
     &:hover{
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
     }   
+    img{
+        border-radius: 0 30px 0 0;
+    }
 }
 
 .lessonDashboard__card-container,
@@ -293,6 +356,7 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
+    border-radius: 30px 0 30px 30PX;
     &:hover{
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
@@ -318,6 +382,7 @@ body {
     height: 12rem;
     width: 100%;
     border: solid 3px @primary-color;
+    border-radius: 0 30px 0 0;
     img{
         height: 12rem;
         width: 100%;
@@ -346,7 +411,7 @@ body {
     }
 }
 
-// Modal
+// Modal ///////////////////////////////////////////////////////////////////////////////
 .modalForm-div{
     z-index: 1000;
     width: 50%;
@@ -383,11 +448,9 @@ body {
         height: 2rem;
         font-size: 1.5rem;
     }
-    button{
-    }
 }
 
-// close button
+// close button ///////////////////////////////////////////////////////////////////////////////
 .close-container{
     position: absolute;
     right: 32px;
@@ -434,6 +497,7 @@ body {
 }
 
 
+// Media Queriers ///////////////////////////////////////////////////////////////////////////////
 @media all and (max-width: 1000px){
     .homepage__div-container{
         grid-template-columns: 100%;

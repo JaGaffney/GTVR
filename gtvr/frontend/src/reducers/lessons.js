@@ -1,4 +1,4 @@
-import { GET_SUBJECTS, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
+import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
     subjects: [],
@@ -41,6 +41,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 subjects: action.payload
+            }
+        case ADD_SUBJECT:
+            return {
+                ...state,
+                subjects: [...state.subjects, action.payload]
             }
         case GET_LESSONS:
             return {

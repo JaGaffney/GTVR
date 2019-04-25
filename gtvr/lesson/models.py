@@ -6,6 +6,9 @@ class Subject(models.Model):
     description = models.CharField(max_length=8008, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = 'Subjects'
+
     def __str__(self):
         return self.name
 
