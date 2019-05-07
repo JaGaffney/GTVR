@@ -83,6 +83,7 @@ const Lessons = props => {
 
   return (
     <>
+    <h1>Lessonss.js</h1>
     {( loadForm && <Backdrop formHandler={onFormHandler.bind(this)} /> )}
     {( loadForm && <LessonVideoForm lessonId={props.lessonInfo.id} formHandler={onFormHandler.bind(this)} /> )}
     <br></br>

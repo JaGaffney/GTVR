@@ -53,6 +53,8 @@ const LessonDashboard = props => {
 
   const onDeleteLesson = (id) => {
     props.deleteLesson(id)
+    props.getSubjects();
+    props.getLessons();
   }
 
   const tableGenerator = () => {
@@ -86,6 +88,7 @@ const LessonDashboard = props => {
   return (
     <>
     <div className="lessonDashboard__div-Area">
+    <h1>LessonDashboard.js</h1>
 
     {( loadForm && <Backdrop formHandler={onFormHandler.bind(null)} /> )}
     {( loadForm && <LessonForm formHandler={onFormHandler.bind(null)} subjectID={props.subjectID} /> )}

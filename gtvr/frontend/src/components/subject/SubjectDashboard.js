@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getSubjects } from '../../actions/lessons'
+import { getSubjects, deleteSubject } from '../../actions/lessons'
 
 import Backdrop from '../layout/Backdrop'
 import LessonDashboard from '../lessons/LessonDashboard'
@@ -35,13 +35,12 @@ const SubjectDashboard = props => {
   }
 
   // switches between states for show/add form button
-  const onFormHandler = () => {
+  const onFormHandler = () => { 
     setLoadForm(!loadForm)
   }
 
-  // closes down the single page component
-  const onSubjectPageHandler = () => {
-    setLoadSingle(false)
+  const onDeleteSubject = (id) => {
+    props.deleteSubject(id)
   }
 
   const tableGenerator = () => {
@@ -51,7 +50,7 @@ const SubjectDashboard = props => {
           { props.subjects.map(subject => (
             <div className="lessonDashboard__card" key={subject['id']}>
 
-            <button className="lessonDashboard__card-deleteBtn">&times;</button>
+            <button className="lessonDashboard__card-deleteBtn" onClick={onDeleteSubject.bind(null, subject['id'])}>&times;</button>
             <br></br>
               <div className="lessonDashboard__card-container" onClick={loadSubject.bind(this, subject)}>
               <div className="lesson-img"><img src={"https://unsplash.it/2000/10" + subject['id']}></img></div>
@@ -94,4 +93,4 @@ const mapStateToProps = state => ({
     subjects: state.lessons.subjects
 })
 
-export default React.memo(connect(mapStateToProps, { getSubjects } )(SubjectDashboard))
+export default React.memo(connect(mapStateToProps, { getSubjects, deleteSubject } )(SubjectDashboard))

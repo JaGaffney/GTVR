@@ -2,7 +2,7 @@ import axios from "axios";
 // import { createMessage, returnError } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
+import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
 
 // SUBJECTS
 // GET_SUBJECTS
@@ -28,6 +28,18 @@ export const addSubject = (subject) => dispatch => {
             })
         })
         .catch(err => dispatch(returnError(err.response.data, err.response.status)))
+}
+// DELETE_SUBJECT
+export const deleteSubject = id => dispatch => {
+    axios
+        .delete(`/api/subjects/${id}/`, tokenConfig())
+        .then(res => {
+            dispatch({
+            type: DELETE_SUBJECT,
+            payload: id
+            })
+        })
+        .catch(err => console.log(err));
 }
 
 

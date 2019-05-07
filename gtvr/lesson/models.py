@@ -31,6 +31,8 @@ class Videos(models.Model):
     title = models.CharField(max_length=100, blank=True)
     link = models.CharField(max_length=500, blank=True)
     play = models.BooleanField(default=False)
+    stopped = models.BooleanField(default=True)
+    paused = models.BooleanField(default=False)
     number = models.IntegerField(null=True, blank=True)
     description = models.CharField(max_length=8008, null=True, blank=True)
 

@@ -44,6 +44,8 @@ class LessonsSerializer(serializers.ModelSerializer):
                 video_item.title = video_data.get('title', video_item.title)
                 video_item.link = video_data.get('link', video_item.link)
                 video_item.play = video_data.get('play', video_item.play)
+                video_item.stopped = video_data.get('stopped', video_item.stopped)
+                video_item.paused = video_data.get('paused', video_item.paused)
                 # saves
                 video_item.save()
             else:

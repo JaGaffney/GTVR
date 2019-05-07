@@ -1,4 +1,4 @@
-import { GET_SUBJECTS, ADD_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
+import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
     subjects: [],
@@ -7,7 +7,7 @@ const initialState = {
 }
 
 // set lesson
-let updateStateInfo = (stateArray, action) => {
+const updateStateInfo = (stateArray, action) => {
   let updatedLesson = []
   stateArray.filter(lesson => {
     if (lesson.id === action.payload.id) {
@@ -20,7 +20,7 @@ let updateStateInfo = (stateArray, action) => {
 }
 
 // sets the state for nested states
-let updateNestedStateInfo = (stateArray, action) => {
+const updateNestedStateInfo = (stateArray, action) => {
     // filter out the nested element you want to update
     let lessons = stateArray.filter(item => item.id === action.payload.lesson)
     // update the payload with the new data
@@ -47,6 +47,11 @@ export default function(state = initialState, action) {
                 ...state,
                 subjects: [...state.subjects, action.payload]
             }
+        case DELETE_SUBJECT:
+            return {
+                ...state,
+                subjects: state.subjects.filter(subject => subject.id !== action.payload)
+            }            
         case GET_LESSONS:
             return {
                 ...state,

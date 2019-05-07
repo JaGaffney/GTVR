@@ -23,7 +23,6 @@ const SubjectForm = props => {
     let lessons = []
     const subject = { name, teacher, description, lessons }
     props.addSubject(subject)
-    props.getSubjects()
     
     // resetting data back to default values
     setName("");
@@ -44,7 +43,7 @@ const SubjectForm = props => {
           <div className="rightleft"></div>
         </div>
 
-        <h1>Add new Lesson</h1>
+        <h1>Add new Subject</h1>
 
         <form onSubmit={onSubmit} autoComplete="off">
           <div className="form-group">
