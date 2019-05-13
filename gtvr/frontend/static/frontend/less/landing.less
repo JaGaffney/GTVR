@@ -210,76 +210,62 @@
 // demo area
 .homepage__div-demo{
     background-color: @light-color;
-    width: 100%;
+    padding-bottom: 15rem;
+    min-height: 40rem;
 }
 
 .homepage__div-demo-container{
     display: grid;
-    min-height: 40rem;
-    grid-template-columns: 20% 70% 10%;
-    grid-template-rows: 100%;
-    grid-template-areas:    ". demoInfo demoInfo";
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:    ". demoInfo ." 
+                            ". demoImage .";   
 }
+
 
 .homepage_div-demo-info{
-    background: linear-gradient(270deg, @primary-color 80%, white 20% );
-    color: @light-color;
     grid-area: demoInfo;
-    display: flex;
-    justify-content: flex-end;
+    height: 30rem;
+    background-color: @primary-color;
+    color: @light-color;
     position: relative;
 
-}
-
-.homepage_div-demo-info-container{
-    padding-left: 50rem;
-}
-
-.homepage_div-demo-title{
-    h1{
-        font-size: 3rem;
-    }
-    h4{
-        font-size: 2rem;
-        width: 65%;
-    }
-}
-
-.homepage_div-demo-content{
-    font-size: 1rem;
-    width: 65%;
-}
-
-.homepage_div-demo-button{
-    background-color: @light-color;
-    color: @dark-color;
-    border: solid 3px @primary-color-comp;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 20%;
-    height: 3rem;
+    top: 12rem;
+    // left: -30px; 
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-content: center;
-    font-size: 2rem;
-    margin-top: 11rem;
-    &:hover{
-
-    }
 }
 
 .homepage_div-demo-image{
-    padding-top: 10rem;
-    padding-right: 50%;
+    grid-area: demoImage;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     z-index: 1;
-    position: absolute;
+}
+
+.homepage__div-demo-image-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 3rem;
     iframe{
-        border: solid 3px @dark-color; 
-        height: 20.1rem;
-        width: 48rem;
-        background-color: @dark-color;  
+        height: 30rem;
+        width: 65rem;
+        -webkit-filter: grayscale(90%);
+        filter: grayscale(90%);
+        cursor: pointer;
+        &:hover{
+            -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+            filter: grayscale(0%); /* FF 35+ */
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+        }
     }
 }
 
@@ -292,20 +278,16 @@
 
 
 
+// testimonial
+.homepage__div-testimonial{
+    background-color: @quad-color;
+    min-height: 40rem;
+}
 
 
 // blog area
 .homepage__div-blog{
-    background-color: @quad-color;
-    padding-bottom: 7rem;
-    padding-top: 7rem;
-    min-height: 40rem;
-
-}
-
-.homepage__div-testimonial{
-    background-color: white;
-    padding-bottom: 7rem;
-    padding-top: 7rem;
+    background-color: @quad-color-comp;
     min-height: 40rem;
 }
+

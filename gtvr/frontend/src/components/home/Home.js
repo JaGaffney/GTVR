@@ -99,24 +99,22 @@ const Home = props => {
 
           <div className="homepage_div-demo-info">
             <div className="homepage_div-demo-info-container">
+
               <div className="homepage_div-demo-title">
                 <h1>Demo of the program</h1>
-                <h4>why make the program, James background etc</h4>
               </div>
               <div className="homepage_div-demo-content">
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
               </div>
-              <div className="homepage_div-demo-button">
-                <NavLink to="/demo" className="homepage_div-about-button-link">temp button</NavLink>
-              </div>
-            
+  
             </div>
-          
-            <div className="homepage_div-demo-image">
+          </div>
+
+          <div className="homepage_div-demo-image">
+            <div className="homepage__div-demo-image-container">
               <iframe src="https://player.vimeo.com/video/315917058?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameBorder="0" allowFullScreen=""></iframe>
             </div>
-
           </div>
           
         </div>
@@ -133,7 +131,7 @@ const Home = props => {
 
       <div className="homepage__div-blog">
         <div className="homepage__div-blog-container">
-          <p>info from James</p>
+          <p>Info from James</p>
         </div>
       </div>  
 
