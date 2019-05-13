@@ -78,7 +78,6 @@ const SubjectDashboard = props => {
         <br></br>
         {(!loadSingle && <button className="btn" onClick={onFormHandler.bind(this)}>{loadForm ? 'Hide' : 'Add'} new subject</button> )}
          
-        
         <div className="lessonDashboard__div-container">
           {(loadSingle && <LessonDashboard subjectInfo={subjectData} subjectID={subjectID} /> )}
           {(!loadSingle && tableGenerator() )}

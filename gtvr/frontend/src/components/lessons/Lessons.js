@@ -72,7 +72,6 @@ const Lessons = props => {
     let LessonsPage = <div>
       <h1>Lesson: {lessons[0].name}</h1>
       <h2>Teacher: {props.teacherName}</h2>
-      <h2>Subject: {lessons[0].subject}</h2>
       <button className="btn" onClick={onFormHandler.bind(this)}>{loadForm ? 'Hide' : 'Add'} new Video</button>
       <div className="lessonLesson__div-container">
         { lessons[0].videos.map(lesson => (
@@ -83,7 +82,6 @@ const Lessons = props => {
 
   return (
     <>
-    <h1>Lessonss.js</h1>
     {( loadForm && <Backdrop formHandler={onFormHandler.bind(this)} /> )}
     {( loadForm && <LessonVideoForm lessonId={props.lessonInfo.id} formHandler={onFormHandler.bind(this)} /> )}
     <br></br>

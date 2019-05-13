@@ -8,8 +8,8 @@ const initialState = {
 
 // set lesson
 const updateStateInfo = (stateArray, action) => {
-  let updatedLesson = []
-  stateArray.filter(lesson => {
+    let updatedLesson = []
+    stateArray.filter(lesson => {
     if (lesson.id === action.payload.id) {
         updatedLesson = [...updatedLesson, action.payload]
     } else {

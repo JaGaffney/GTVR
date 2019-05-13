@@ -69,8 +69,7 @@ const LessonDashboard = props => {
               <div className="lessonDashboard__card-container" onClick={loadLesson.bind(null, lesson, props.subjectInfo.teacher)}>
                 <div className="lesson-img">
                 {spinner ? <i className="fa fa-spinner fa-spin" /> : <img src={"https://unsplash.it/2000/10" + lesson['id']} onLoad={handleImageLoaded.bind(null)}></img>}
-                  
-                  
+                    
                 </div>
                 <h4><strong>Name: </strong>{lesson['name']}</h4>
                 <h4><strong>Teacher: </strong>{props.subjectInfo.teacher}</h4>
@@ -88,7 +87,6 @@ const LessonDashboard = props => {
   return (
     <>
     <div className="lessonDashboard__div-Area">
-    <h1>LessonDashboard.js</h1>
 
     {( loadForm && <Backdrop formHandler={onFormHandler.bind(null)} /> )}
     {( loadForm && <LessonForm formHandler={onFormHandler.bind(null)} subjectID={props.subjectID} /> )}

@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import YouTube from 'react-youtube';
 
+import { getVideo, updateVideo } from '../../actions/lessons'
 
+// interval module hook
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 
@@ -21,24 +25,6 @@ function useInterval(callback, delay) {
     }
   }, [delay]);
 }
-
-
-
-
-
-
-
-
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { getVideo, updateVideo } from '../../actions/lessons'
-
-
-
-
-// Issues
-// 1. If video is already playing on load it will crash due to not player existing yet
-// 2. Pause,Play/stop dont work yet as they dont send requets to api
 
 const LessonSingle = props => {
 
@@ -62,34 +48,32 @@ const LessonSingle = props => {
     // calls the server to see if there is any differences
     props.getVideo(props.videoInfo.id);
 
-    // NOTE: for some reason need to press it twice to get it to work
+    // NOTE: for some reason need to press it twice to get it to work or refresh needs ot be set for really quick
 
-    console.log('state different than server')
     if (props.video.play) {
-      console.log('interval onPlayVideo')
+      //console.log('interval onPlayVideo')
       player.playVideo();
 
     } else if (props.video.paused) {
-      console.log('interval onPauseVideo')
+      //console.log('interval onPauseVideo')
       player.pauseVideo();
 
+    // stops onload Errors due to player not existing yet
     } else if (props.video.stopped && playerReady) {
-      console.log('interval onStopVideo')
+      //console.log('interval onStopVideo')
       // browser settings
       player.stopVideo();
     }
 
   }, 500);
 
-
   const onPlayVideo = () => {
+    console.log(player)
     player.playVideo();
 
     // api settings
     const playInfo = { play: true, stopped: false, paused: false }
     props.updateVideo(props.videoInfo.id, playInfo)
-
-    
   }
 
   const onPauseVideo = () => {
@@ -98,8 +82,6 @@ const LessonSingle = props => {
     // api settings
     const playInfo = { play: false, stopped: false, paused: true }
     props.updateVideo(props.videoInfo.id, playInfo)
-
-
   }
 
   const onStopVideo = () => {
@@ -113,6 +95,7 @@ const LessonSingle = props => {
 
   const onReady = (event) => {
     setPlayer(event.target)
+    // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
   }
 
@@ -125,22 +108,32 @@ const LessonSingle = props => {
     width: '1280',
   }
 
+  // add a switch for pause of play with ? : etc
   return (
-    <div>
-      <h1>LessonsSingle.js</h1>
-      <h1>{props.videoInfo.title}</h1>
-      <div className="LessonSingle__video-controls">
-        <button onClick={onPlayVideo}>Play</button>
-        <button onClick={onPauseVideo}>Pause</button>
-        <button onClick={onStopVideo}>Stop</button>
-        <button onClick={onFullScreen}>Fullscreen</button>
-      </div>
+    <div className="LessonSingle__container">
       <div className="LessonSingle__video-card">
         <YouTube 
           videoId={videoIDCode}
           opts={opts}
           onReady={onReady}
         />
+      </div>
+
+    <div className="LessonSingle__playlist">
+    </div>
+
+    <div className="LessonSingle__info">
+
+      <h1 className="LessonSingle__title">{props.videoInfo.title}</h1>
+
+      <div className="LessonSingle__video-controls">
+        <button onClick={onPlayVideo}><i className="fa fa-play"></i></button>
+        <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>
+        <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
+        <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
+      </div>   
+        
+        
       </div>
     </div>
   )

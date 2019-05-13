@@ -1,0 +1,311 @@
+@import "context.less";
+
+
+// Main area ///////////////////////////////////////////////////////////////////////////////
+.area__main{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    grid-template-areas: "mainSection" 
+}
+
+
+//Home page ///////////////////////////////////////////////////////////////////////////////
+// homepage main div which holds all the html elements
+.homepage__div-Area{
+    width: 100%;
+    grid-area: mainSection;
+    background-color: @light-color;
+}
+
+
+// hero image
+.hero-header{
+    background-color: @primary-color;
+    padding-bottom: 7rem;
+}
+
+.hero-header-text{
+    padding: 1rem;
+    color: @dark-color;
+    border-radius: 30px 0 30px 0;
+    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+    background: rgba(204, 204, 204, 0.7);
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    text-transform: uppercase;
+}
+
+
+// home main
+.homepage__div-main{
+    background-color: @light-color;
+    padding-bottom: 15rem;
+    min-height: 70rem;
+}
+
+.homepage__div-main-container{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:    "mainInfo mainInfo mainInfo" 
+                            ". mainImage .";                      
+}
+
+.homepage__div-main-image{
+    grid-area: mainImage;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    max-height: 20rem;
+}
+
+.homepage__div-main-image-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    img{
+        border: solid 2px @dark-color;
+        height: 25rem;
+        max-width: 20rem;
+        -webkit-filter: grayscale(90%);
+        filter: grayscale(90%);
+        cursor: pointer;
+        &:hover{
+            -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+            filter: grayscale(0%); /* FF 35+ */
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            border: solid 2px @primary-color-comp;
+            transition: all 1s ease;
+        }
+    }
+    p{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    h3{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+}
+
+.homepage__div-main-info{
+    grid-area: mainInfo;
+    background-color: @primary-color;
+    min-height: 45rem;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 20% 70% 10%;
+    grid-template-areas:    ". mainTitle ." 
+                            ". mainContent ."
+                            ". . .";
+}
+
+.homepage__div-main-title{
+    grid-area: mainTitle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    h1{
+        font-size: 3rem;
+        color: @light-color; 
+    }
+}
+
+.homepage__div-main-content{
+    grid-area: mainContent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: @light-color;
+}
+
+// about area
+.homepage__div-about{
+    background-color: @light-color;
+    width: 100%;
+    padding-bottom: 15rem;
+}
+
+.homepage__div-about-container{
+    display: grid;
+    min-height: 40rem;
+    grid-template-columns: 10% 70% 20%;
+    grid-template-rows: 100%;
+    grid-template-areas:    "aboutInfo aboutInfo .";
+}
+
+.homepage_div-about-info{
+    background: linear-gradient(90deg, @primary-color 80%, white 20%);
+    color: @light-color;
+    grid-area: aboutInfo;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.homepage_div-about-info-container{
+    padding-left: 20%;
+}
+
+.homepage_div-about-title{
+    h1{
+        font-size: 3rem;
+    }
+    h4{
+        font-size: 2rem;
+        width: 35%;
+    }
+}
+
+.homepage_div-about-content{
+    font-size: 1rem;
+    width: 35%;
+}
+
+.homepage_div-about-button{
+    background-color: @light-color;
+    color: @dark-color;
+    border: solid 3px @primary-color-comp;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 20%;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size: 2rem;
+    margin-top: 11rem;
+    &:hover{
+
+    }
+}
+
+.homepage_div-about-image{
+    padding-top: 10rem;
+    padding-left: 50%;
+    z-index: 1;
+    position: absolute;
+    iframe{
+        border: solid 3px @dark-color; 
+        height: 20.1rem;
+        width: 48rem;
+        background-color: @dark-color;  
+    }
+}
+
+
+// demo area
+.homepage__div-demo{
+    background-color: @light-color;
+    width: 100%;
+}
+
+.homepage__div-demo-container{
+    display: grid;
+    min-height: 40rem;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 100%;
+    grid-template-areas:    ". demoInfo demoInfo";
+}
+
+.homepage_div-demo-info{
+    background: linear-gradient(270deg, @primary-color 80%, white 20% );
+    color: @light-color;
+    grid-area: demoInfo;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+}
+
+.homepage_div-demo-info-container{
+    padding-left: 50rem;
+}
+
+.homepage_div-demo-title{
+    h1{
+        font-size: 3rem;
+    }
+    h4{
+        font-size: 2rem;
+        width: 65%;
+    }
+}
+
+.homepage_div-demo-content{
+    font-size: 1rem;
+    width: 65%;
+}
+
+.homepage_div-demo-button{
+    background-color: @light-color;
+    color: @dark-color;
+    border: solid 3px @primary-color-comp;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 20%;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size: 2rem;
+    margin-top: 11rem;
+    &:hover{
+
+    }
+}
+
+.homepage_div-demo-image{
+    padding-top: 10rem;
+    padding-right: 50%;
+    z-index: 1;
+    position: absolute;
+    iframe{
+        border: solid 3px @dark-color; 
+        height: 20.1rem;
+        width: 48rem;
+        background-color: @dark-color;  
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// blog area
+.homepage__div-blog{
+    background-color: @quad-color;
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+    min-height: 40rem;
+
+}
+
+.homepage__div-testimonial{
+    background-color: white;
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+    min-height: 40rem;
+}

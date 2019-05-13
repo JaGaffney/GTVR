@@ -23,7 +23,7 @@ a {
 header {
   margin: 0;
   padding: 0;
-  background-color: #5f85e3;
+  background-color: #ffffff;
   min-height: 2rem;
 }
 .header__nav {
@@ -57,7 +57,7 @@ header {
 }
 .header__nav-li,
 .header__nav-li-right {
-  color: #ffffff;
+  color: #5f85e3;
   text-decoration: none;
   padding: 2rem 1rem;
   height: 100%;

@@ -21,11 +21,18 @@ const LessonVideoForm = props =>  {
   // on submit button click
   const onSubmit = e => {
     e.preventDefault()
+    console.log(e.target)
 
     // will need a better filter for extracting the youtube id data
+    if (!link.includes('youtube')) {
+      console.log("not a youtube link")
+      e.target.link.focus()
+      return
+    } 
+
     let youtubeLink = link.split('watch?v=')
-    let youtubeLinkFilter = youtubeLink[1].split("&")
-    setLink(youtubeLinkFilter[0])
+
+    setLink(youtubeLink[1])
 
     console.log(link)
 
@@ -55,7 +62,7 @@ const LessonVideoForm = props =>  {
 
       <h1>Add new Video</h1>
       
-        <form onSubmit={onSubmit} autoComplete="off">
+        <form onSubmit={onSubmit} autoComplete="off" id="VideoForm">
         
           <div className="form-group">
             <input

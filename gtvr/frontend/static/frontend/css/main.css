@@ -41,96 +41,6 @@ body {
 .area__footer {
   grid-area: footerArea;
 }
-.area__main {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%;
-  grid-template-areas: "mainSection";
-}
-.homepage__div-Area {
-  width: 100%;
-  grid-area: mainSection;
-  background-color: #dfe8fe;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.homepage__div-container {
-  border-top: solid 3px #ffc959;
-  border-bottom: solid 3px #ffc959;
-  min-height: 70rem;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 20% 80%;
-  grid-template-areas: "mainTitle mainImage" "mainInfo mainImage";
-  padding-bottom: 7rem;
-  padding-top: 7rem;
-}
-.homepage__div-image {
-  grid-area: mainImage;
-  height: 100%;
-  width: 100%;
-}
-.homepage__div-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-.homepage__div-image-container img {
-  border: solid 2px #5f85e3;
-  height: 80%;
-  width: 80%;
-  border-radius: 30px 0 0 30px;
-}
-.homepage__div-title {
-  grid-area: mainTitle;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 10%;
-}
-.homepage__div-title h1 {
-  color: #5f85e3;
-}
-.homepage__div-title h4 {
-  color: #85a4f3;
-}
-.homepage__div-info {
-  grid-area: mainInfo;
-  width: 100%;
-  min-height: 20rem;
-  padding-left: 5%;
-}
-.homepage__div-info-container {
-  font-size: 1.5rem;
-  background-color: #aec4fa;
-  border: solid 1px #292e31;
-  border-radius: 0 30px 30px 0;
-}
-.homepage__div-info-container p {
-  padding-left: 1%;
-  padding-right: 1%;
-}
-.hero-header {
-  padding: 1rem;
-  color: #292e31;
-  border-radius: 30px 0 30px 0;
-  background: #cccccc;
-  /* Fallback for older browsers without RGBA-support */
-  background: rgba(204, 204, 204, 0.7);
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  text-transform: uppercase;
-}
-.about__div-Area {
-  min-height: 50rem;
-  width: 100%;
-  grid-area: mainSection;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
 .about__div-container {
   border-top: solid 3px #ffc959;
   border-bottom: solid 3px #ffc959;
@@ -354,6 +264,46 @@ body {
   background-color: #fff4dc;
   color: #292e31;
   border: solid 5px #5f85e3;
+}
+.LessonSingle__container {
+  display: grid;
+  width: 100%;
+  min-height: 50rem;
+  grid-template-columns: 5% 70% 5% 20%;
+  grid-template-rows: 80% 20%;
+  grid-template-areas: ". vidVideo . vidPlaylist" ". vidInfo . vidPlaylist";
+  background-color: #fff4dc;
+  border: solid 3px #5f85e3;
+}
+.LessonSingle__info {
+  grid-area: vidInfo;
+  display: grid;
+  grid-template-columns: 50% 20% 30%;
+  grid-template-rows: 100%;
+  grid-template-areas: "vidInfoTitle . vidInfoControls";
+  width: 100%;
+}
+.LessonSingle__title {
+  grid-area: vidInfoTitle;
+  font-size: 1.3rem;
+}
+.LessonSingle__video-controls {
+  grid-area: vidInfoControls;
+}
+.LessonSingle__video-controls button {
+  cursor: pointer;
+  background-color: #fff4dc;
+  border: solid 2px #5f85e3;
+  color: black;
+  height: 2rem;
+  width: 2rem;
+}
+.LessonSingle__video-card {
+  grid-area: vidVideo;
+}
+.LessonSingle__playlist {
+  grid-area: vidPlaylist;
+  background-color: #85a4f3;
 }
 .modalForm-div {
   z-index: 1000;
