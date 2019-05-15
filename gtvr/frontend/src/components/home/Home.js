@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import Hero from './Hero'
-
-
+import HomeAnimations from './HomeAnimations'
+import SimpleSlider from '../layout/Carousel'
 
 
 const Home = props => {
@@ -13,6 +13,15 @@ const Home = props => {
       <Hero />
 
       <div className="homepage__div-main">
+
+
+      <div className="container">
+  <div className="left">
+  </div>
+  <div className="right">
+  </div>
+</div>
+
         <div className="homepage__div-main-container">
 
           <div className="homepage__div-main-image">
@@ -41,7 +50,7 @@ const Home = props => {
             </div>
           </div>
             
-
+      
         <div className="homepage__div-main-info">
 
           <div className="homepage__div-main-title">
@@ -124,14 +133,34 @@ const Home = props => {
 
       <div className="homepage__div-testimonial">
         <div className="homepage__div-testimonial-container">
-          <p>testimonaisl and other info</p>
+          <SimpleSlider />
         </div>
       </div>    
 
 
       <div className="homepage__div-blog">
         <div className="homepage__div-blog-container">
-          <p>Info from James</p>
+        <div className="homepage_div-about-info">
+            <div className="homepage_div-about-info-container">
+              <div className="homepage_div-about-title">
+                <h1>Blog style thing</h1>
+                <h4>Created with the lastest research</h4>
+              </div>
+              <div className="homepage_div-about-content">
+                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
+                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
+              </div>
+              <div className="homepage_div-about-button">
+                <NavLink to="/blog" className="homepage_div-about-button-link">temp button</NavLink>
+              </div>
+            
+            </div>
+          
+            <div className="homepage_div-blog-image">
+              <img src={"https://unsplash.it/2000/1057"}></img>
+            </div>
+
+          </div>
         </div>
       </div>  
 

@@ -8,7 +8,7 @@ export class Footer extends Component {
       <footer className="footer-distributed">
 
         <div className="footer-left">
-          <h3><span>Great Teacher VR</span></h3>
+          <Link to="/"><img src="./static/frontend/img/logoalt.svg" alt="home" height={70} /></Link>
           <p className="footer-links">
             <Link to="/">Home</Link>
             ·
