@@ -1,12 +1,24 @@
 import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import Lottie from 'react-lottie';
+
 
 import Hero from './Hero'
-import HomeAnimations from './HomeAnimations'
 import SimpleSlider from '../layout/Carousel'
 
+// lotties animations
+import chevronright from '../layout/animations/chevronright.json'
+import book from '../layout/animations/book.json'
+import vrmonster from '../layout/animations/vrmonster.json'
 
 const Home = props => {
+
+  const animationOptionsChervron = {
+    loop: true,
+    autoplay: true, 
+    animationData: chevronright,
+  };
+
   return (
     <div className="homepage__div-Area">
 
@@ -27,25 +39,25 @@ const Home = props => {
           <div className="homepage__div-main-image">
             <div className="homepage__div-main-image-container">
               <img src={"https://unsplash.it/2000/1050"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>Info about </h3>
+              <h3>about </h3>
               <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
             </div>
 
             <div className="homepage__div-main-image-container">
               <img src={"https://unsplash.it/2000/1057"}  style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>Info demo</h3>
+              <h3>demo</h3>
               <p>DDolor amet dolore magna ipsum. Ipsum do occaecat adipisicingem0</p>
             </div>
 
             <div className="homepage__div-main-image-container">
               <img src={"https://unsplash.it/2000/1051"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>Info blog </h3>
+              <h3>blog </h3>
               <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
             </div>
 
             <div className="homepage__div-main-image-container">
               <img src={"https://unsplash.it/2000/1052"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>Info Testimonials </h3>
+              <h3>Testimonials </h3>
               <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
             </div>
           </div>
@@ -73,6 +85,41 @@ const Home = props => {
         </div>
       </div>
 
+      <div className="homepage__div-animations">
+        <div>
+          <Lottie 
+            options={{
+              loop: true,
+              autoplay: true, 
+              animationData: book,
+            }}
+            height={300}
+            width={300} 
+          />
+        </div>
+        <div>
+          <Lottie 
+            options={{
+              loop: true,
+              autoplay: true, 
+              animationData: chevronright,
+            }}
+            height={300}
+            width={300} 
+          />
+        </div>
+        <div>
+          <Lottie 
+            options={{
+              loop: true,
+              autoplay: true, 
+              animationData: vrmonster,
+            }}
+            height={300}
+            width={300} 
+          />
+        </div>
+        </div>
 
       <div className="homepage__div-about">
         <div className="homepage__div-about-container">
@@ -81,14 +128,14 @@ const Home = props => {
             <div className="homepage_div-about-info-container">
               <div className="homepage_div-about-title">
                 <h1>About GTVR staff</h1>
-                <h4>why make the program, James background etc</h4>
+                <h3>why make the program, James background etc</h3>
               </div>
               <div className="homepage_div-about-content">
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
               </div>
               <div className="homepage_div-about-button">
-                <NavLink to="/about" className="homepage_div-about-button-link">temp button</NavLink>
+                <NavLink to="/about" className="homepage_div-button-link">Find out more</NavLink>
               </div>
             
             </div>
@@ -140,9 +187,9 @@ const Home = props => {
 
       <div className="homepage__div-blog">
         <div className="homepage__div-blog-container">
-        <div className="homepage_div-about-info">
-            <div className="homepage_div-about-info-container">
-              <div className="homepage_div-about-title">
+          <div className="homepage_div-blog-info">
+            <div className="homepage_div-blog-info-container">
+              <div className="homepage_div-blog-title">
                 <h1>Blog style thing</h1>
                 <h4>Created with the lastest research</h4>
               </div>
@@ -150,17 +197,18 @@ const Home = props => {
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
                 <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
               </div>
-              <div className="homepage_div-about-button">
-                <NavLink to="/blog" className="homepage_div-about-button-link">temp button</NavLink>
+              <div className="homepage_div-blog-button">
+                <NavLink to="/blog" className="homepage_div-button-link">Find out more</NavLink>
               </div>
             
             </div>
-          
-            <div className="homepage_div-blog-image">
-              <img src={"https://unsplash.it/2000/1057"}></img>
-            </div>
-
           </div>
+
+          <div className="homepage_div-blog-image">
+            <img src={"https://unsplash.it/2000/1057"}></img>
+          </div>
+
+          
         </div>
       </div>  
 

@@ -1,5 +1,12 @@
 @import "context.less";
+.reset{
+    margin: 0;
+    padding: 0; 
+}
 
+.borderBottom{
+    border-bottom: solid 12px @primary-color-comp;
+}
 
 // Main area ///////////////////////////////////////////////////////////////////////////////
 .area__main{
@@ -7,6 +14,42 @@
     grid-template-columns: 100%;
     grid-template-rows: 100%;
     grid-template-areas: "mainSection"; 
+}
+
+// generics
+.homepage_div-button-link{
+    background-color: @dark-color;
+    color: @light-color;
+    border: solid 3px @light-color;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 16rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    -webkit-transition: .1s all;   
+    -webkit-transition-delay: .1s; 
+    -moz-transition: .5s all;   
+    -moz-transition-delay: .1s; 
+    -ms-transition: .5s all;   
+    -ms-transition-delay: .1s; 
+    -o-transition: .5s all;   
+    -o-transition-delay: .1s; 
+    transition: .5s all;   
+    transition-delay: .1s; 
+    &:hover{
+        background-color: @light-color;
+        color: @dark-color;
+        border: solid 3px @dark-color;
+        -webkit-transition-delay: 0s;
+        -moz-transition-delay: 0s;
+        -ms-transition-delay: 0s;
+        -o-transition-delay: 0s;
+        transition-delay: 0s;
+    }
 }
 
 
@@ -36,7 +79,7 @@
 // home main
 .homepage__div-main{
     background-color: @light-color;
-    padding-bottom: 30rem;   
+    padding-bottom: 15rem;   
 }
 .homepage__div-main-container{
     min-height: 50rem;
@@ -94,6 +137,7 @@
     grid-template-areas:    ". mainTitle ." 
                             ". mainContent ."
                             ". . .";
+    .borderBottom;
 }
 .homepage__div-main-title{
     grid-area: mainTitle;
@@ -115,6 +159,13 @@
     font-size: 1rem;
     color: @light-color;
     padding-bottom: 5rem;
+}
+
+.homepage__div-animations{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 15rem;  
 }
 
 // about area
@@ -155,23 +206,7 @@
     width: 35%;
 }
 .homepage_div-about-button{
-    background-color: @light-color;
-    color: @dark-color;
-    z-index: 2;
-    border: solid 3px @primary-color-comp;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 20%;
-    height: 3rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    font-size: 2rem;
-    &:hover{
-        color: @dark-color;
-    }
 }
 .homepage_div-about-image{
     padding-top: 10rem;
@@ -179,10 +214,12 @@
     z-index: 1;
     position: absolute;
     pointer-events: none;
+    height: 50%;
+    width: 50%;
     iframe{
         border: solid 3px @dark-color; 
-        height: 20.1rem;
-        width: 48rem;
+        height: 100%;
+        width: 100%;
         background-color: @dark-color;  
     }
 }
@@ -203,11 +240,6 @@
     }
 }
 .homepage__div-demo-container{
-    // display: grid;
-    // grid-template-columns: 20% 60% 20%;
-    // grid-template-rows: 50% 50%;
-    // grid-template-areas:    ". demoInfo ." 
-    //                         ". demoImage .";  
     min-height: 40rem;
     display: grid;
     grid-gap: 1rem;
@@ -222,7 +254,7 @@
     color: @light-color;
     display: flex;
     justify-content: center;
-    text-align: center;
+    .borderBottom;
 }
 .homepage_div-demo-image{
     grid-area: demoImage;
@@ -230,17 +262,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;  
 }
+
 .homepage__div-demo-image-container{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     // padding-left: 3rem;
+    height: 30rem;
+    width: 65rem;
     iframe{
-        height: 30rem;
-        width: 65rem;
+        width: 100%;
+        height: 100%;
         -webkit-filter: grayscale(90%);
         filter: grayscale(90%);
         cursor: pointer;
@@ -263,15 +298,12 @@
     min-height: 25rem;
     width: 100%;
     display: grid;
+    .borderBottom;
     grid-template-columns: 20% 60% 20%;
     grid-template-rows: 10% 80% 10%;
     grid-template-areas:    ". . ."
                             ". testimonialMain ."
                             ". . ."; 
-    h1{
-        font-size: 3rem;
-        color: @light-color; 
-    }
     h3{
         font-size: 1.5rem;
         color: @light-color; 
@@ -285,6 +317,7 @@
         text-transform: uppercase;
         padding-left: 90%;
     }
+    
 }
 .homepage__div-testimonial-container{
     grid-area: testimonialMain;
@@ -304,33 +337,89 @@
     padding-top: 12rem;
     padding-bottom: 12rem;
 }
+.homepage__div-blog-container{
+    min-height: 50rem;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: [blogInfo-start] 10% [blogInfo-start] 1fr [blogImage-start] 1fr [blogImage-end];
+    grid-template-rows: [blogInfo-start] 1fr [blogImage-start] 10% [blogInfo-end] 40% [blogImage-end];                
+}
 .homepage_div-blog-image{
-    padding-left: 50%;
-    padding-top: 10%;
-    position: absolute;
+    grid-area: blogImage;
     pointer-events: none;
+    height: 100%;
+    width: 100%;
     img{
         background-color: @dark-color;
-        height: 30rem; 
-        width: 50rem;
+        height: 100%;
+        width: 100%;
         border: solid 7px @primary-color-comp;
-        z-index: 1;
+    }
+}
+.homepage_div-blog-info{
+    grid-area: blogInfo;
+    background-color: @primary-color;
+    color: @light-color;
+    .borderBottom;
+    h1{
+        font-size: 3rem;
+        color: @light-color; 
+    }
+    h3{
+        font-size: 1.5rem;
+        color: @light-color; 
     }
 }
 
 
 @media all and (max-width: 770px) {
+    .area__main{
+        text-align: center;
+        h1{
+            font-size: 2rem;
+        }
+        h3{
+            font-size: 1.5rem;
+        }
+    }
+
+    .homepage_div-button-link{
+        display: flex;
+        justify-content: center;
+        width: 95%;
+        padding-left: 3%;
+    }
+
     .homepage__div-main-container{
+        padding-bottom: 60rem;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas:    "mainInfo"
                                 "mainImage";     
     }
+    .homepage__div-main-image-container{
+        img{
+            -webkit-filter: grayscale(0%);
+            filter: grayscale(0%);
+        }
+    }
 
+    .homepage__div-animations{
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 7rem;  
+        padding-top: 15rem;  
+    }
+
+    .homepage__div-about{
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
     .homepage__div-about-container{
+        justify-content: center;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
-        grid-gap: 1rem;
+        grid-gap: 0;
         grid-template-areas:    "aboutInfo" 
                                 "aboutImage";
     }
@@ -341,7 +430,7 @@
     }
     .homepage_div-about-info-container{
         grid-area: aboutInfo;
-        padding-left: 0%;
+        .reset;
     }
     .homepage_div-about-title{
         h4{
@@ -353,19 +442,24 @@
     } 
     .homepage_div-about-image{
         grid-area: aboutImage;
-        padding-top: 0rem;
-        padding-left: 0%;
-        pointer-events: none;
+        .reset;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         position: static;
-        iframe{
-            height: 14.1rem;
-            width: 30rem;
-        }
+        height: 100%;
+        width: 95%;
+        padding-left: 1.5%;
+        padding-right: 1%;
     }
 
+    .homepage__div-demo{
+        .reset;
+    }
     .homepage__div-demo-container{
+        width: 100vw;
+        grid-gap: 2rem;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr 0.5fr;
         grid-template-areas:    "demoInfo"
                                 "demoImage";  
     }
@@ -376,9 +470,31 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        iframe{
-            height: 100%;
-            width: 100%;
+        width: 100%;
+        height: 10rem;
+    }
+
+    .homepage__div-testimonial{
+        .reset;
+        h3{
+            font-size: 1rem;
         }
+    }
+
+    .homepage__div-blog-container{
+        min-height: 50rem;
+        display: grid;
+        grid-gap: 2rem;
+        width: 100vw;
+        justify-content: center;
+        align-content: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr; 
+        grid-template-areas:    "blogInfo"
+                                "blogImage";              
+    }
+    .homepage_div-blog-image{
+        width: 96%;
+
     }
 }
