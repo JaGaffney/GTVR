@@ -3,16 +3,24 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addVideo, getLessons } from "../../actions/lessons";
 
+
+import useFormValidation from "../utils/useFormValidation";
+import validateForm from "../utils/validateForm";
+
+const INITIAL_STATE = {
+  title: "",
+  link: ""
+};
+
 const LessonVideoForm = props =>  {
-
-  const propTypes = {
-    addVideo: PropTypes.func.isRequired,
-    getLessons: PropTypes.func.isRequired
-  }
-
-  const [ title, setTitle ] = useState("");
-  const [ link, setLink ] = useState("");
-  const [ play, setPlay] = useState(false);
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    isSubmitting
+  } = useFormValidation(INITIAL_STATE, validateForm);
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -21,29 +29,24 @@ const LessonVideoForm = props =>  {
   // on submit button click
   const onSubmit = e => {
     e.preventDefault()
-    console.log(e.target)
+    const noErrors = handleSubmit(e)
 
-    // will need a better filter for extracting the youtube id data
-    if (!link.includes('youtube')) {
-      console.log("not a youtube link")
-      e.target.link.focus()
+    // if there an error the submit will fail will need to be tried again
+    if (noErrors.link){
       return
-    } 
+    }
 
-    let youtubeLink = link.split('watch?v=')
+    // splits the youtube link into useless data[0] and the video id[1] 
+    let youtubeLink = values.link.split('watch?v=')
 
-    setLink(youtubeLink[1])
-
-    console.log(link)
-
+    let submitTitle = values.title
+    let submitLink = youtubeLink[1]
+    let play = false
+    
     // creates a valid object that can be sent to the API
-    const video = { lesson: props.lessonId, title, link, play }
+    const video = { lesson: props.lessonId, title: submitTitle, link: submitLink, play }
     props.addVideo(video)
     props.getLessons()
-
-    // resetting data back to default values
-    setTitle("");
-    setLink("");
 
     // closes the modal form
     props.formHandler()
@@ -69,11 +72,14 @@ const LessonVideoForm = props =>  {
               className="form-control"
               type="text"
               name="title"
-              onChange={e => setTitle(e.target.value) }
-              value={title}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.title}
+              className={errors.title && "error-input"}
               placeholder="Title"
               required 
             />
+            {errors.title && <p className="error-text">{errors.title}</p>}
           </div>
 
           <div className="form-group">
@@ -81,15 +87,18 @@ const LessonVideoForm = props =>  {
               className="form-control"
               type="text"
               name="link"
-              onChange={e => setLink(e.target.value) }
-              value={link}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.link}
+              className={errors.link && "error-input"}
               placeholder="Youtube Link"
               required 
             />
+            {errors.link && <p className="error-text">{errors.link}</p>}
           </div>
 
           <div className="form-group">
-              <button type="submit" className="btn">Submit</button>
+              <button type="submit" className="btn" disabled={isSubmitting}>Submit</button>
               <button className="btn" onClick={props.formHandler}>Cancel</button>
           </div>
         </form>

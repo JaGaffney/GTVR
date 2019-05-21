@@ -24,13 +24,14 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "webpack": "^4.29.6",
+    "webpack": "^4.31.0",
     "webpack-cli": "^3.3.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
+    "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^16.8.5",
     "react-lazy-hero": "^2.0.0",
     "react-leaf-carousel": "^1.2.2",
@@ -42,6 +43,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "uglifyjs-webpack-plugin": "^2.1.3"
   }
 }

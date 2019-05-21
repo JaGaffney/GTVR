@@ -3,34 +3,40 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getSubjects, addLesson } from "../../actions/lessons";
 
+import useFormValidation from "../utils/useFormValidation";
+import validateForm from "../utils/validateForm";
+
+const INITIAL_STATE = {
+  name: "",
+  number: "",
+  description: ""
+};
+
 const LessonForm = props => {
-
-  const propTypes = {
-    addLesson: PropTypes.func.isRequired,
-    getSubjects: PropTypes.func.isRequired
-  }
-
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [description, setDescription] = useState("");
-
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    isSubmitting
+  } = useFormValidation(INITIAL_STATE, validateForm);
 
   // on submit button click
   const onSubmit = e => {
     e.preventDefault()
+    handleSubmit(e)
 
     // creates a valid object that can be sent to the API
-    setNumber(parseInt(number))
+    let submitName = values.name
+    let submitNumber = parseInt(values.number)
+    let submitDescription = values.description
     let videos = [{}]
-    const lesson = { name, number, subject: props.subjectID, description, videos }
+
+    const lesson = { name: submitName, number: submitNumber, subject: props.subjectID, description: submitDescription, videos }
     props.addLesson(lesson)
     props.getSubjects()
     
-    // resetting data back to default values
-    setName("");
-    setNumber("");
-    setDescription("");
-
     // closes the form modal
     props.formHandler()
   }
@@ -53,11 +59,14 @@ const LessonForm = props => {
               className="form-control"
               type="text"
               name="name"
-              onChange={e => setName(e.target.value)}
-              value={name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              className={errors.name && "error-input"}
               placeholder={'Name'}
               required
             />
+            {errors.name && <p className="error-text">{errors.name}</p>}
           </div>
 
           <div className="form-group">
@@ -65,11 +74,14 @@ const LessonForm = props => {
               className="form-control"
               type="number"
               name="number"
-              onChange={e => setNumber(e.target.value)}
-              value={number}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.number}
+              className={errors.number && "error-input"}
               placeholder={'Lesson number'}
               required 
             />
+            {errors.number && <p className="error-text">{errors.number}</p>}
           </div>
 
           <div className="form-group">
@@ -77,15 +89,18 @@ const LessonForm = props => {
               className="form-control"
               type="text"
               name="description"
-              onChange={e => setDescription(e.target.value)}
-              value={description}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.description}
+              className={errors.description && "error-input"}
               placeholder={'Description'}
               required 
             />
+            {errors.description && <p className="error-text">{errors.description}</p>}
           </div>
 
           <div className="form-group">
-              <button type="submit" className="btn">Submit</button>
+              <button type="submit" className="btn" disabled={isSubmitting}>Submit</button>
               <button className="btn" onClick={props.formHandler}>Cancel</button>
           </div>
         </form>

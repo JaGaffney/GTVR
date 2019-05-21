@@ -332,6 +332,7 @@
   grid-area: blogInfo;
   background-color: #5f85e3;
   color: #ffffff;
+  text-align: left;
   border-bottom: solid 12px #ffc959;
 }
 .homepage_div-blog-info h1 {
