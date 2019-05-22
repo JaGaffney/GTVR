@@ -175,6 +175,14 @@
   flex-direction: column;
   position: relative;
 }
+.homepage_div-about-info:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  border-bottom: solid 12px #ffc959;
+}
 .homepage_div-about-info-container {
   padding-left: 20%;
 }
@@ -201,7 +209,7 @@
   height: 50%;
   width: 50%;
 }
-.homepage_div-about-image iframe {
+.homepage_div-about-image img {
   border: solid 3px #292e31;
   height: 100%;
   width: 100%;
@@ -310,17 +318,18 @@
   padding-bottom: 12rem;
 }
 .homepage__div-blog-container {
-  min-height: 50rem;
+  min-height: 40rem;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: [blogInfo-start] 10% [blogInfo-start] 1fr [blogImage-start] 1fr [blogImage-end];
-  grid-template-rows: [blogInfo-start] 1fr [blogImage-start] 10% [blogInfo-end] 40% [blogImage-end];
+  grid-template-columns: [blogInfo-start] 10% [blogInfo-start] 1fr [blogImage-start] 1fr [blogImage-end] 10%;
+  grid-template-rows: [blogInfo-start] 1fr [blogImage-start] 70% [blogInfo-end] 10% [blogImage-end];
 }
 .homepage_div-blog-image {
   grid-area: blogImage;
   pointer-events: none;
   height: 100%;
   width: 100%;
+  z-index: 1;
 }
 .homepage_div-blog-image img {
   background-color: #292e31;
@@ -343,7 +352,31 @@
   font-size: 1.5rem;
   color: #ffffff;
 }
-@media all and (max-width: 770px) {
+.homepage_div-blog-info-container {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 30% 1fr 20%;
+  grid-template-areas: ". blogHeader ." ". blogBody ." ". blogButton .";
+}
+.homepage_div-blog-title {
+  grid-area: blogHeader;
+}
+.homepage_div-about-content {
+  grid-area: blogBody;
+}
+.homepage_div-blog-button {
+  justify-content: center;
+  grid-area: blogButton;
+}
+@media all and (max-width: 1400px) {
+  .homepage__div-demo-container {
+    width: 100%;
+    grid-template-columns: [demoInfo demoImage] 100%;
+    grid-template-rows: [demoInfo-start] 1fr [demoImage-start] 10% [demoInfo-end] 40%;
+  }
+}
+@media all and (max-width: 1000px) {
   .area__main {
     text-align: center;
   }
@@ -391,6 +424,9 @@
     justify-content: center;
     grid-area: none;
   }
+  .homepage_div-about-info:before {
+    width: 100%;
+  }
   .homepage_div-about-info-container {
     grid-area: aboutInfo;
     margin: 0;
@@ -421,9 +457,8 @@
   .homepage__div-demo-container {
     width: 100vw;
     grid-gap: 2rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 0.5fr;
-    grid-template-areas: "demoInfo" "demoImage";
+    grid-template-columns: [demoInfo demoImage] 100%;
+    grid-template-rows: [demoInfo-start] 1fr [demoImage-start] 10% [demoInfo-end] 40%;
   }
   .homepage_div-demo-image {
     padding-left: 0;
@@ -442,6 +477,23 @@
   .homepage__div-testimonial h3 {
     font-size: 1rem;
   }
+  .homepage__div-testimonial {
+    min-height: 25rem;
+    grid-template-columns: 7% 86% 7%;
+    grid-template-rows: 100%;
+    grid-template-areas: ". testimonialMain .";
+  }
+  .homepage__div-testimonial h3 {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  .homepage__div-testimonial p {
+    padding-left: 0%;
+    padding-top: 3rem;
+  }
+  .SimpleSlider-carousel {
+    text-align: center;
+  }
   .homepage__div-blog-container {
     min-height: 50rem;
     display: grid;
@@ -455,5 +507,13 @@
   }
   .homepage_div-blog-image {
     width: 96%;
+  }
+  .homepage_div-blog-info-container {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "blogHeader" "blogBody" "blogButton";
   }
 }

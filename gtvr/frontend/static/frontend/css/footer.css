@@ -137,9 +137,9 @@
 }
 @media all and (max-width: 1000px) {
   .footer-distributed {
-    font-size: 0.7rem;
     margin: 0;
     padding: 0;
+    font-size: 0.7rem;
     padding: 1rem;
   }
 }
@@ -147,8 +147,14 @@
   .footer-distributed {
     font-size: 1rem;
     grid-template-columns: 100%;
-    grid-template-rows: 33% 33% 33%;
-    grid-template-areas: "leftSec" "centerSec" "rightSec";
-    justify-self: center;
+    grid-template-rows: 1fr 1fr 20%;
+    grid-template-areas: "leftSec" "rightSec" ".";
+    text-align: center;
+  }
+  .footer-center {
+    display: none !important;
+  }
+  .footer-company-about {
+    display: none !important;
   }
 }

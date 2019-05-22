@@ -33,7 +33,10 @@ export default function validateForm(values) {
       errors.title = "A Title is Required ";
     }
     // Link Errors
+    // regex checkers for non playlist
     let regex = new RegExp("(https?://)?(www\\.)?(yotu\\.be/|youtube\\.com/)?((.+/)?(watch(\\?v=|.+&v=))?(v=)?)([\\w_-]{11})(&.+)?");
+    // regex checker for playlist
+    
     if (!values.link) {
       errors.link = "A Valid Youtube link is Required ";
     } else if (!regex.test(values.link)) {

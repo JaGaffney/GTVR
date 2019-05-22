@@ -60,7 +60,7 @@ const Home = props => {
             <div className="homepage__div-main-info">
              
               <div className="homepage__div-main-title">
-                <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} delay={100} offset={800}>
+                <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} offset={800}>
                   <div className="homepage__div-main-title-inner">
                     <h1 className="">What is Great Teacher VR</h1>
                   </div>
@@ -68,7 +68,7 @@ const Home = props => {
               </div>
               
               <div className="homepage__div-main-content">
-                <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} delay={300}  offset={500}>
+                <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} delay={400}  offset={800}>
                 <p>
                   Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis laborum cupidatat enim dolor. Proident do sint deserunt magna laboris in cillum adipisicing sunt et dolor ullamco ex. Cillum sit incididunt cillum et esse ut culpa qui nulla voluptate ut fugiat. Nostrud nisi eu dolor laboris anim qui ea anim voluptate. Ut occaecat aliquip nulla amet est et ut pariatur tempor.
                 </p>
@@ -84,7 +84,7 @@ const Home = props => {
         </div>
       </div>
 
-      <ScrollAnimation animateIn="flipInX" animateOnce={true} delay={1000}  offset={500}>
+      <ScrollAnimation animateIn="flipInX" animateOnce={true} offset={800}>
       <div className="homepage__div-animations">
         <div>
           <Lottie 
@@ -125,8 +125,7 @@ const Home = props => {
       <div className="homepage__div-about">
         <div className="homepage__div-about-container">
 
-          <div className="homepage_div-about-info">
-          {/* <ScrollAnimation animateIn="fadeInLeftBig" animateOnce='true'offset="500"> */}
+          <ScrollAnimation className="homepage_div-about-info" animateIn="fadeInLeftBig" animateOnce={true} offset={800}>
             <div className="homepage_div-about-info-container">
             
               <div className="homepage_div-about-title">
@@ -147,14 +146,12 @@ const Home = props => {
               </div>
               
             </div>
-          
-            <div className="homepage_div-about-image">
-              <iframe src="https://player.vimeo.com/video/315917058?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameBorder="0" allowFullScreen=""></iframe>
-            </div>
+            
+            <ScrollAnimation className="homepage_div-about-image" animateIn="fadeInLeftBig" animateOnce={true} offset={800} delay={100}>
+              <img src={'./static/frontend/img/vrgrass.jpg'}></img>
+            </ScrollAnimation>
 
-          {/* </ScrollAnimation> */}
-          </div>
-          
+          </ScrollAnimation>
         </div>
       </div>
       
@@ -189,17 +186,15 @@ const Home = props => {
 
 
       <div className="homepage__div-testimonial">
-        <div className="homepage__div-testimonial-container">
-        <ScrollAnimation animateIn="slideInRight" animateOnce={true} offset={800}>
+        <ScrollAnimation className="homepage__div-testimonial-container" animateIn="slideInRight" animateOnce={true} offset={800}>
           <SimpleSlider />
         </ScrollAnimation>
-        </div>
       </div>    
 
 
       <div className="homepage__div-blog">
         <div className="homepage__div-blog-container">
-          <div className="homepage_div-blog-info">
+          <ScrollAnimation className="homepage_div-blog-info" animateIn="slideInLeft" animateOnce={true} offset={800}>
             <div className="homepage_div-blog-info-container">
               <div className="homepage_div-blog-title">
                 <h1>Blog style thing</h1>
@@ -219,13 +214,12 @@ const Home = props => {
               </div>
             
             </div>
-          </div>
+          </ScrollAnimation>
 
-          <div className="homepage_div-blog-image">
+          <ScrollAnimation className="homepage_div-blog-image" animateIn="slideInUp" animateOnce={true} offset={800}>
             <img src={"https://unsplash.it/2000/1057"}></img>
-          </div>
+          </ScrollAnimation>
 
-          
         </div>
       </div>  
 
