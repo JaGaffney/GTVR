@@ -24,9 +24,10 @@ const Header = props => {
     <ul className="header__nav-ul animated fadeInRight fast">
 
       <li><NavLink to="/subjects" activeClassName="active" className="header__nav-li-right">Demo</NavLink></li>
+      <li><NavLink to="/case" activeClassName="active" className="header__nav-li-right">Blog</NavLink></li>
       <li><NavLink to="/contact" activeClassName=" active" className="header__nav-li-right">Contact</NavLink></li>
-      <li><NavLink to="/login" activeClassName=" active" className="header__nav-li-right">Login</NavLink></li>
-      <li><NavLink to="/register" activeClassName=" active" className="header__nav-li-right">Sign up</NavLink></li>
+      {/* <li><NavLink to="/login" activeClassName=" active" className="header__nav-li-right">Login</NavLink></li>
+      <li><NavLink to="/register" activeClassName=" active" className="header__nav-li-right">Sign up</NavLink></li> */}
       <li>|</li>
       
       {/* <li><NavLink to="/case" activeClassName=" active" className="header__nav-li-right">Case Study</NavLink></li>

@@ -44,7 +44,7 @@ const LessonVideoForm = props =>  {
     let play = false
     
     // creates a valid object that can be sent to the API
-    const video = { lesson: props.lessonId, title: submitTitle, link: submitLink, play }
+    const video = { lesson: props.subjectInfo.lessonID, title: submitTitle, link: submitLink, play }
     props.addVideo(video)
     props.getLessons()
 
@@ -108,5 +108,8 @@ const LessonVideoForm = props =>  {
   )
 }
 
+const mapStateToProps = state => ({
+  subjectInfo: state.lessons.subjectInfo
+})
 
-export default connect(null, { getLessons, addVideo })(LessonVideoForm)
+export default connect(mapStateToProps, { getLessons, addVideo })(LessonVideoForm)

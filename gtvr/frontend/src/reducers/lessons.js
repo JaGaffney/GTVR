@@ -1,9 +1,10 @@
-import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
+import { ADD_SUBJECT_INFO, GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from '../actions/types.js'
 
 const initialState = {
     subjects: [],
     lessons: [],
-    video: []
+    video: [],
+    subjectInfo: [{subject: "", subjectID: "", lesson: "", video: ""}]
 }
 
 // set lesson
@@ -35,8 +36,14 @@ const updateNestedStateInfo = (stateArray, action) => {
 }
 
 export default function(state = initialState, action) {
-    // common convetion is to use a switch with cases
+    //console.log(action)
+    // common convention is to use a switch with cases
     switch(action.type) {
+        case ADD_SUBJECT_INFO:
+            return {
+                ...state,
+                subjectInfo: action.payload
+            }
         case GET_SUBJECTS:
             return {
                 ...state,

@@ -34,25 +34,25 @@ const Home = props => {
             <ScrollAnimation animateIn="bounceInUp homepage__div-main-image-container" animateOnce={true} delay={0}>
               <img src={"https://unsplash.it/2000/1050"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
               <h3>about </h3>
-              <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
+              <p>Us.</p>
             </ScrollAnimation>
 
             <ScrollAnimation animateIn="bounceInUp homepage__div-main-image-container" animateOnce={true} delay={200}>
               <img src={"https://unsplash.it/2000/1057"}  style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
               <h3>demo</h3>
-              <p>DDolor amet dolore magna ipsum. Ipsum do occaecat adipisicingem0</p>
+              <p>A live action demo of what Teacher VR offers.</p>
             </ScrollAnimation>
 
             <ScrollAnimation animateIn="bounceInUp homepage__div-main-image-container" animateOnce={true} delay={400}>
               <img src={"https://unsplash.it/2000/1051"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>blog </h3>
-              <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
+              <h3>Research </h3>
+              <p>VR teaching impacts on student development.</p>
             </ScrollAnimation>
 
             <ScrollAnimation animateIn="bounceInUp homepage__div-main-image-container" animateOnce={true} delay={600}>
               <img src={"https://unsplash.it/2000/1052"} style={{ backgroundColor: 'black', height: '25rem', width: '20rem'}}></img>
-              <h3>Testimonials </h3>
-              <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing</p>
+              <h3>Testimonials</h3>
+              <p>See what people are saying about us.</p>
             </ScrollAnimation>
           </div>
 
@@ -62,7 +62,7 @@ const Home = props => {
               <div className="homepage__div-main-title">
                 <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} offset={800}>
                   <div className="homepage__div-main-title-inner">
-                    <h1 className="">What is Great Teacher VR</h1>
+                    <h1 className="">What is Teacher VR</h1>
                   </div>
                 </ScrollAnimation>
               </div>
@@ -70,10 +70,14 @@ const Home = props => {
               <div className="homepage__div-main-content">
                 <ScrollAnimation animateIn="fadeInLeftBig" animateOnce={true} delay={400}  offset={800}>
                 <p>
-                  Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis laborum cupidatat enim dolor. Proident do sint deserunt magna laboris in cillum adipisicing sunt et dolor ullamco ex. Cillum sit incididunt cillum et esse ut culpa qui nulla voluptate ut fugiat. Nostrud nisi eu dolor laboris anim qui ea anim voluptate. Ut occaecat aliquip nulla amet est et ut pariatur tempor.
+                  Teacher VR brings teaching to the 21st century by integrating Virtual Reality teaching without losing control of the lesson. 
+                  Teacher VR allows for creation of video lesson plans with a simple click of a button and allows students of all ages and 
+                  computer literacy the ability to not be left behind.
                 </p>
                 <p>
-                  Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis laborum cupidatat enim dolor. Proident do sint deserunt magna laboris in cillum adipisicing sunt et dolor ullamco ex. Cillum sit incididunt cillum et esse ut culpa qui nulla voluptate ut fugiat. Nostrud nisi eu dolor laboris anim qui ea anim voluptate. Ut occaecat aliquip nulla amet est et ut pariatur tempor.
+                  Teacher VR was designed to solve the real world issue of teachers being unable to teacher a VR lesson where all students are in sync with each other. Teacher VR solves
+                  this issue by allowing the teacher to have full control on when, where and how the Virtual reality experience flows.
+                  Teacher VR has been developed with the latest website technology created by Facebook and can either be incorporated into your existing website or you can use the Teacher VR domain.
                 </p>
                 </ScrollAnimation>
               </div>
@@ -119,8 +123,8 @@ const Home = props => {
             width={300} 
           />
         </div>
-        </div>
-        </ScrollAnimation>
+      </div>
+      </ScrollAnimation>
 
       <div className="homepage__div-about">
         <div className="homepage__div-about-container">
@@ -162,11 +166,11 @@ const Home = props => {
             <div className="homepage_div-demo-info-container">
             <ScrollAnimation animateIn="slideInLeft" animateOnce={true} offset={500}>
               <div className="homepage_div-demo-title">
-                <h1>Demo of the program</h1>
+                <h1>Live Demo</h1>
               </div>
               <div className="homepage_div-demo-content">
-                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
-                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
+                <p>Feel free to use the online demo, you can add, delete, update and use a lite version of Teacher VR.</p>
+                <p>Or you can check out the video of Teacher VR in action.</p>
               </div>
             </ScrollAnimation>
             </div>
@@ -198,11 +202,11 @@ const Home = props => {
             <div className="homepage_div-blog-info-container">
               <div className="homepage_div-blog-title">
                 <h1>Blog style thing</h1>
-                <h4>Created with the lastest research</h4>
+                <h4>Created with the lastest teaching research</h4>
               </div>
               <div className="homepage_div-about-content">
-                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
-                <p>Dolor amet dolore magna ipsum. Ipsum do occaecat adipisicing dolor minim tempor consequat dolore est duis lab</p>
+                <p>Master's thesis link potentially</p>
+                <p>Other random snippets or the Abstract</p>
               </div>
               <div className="homepage_div-blog-button">
                 <NavLink to="/blog"                   
@@ -222,9 +226,6 @@ const Home = props => {
 
         </div>
       </div>  
-
-
-        
 
     </div>
   )

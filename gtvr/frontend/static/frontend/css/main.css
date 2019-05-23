@@ -52,62 +52,48 @@ body {
   font-style: bold;
   font-size: 1.2rem;
 }
-.about__div-container {
-  border-top: solid 3px #ffc959;
-  border-bottom: solid 3px #ffc959;
-  min-height: 50rem;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 20% 80%;
-  grid-template-areas: "aboutImage aboutTitle" "aboutImage aboutInfo";
-  padding-bottom: 7rem;
-  padding-top: 7rem;
+.arrow-left.icon {
+  color: #000;
+  position: absolute;
+  margin-left: 3px;
+  margin-top: 10px;
+  width: 16px;
+  height: 1px;
+  background-color: currentColor;
 }
-.about__div-image {
-  grid-area: aboutImage;
-  height: 100%;
-  width: 100%;
+.arrow-left.icon:before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-top: solid 1px currentColor;
+  border-right: solid 1px currentColor;
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }
-.about__div-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.plus.icon {
+  color: #000;
+  position: absolute;
+  margin-left: 3px;
+  margin-top: 10px;
 }
-.about__div-image-container img {
-  border: solid 2px #5f85e3;
-  height: 80%;
-  width: 80%;
-  border-radius: 0 30px 30px 0;
+.plus.icon:before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 1px;
+  background-color: currentColor;
 }
-.about__div-title {
-  grid-area: aboutTitle;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 10%;
-}
-.about__div-title h1 {
-  color: #5f85e3;
-}
-.about__div-title h4 {
-  color: #85a4f3;
-}
-.about__div-info {
-  grid-area: aboutInfo;
-  height: 100%;
-  min-height: 30rem;
-  margin-right: 5%;
-}
-.about__div-info-container {
-  font-size: 1.5rem;
-  background-color: #dfe8fe;
-  border: solid 1px #292e31;
-  border-radius: 30px 0 0 30px;
-}
-.about__div-info-container p {
-  padding-left: 1%;
-  padding-right: 1%;
+.plus.icon:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 1px;
+  background-color: currentColor;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .case__div-Area {
   width: 100%;
@@ -182,6 +168,57 @@ body {
   width: 100%;
   grid-area: mainSection;
   background-color: #dfe8fe;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1% 20% 74% 5%;
+  grid-template-rows: 100%;
+  grid-template-areas: ". lessonAreaPanel lessonAreaMain .";
+}
+.lessonDashboard__div-Side {
+  grid-area: lessonAreaPanel;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-right: solid 12px #ffc959;
+  padding-right: 1rem;
+}
+.PanelButton__container {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.PanelButton {
+  border: solid 5px #5f85e3;
+  border-radius: 30px 0 0 0;
+  background-color: #fff4dc;
+  height: 10rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+.PanelButton:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffd57d;
+}
+.PanelButton-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 4rem;
+  font-size: 2rem;
+  padding-top: 1rem;
+  cursor: pointer;
+}
+.PanelButton-top {
+  border-bottom: solid 5px #5f85e3;
+}
+.lessonDashboard__div-Main {
+  grid-area: lessonAreaMain;
 }
 .lessons_div {
   min-height: 30rem;

@@ -4,16 +4,15 @@ import ReactDom from 'react-dom'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 // Created Imports
+
 //layout
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 
 // pages
 import Home from './home/Home'
-import About from './common/About'
 import Case from './common/Case'
 import Contact from './common/Contact'
-import LessonDashboard from './lessons/LessonDashboard'
 import SubjectDashboard from './subject/SubjectDashboard'
 
 // Redux store
@@ -34,8 +33,6 @@ class App extends Component {
             <div className="area__main">
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/lessons" component={LessonDashboard} />
                 <Route exact path="/case" component={Case} />
                 <Route exact path="/contact" component={Contact} />
                 <Route exact path="/subjects" component={SubjectDashboard} />

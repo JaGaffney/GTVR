@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { getSubjects, addSubject} from "../../actions/lessons";
 
 import useFormValidation from "../utils/useFormValidation";

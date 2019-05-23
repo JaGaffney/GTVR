@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { getSubjects, addLesson } from "../../actions/lessons";
 
 import useFormValidation from "../utils/useFormValidation";
@@ -33,7 +32,7 @@ const LessonForm = props => {
     let submitDescription = values.description
     let videos = [{}]
 
-    const lesson = { name: submitName, number: submitNumber, subject: props.subjectID, description: submitDescription, videos }
+    const lesson = { name: submitName, number: submitNumber, subject: props.subjectInfo.subjectID, description: submitDescription, videos }
     props.addLesson(lesson)
     props.getSubjects()
     
@@ -109,4 +108,8 @@ const LessonForm = props => {
   )
 }
 
-export default connect(null, { getSubjects, addLesson })(LessonForm)
+const mapStateToProps = state => ({
+  subjectInfo: state.lessons.subjectInfo
+})
+
+export default connect(mapStateToProps, { getSubjects, addLesson })(LessonForm)

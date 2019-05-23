@@ -51,89 +51,59 @@ body {
 .error-input {
     border: 2px solid red;
     border-radius: 4px;
-  }
-  
+}
   .error-text {
     margin: 0.25em 0 0 0;
     padding: 0;
     color: red;
     font-style: bold;
     font-size: 1.2rem;
-  }
-
-
-// ABOUT page ///////////////////////////////////////////////////////////////////////////////
-.about__div-Area{
-
 }
-
-.about__div-container{
-    border-top: solid 3px @primary-color-comp;
-    border-bottom: solid 3px @primary-color-comp;
-    min-height: 50rem;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 80%;
-    grid-template-areas:    "aboutImage aboutTitle" 
-                            "aboutImage aboutInfo";
-    padding-bottom: 7rem;
-    padding-top: 7rem;
+.arrow-left.icon {
+    color: #000;
+    position: absolute;
+    margin-left: 3px;
+    margin-top: 10px;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
 }
-
-.about__div-image{
-    grid-area: aboutImage;
-    height: 100%;
-    width: 100%;
+.arrow-left.icon:before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
+    border-top: solid 1px currentColor;
+    border-right: solid 1px currentColor;
+    -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
 }
-
-.about__div-image-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    img{
-        border: solid 2px @primary-color;
-        height: 80%;
-        width: 80%;
-        border-radius: 0 30px 30px 0;
-    }
+.plus.icon {
+    color: #000;
+    position: absolute;
+    margin-left: 3px;
+    margin-top: 10px;
 }
-
-.about__div-title{
-    grid-area: aboutTitle;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 10%;
-    h1{
-       color: @primary-color; 
-    }
-    h4{
-        color: @secondary-color; 
-    }
+.plus.icon:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: currentColor;
 }
-
-.about__div-info{
-    grid-area: aboutInfo;
-
-    height: 100%;
-    min-height: 30rem;
-    margin-right: 5%;
-}
-
-.about__div-info-container{
-    font-size: 1.5rem;
-    background-color: @quad-color; 
-    border: solid 1px @dark-color;
-    border-radius: 30px 0 0 30px;
-    p{
-        padding-left: 1%;
-        padding-right: 1%;
-    }
+.plus.icon:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: currentColor;
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 // CASE pages ///////////////////////////////////////////////////////////////////////////////
-// CASE studies/Testmonials ///////////////////////////////////////////////////////////////////////////////
 .case__div-Area{
     width: 100%;
     min-height: 50rem;
@@ -141,7 +111,6 @@ body {
     padding-bottom: 2rem;
     padding-top: 5rem;
 }
-
 .case__div-carousel{
     background-color: @quad-color-comp;
     border: solid 2px @primary-color;
@@ -159,7 +128,6 @@ body {
         width: 90%;
     }
 }
-
 .case__div-carousel-image{
     padding-top: 5%;
     padding-right: 5%;
@@ -169,12 +137,10 @@ body {
         border-radius:30px 0 30px 0;
     }
 }
-
 .case__div-carousel-title{
     padding-left: 9%;
     grid-area: caseTitle;
 }
-
 .case__div-carousel-body{
     padding-left: 3%;
     grid-area: caseBody;
@@ -188,7 +154,6 @@ body {
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
-
 .contact__div{
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -198,19 +163,16 @@ body {
                             ". contactForm ."; 
     min-height: 90vh;
 }
-
 .contact__div-title{
     grid-area: contactTitle;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
-
 .contact__div-body{
     grid-area: contactBody;
     padding-bottom: 2rem;
     padding-top: 5rem;
 }
-
 .contact__div-form{
     grid-area: contactForm;
     padding-bottom: 2rem;
@@ -222,6 +184,59 @@ body {
     width: 100%;
     grid-area: mainSection;
     background-color: @quad-color;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1% 20% 74% 5%;
+    grid-template-rows: 100%;
+    grid-template-areas: ". lessonAreaPanel lessonAreaMain ."; 
+}
+
+.lessonDashboard__div-Side{
+    grid-area: lessonAreaPanel;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-right: solid 12px @primary-color-comp;
+    padding-right: 1rem;
+}
+
+.PanelButton__container{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0; 
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.PanelButton{
+    border: solid 5px @primary-color;
+    border-radius: 30px 0 0 0;
+    background-color: @quad-color-comp;
+    height: 10rem;
+    margin-top: 2rem;
+    text-align: center;
+    &:hover{
+        box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
+        background-color: @secondary-color-comp;
+    } 
+}
+.PanelButton-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 4rem;
+    font-size: 2rem;
+    padding-top: 1rem;
+    cursor: pointer;
+}
+.PanelButton-top{
+    border-bottom: solid 5px @primary-color;
+}
+
+.lessonDashboard__div-Main{
+    grid-area: lessonAreaMain;
 }
 
 .lessons_div{

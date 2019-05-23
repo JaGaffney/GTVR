@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { deleteVideo, getLessons } from '../../actions/lessons'
-
 import YouTube from 'react-youtube';
 
+import { deleteVideo, getSubjects, addSubjectInfo } from '../../actions/lessons'
 import LessonSingle from './LessonSingle'
-import LessonVideoForm from './LessonVideoForm'
-
-import Backdrop from '../layout/Backdrop'
 
 const Lessons = props => {
 
-  const propTypes = {
-    deleteVideo: PropTypes.func.isRequired,
-    getLessons: PropTypes.func.isRequired
-  }
-  
   const [loadSingle, setLoadSingle] = useState(false);
   const [videoData, setVideoData] = useState("");
   const [loadForm, setLoadForm] = useState(false);
+
+  useEffect(() => {
+    props.getSubjects();
+  }, []);
+
 
   // switches between states for show/add form button
   const onFormHandler = () => {
@@ -30,6 +25,14 @@ const Lessons = props => {
   const loadSingleLesson = (video) => {
     setLoadSingle(true)
     setVideoData(video)
+    console.log(props.subjectInfo)
+    props.addSubjectInfo({subject: props.subjectInfo.subject,
+                          subjectID: props.subjectInfo.subjectID, 
+                          lesson: props.subjectInfo.lesson, 
+                          lessonID: props.subjectInfo.lessonID, 
+                          video: video.title,
+                          videoID: video.id,
+    })
   }
 
   const onDeleteVideo = (id) => {
@@ -82,9 +85,7 @@ const Lessons = props => {
 
   return (
     <>
-    {( loadForm && <Backdrop formHandler={onFormHandler.bind(this)} /> )}
-    {( loadForm && <LessonVideoForm lessonId={props.lessonInfo.id} formHandler={onFormHandler.bind(this)} /> )}
-    <br></br>
+
 
     {(!loadSingle && LessonsPage )}
     {(loadSingle && <LessonSingle videoInfo={videoData} lessonInfo={props.lessonInfo.id} /> )}
@@ -95,8 +96,9 @@ const Lessons = props => {
 
 const mapStateToProps = state => ({
   lessons: state.lessons.lessons,
-  subjects: state.lessons.subjects
+  subjects: state.lessons.subjects,
+  subjectInfo: state.lessons.subjectInfo
 })
 
-export default connect(mapStateToProps, { getLessons, deleteVideo } )(Lessons)
+export default connect(mapStateToProps, { getSubjects, deleteVideo, addSubjectInfo } )(Lessons)
 

@@ -2,9 +2,14 @@ import axios from "axios";
 // import { createMessage, returnError } from './messages'
 import { tokenConfig } from './auth'
 
-import { GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
+import { ADD_SUBJECT_INFO, GET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT, GET_LESSONS, DELETE_LESSON, ADD_LESSON, UPDATE_LESSON, GET_VIDEO, ADD_VIDEO, DELETE_VIDEO, UPDATE_VIDEO } from "./types";
 
 // SUBJECTS
+export const addSubjectInfo = (data) => dispatch => {
+    dispatch({ type: ADD_SUBJECT_INFO,
+                payload: data
+             })
+}
 // GET_SUBJECTS
 export const getSubjects = () => dispatch => {
     axios
