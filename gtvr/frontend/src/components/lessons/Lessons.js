@@ -72,20 +72,14 @@ const Lessons = props => {
   }
 
     let lessons = props.lessons.filter(item => item.id === props.lessonID);
-    let LessonsPage = <div>
-      <h1>Lesson: {lessons[0].name}</h1>
-      <h2>Teacher: {props.teacherName}</h2>
-      <button className="btn" onClick={onFormHandler.bind(this)}>{loadForm ? 'Hide' : 'Add'} new Video</button>
-      <div className="lessonLesson__div-container">
+    let LessonsPage = <div className="lessonLesson__div-container">
         { lessons[0].videos.map(lesson => (
           lessonGeneration(lesson)
         ))}
       </div>
-    </div>
 
   return (
     <>
-
 
     {(!loadSingle && LessonsPage )}
     {(loadSingle && <LessonSingle videoInfo={videoData} lessonInfo={props.lessonInfo.id} /> )}

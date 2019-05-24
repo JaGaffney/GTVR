@@ -233,10 +233,15 @@ body {
 }
 .PanelButton-top{
     border-bottom: solid 5px @primary-color;
+    cursor: pointer;
 }
 
 .lessonDashboard__div-Main{
     grid-area: lessonAreaMain;
+}
+
+.lessonDashboard__div{
+    width: 100%;
 }
 
 .lessons_div{
@@ -344,11 +349,12 @@ body {
 .LessonSingle__container{
     display: grid;
     width: 100%;
+    grid-gap: 1rem;
     min-height: 50rem;
-    grid-template-columns: 5% 70% 5% 20%;
-    grid-template-rows: 80% 20%;
-    grid-template-areas:    ". vidVideo . vidPlaylist"
-                            ". vidInfo . vidPlaylist";
+    grid-template-columns: 100%;
+    grid-template-rows: 75% 25%;
+    grid-template-areas:    "vidVideo"
+                            "vidInfo";
 
     background-color: @quad-color-comp;
     border: solid 3px @primary-color;
@@ -383,7 +389,6 @@ body {
 
 .LessonSingle__video-card{
     grid-area: vidVideo;
-
 }
 
 .LessonSingle__playlist{

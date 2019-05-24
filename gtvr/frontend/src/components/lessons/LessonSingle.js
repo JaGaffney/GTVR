@@ -104,8 +104,8 @@ const LessonSingle = props => {
   }
 
   const opts = {
-    height: '720',
-    width: '1280',
+    height: '540',
+    width: '960',
   }
 
   // add a switch for pause of play with ? : etc

@@ -4,7 +4,7 @@ const initialState = {
     subjects: [],
     lessons: [],
     video: [],
-    subjectInfo: [{subject: "", subjectID: "", lesson: "", video: ""}]
+    subjectInfo: [{subject: "", subjectID: "", lesson: "", video: "", teacher: ""}]
 }
 
 // set lesson

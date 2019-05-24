@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getSubjects, deleteSubject, getSubjectInfo, addSubjectInfo} from '../../actions/lessons'
+import { getSubjects, deleteSubject, addSubjectInfo} from '../../actions/lessons'
 
 import Backdrop from '../layout/Backdrop'
 import SidePanel from '../layout/SidePanel'
@@ -12,15 +12,18 @@ import LessonVideoForm from '../lessons/LessonVideoForm'
 
 
 const SubjectDashboard = props => {
-
+  // how the states looked when each file had seperate states
+  // SubjectDashBoard.js
   const [loadSingle, setLoadSingle] = useState(false);
   const [subjectData, setSubjectData] = useState("");
   const [loadForm, setLoadForm] = useState(false);
-  const [subjectID, setSubjectID] = useState(0);
+  // LessonDashBoard.js
+  const [loadSingleLesson, setLoadSingleLesson] = useState(false);
+  const [lessonData, setLessonData] = useState("");
   const [loadLessonForm, setLoadLessonForm] = useState(false);
+  // Lessons.js
   const [loadVideoForm, setLoadVideoForm] = useState(false);
 
-  // can use a blank array as 2nd argument so it only runs once like componendidMount
   useEffect(() => {
     props.getSubjects();
     return () => {
@@ -28,34 +31,71 @@ const SubjectDashboard = props => {
     }
   }, []);
 
-  //Single page component handlering
+  // loads and sets the lesson data on click from a SubjectDashboard item
   const loadSubject = (subject) => {
-    console.log(subject)
     setLoadSingle(true)
     setSubjectData(subject)
     setLoadForm(false)
-    setSubjectID(subject.id)
     props.addSubjectInfo({subject: subject.name, 
                           subjectID: subject.id, 
                           lesson: "", 
                           lessonID: "", 
                           video: "",
-                          videoID: ""
+                          videoID: "",
+                          teacher: ""
                         })
   }
 
-
-  const onLessonHandler = () => {
+  // resets data to go back to SubjectDashboard init page
+  const onSubjectHandler = () => {
     setLoadSingle(false)
     setSubjectData("")
+    setLoadSingleLesson(false)
+    setLessonData("")
+
     setLoadForm(false)
-    setSubjectID("")
+    setLoadLessonForm(false)
+    setLoadVideoForm(false)
     props.addSubjectInfo({subject: "",
       subjectID: "", 
       lesson: "", 
       lessonID: "", 
       video: "",
       videoID: "",
+      teacher: ""
+    })  
+  }
+
+  // loads and sets the lesson data on click from a LessonDashBoard item
+  const loadLesson = (lesson, teacher) => {
+    setLoadSingleLesson(true);
+    setLessonData(lesson);
+    props.addSubjectInfo({subject: props.subjectInfo.subject,
+                          subjectID: props.subjectInfo.subjectID, 
+                          lesson: lesson.name, 
+                          lessonID: lesson.id, 
+                          video: "",
+                          videoID: "",
+                          teacher: teacher
+                        })
+  }
+
+  // resets data to go back to LessonDashboard init page
+  const onLessonHandler = () => {
+    setLoadSingleLesson(false)
+    setLessonData("")
+
+    setLoadForm(false)
+    setLoadLessonForm(false)
+    setLoadVideoForm(false)
+
+    props.addSubjectInfo({subject: props.subjectInfo.subject,
+      subjectID: props.subjectInfo.subjectID, 
+      lesson: "", 
+      lessonID: "", 
+      video: "",
+      videoID: "",
+      teacher: ""
     })  
   }
 
@@ -103,10 +143,12 @@ const SubjectDashboard = props => {
     <div className="lessonDashboard__div-Area">
 
       <div className="lessonDashboard__div-Side">
-        <SidePanel  formSubjectHandler={onFormHandler.bind(this)} 
+        <SidePanel  subjectHandler={onSubjectHandler.bind(this)}
                     lessonHandler={onLessonHandler.bind(this)}
+                    formSubjectHandler={onFormHandler.bind(this)} 
                     formLessonHandler={onLessonFormHandler.bind(this)} 
-                    formVideoHandler={onVideoFormHandler.bind(this)} 
+                    formVideoHandler={onVideoFormHandler.bind(this)}
+                    
         />
       </div>
 
@@ -120,20 +162,20 @@ const SubjectDashboard = props => {
         {( loadVideoForm && <Backdrop formHandler={onVideoFormHandler.bind(this)} /> )}
         {( loadVideoForm && <LessonVideoForm formHandler={onVideoFormHandler.bind(this)} /> )}
 
+        <div className="lessonDashboard__div">
+          <div className="lessonDashboard__div-container">
 
-          <div className="lessonDashboard__div">
-            <div className="lessonDashboard__div-container">
+            {(loadSingle && <LessonDashboard 
+                                subjectData={subjectData} 
+                                loadSingleLesson={loadSingleLesson}
+                                lessonData={lessonData}
+                                loadLesson={loadLesson}
+                            /> )}
 
-              {(loadSingle && <LessonDashboard 
-                                  subjectData={subjectData} 
-                                  subjectID={subjectID} 
-                                  onLessonHandler={onLessonHandler.bind(this)} 
-                                  onLessonFormHanlder={onLessonFormHandler.bind(this)}
-                              /> )}
-              {(!loadSingle && tableGenerator() )}
+            {(!loadSingle && tableGenerator() )}
 
-            </div>
           </div>
+        </div>
       </div>
 
     </div>
@@ -141,7 +183,8 @@ const SubjectDashboard = props => {
 }
 
 const mapStateToProps = state => ({
-    subjects: state.lessons.subjects
+    subjects: state.lessons.subjects,
+    subjectInfo: state.lessons.subjectInfo
 })
 
-export default React.memo(connect(mapStateToProps, { getSubjects, deleteSubject, getSubjectInfo, addSubjectInfo } )(SubjectDashboard))
+export default React.memo(connect(mapStateToProps, { getSubjects, deleteSubject, addSubjectInfo } )(SubjectDashboard))
