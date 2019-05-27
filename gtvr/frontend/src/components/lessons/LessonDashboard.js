@@ -11,7 +11,6 @@ const LessonDashboard = props => {
     props.getLessons();
   }, []);
 
-
   const onDeleteLesson = (id) => {
     props.deleteLesson(id)
     props.getSubjects();
@@ -20,6 +19,16 @@ const LessonDashboard = props => {
 
   const tableGenerator = () => {
     if (props.subjectData.lessons.length >= 1){
+      // sorts the lessons based on what lesson number they are.
+      props.subjectData.lessons.sort( (a, b) => {
+        if (a.number < b.number){
+          return -1
+        }
+        if (a.number < b.number){
+          return 1
+        }
+        return 0
+      })
       return (
         <>
           { props.subjectData.lessons.map(lesson => (
@@ -33,10 +42,9 @@ const LessonDashboard = props => {
                     
                 </div>
                 <h4><strong>Name: </strong>{lesson['name']}</h4>
-                <h4><strong>Teacher: </strong>{props.subjectData.teacher}</h4>
-                <h4><strong>Number: </strong>{lesson['number']}</h4>
+                <h4><strong>Lesson: </strong>{lesson['number']}</h4>
                 <p>Total Videos: {lesson['videos'].length}</p>
-                <p>{lesson['description']}</p> 
+                <p><q>{lesson['description']}</q></p> 
               </div>
             </div>
           ))}

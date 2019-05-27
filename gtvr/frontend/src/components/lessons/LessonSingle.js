@@ -31,6 +31,7 @@ const LessonSingle = props => {
   const [videoIDCode, setVideoID] = useState(null)
   const [player, setPlayer] = useState(null)
   const [playerReady, setPlayerReady] = useState(false)
+  const [playButton, setPlayButton] = useState(true)
 
   useEffect(() => {
     setVideoID(props.videoInfo.link)
@@ -68,7 +69,7 @@ const LessonSingle = props => {
   }, 500);
 
   const onPlayVideo = () => {
-    console.log(player)
+    setPlayButton(false)
     player.playVideo();
 
     // api settings
@@ -77,6 +78,7 @@ const LessonSingle = props => {
   }
 
   const onPauseVideo = () => {
+    setPlayButton(true)
     player.pauseVideo();
 
     // api settings
@@ -86,6 +88,7 @@ const LessonSingle = props => {
 
   const onStopVideo = () => {
     // browser settings
+    setPlayButton(true)
     player.stopVideo();
 
     // api settings
@@ -104,11 +107,10 @@ const LessonSingle = props => {
   }
 
   const opts = {
-    height: '540',
-    width: '960',
+    height: '720',
+    width: '1280',
   }
 
-  // add a switch for pause of play with ? : etc
   return (
     <div className="LessonSingle__container">
       <div className="LessonSingle__video-card">
@@ -127,8 +129,8 @@ const LessonSingle = props => {
       <h1 className="LessonSingle__title">{props.videoInfo.title}</h1>
 
       <div className="LessonSingle__video-controls">
-        <button onClick={onPlayVideo}><i className="fa fa-play"></i></button>
-        <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>
+        {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
+        
         <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
         <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
       </div>   

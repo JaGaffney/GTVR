@@ -1,21 +1,39 @@
 // Holds global information about the styles
 
 // Variables
-@background-color: #efeeee;
+:root {
+    --background-color: #efeeee;
+
+    --primary-color: #5f85e3;
+    --secondary-color: #85a4f3;
+    --tertiary-color: #aec4fa;
+    --quad-color: #dfe8fe;
+
+    --primary-color-comp: #ffc959;
+    --secondary-color-comp: #ffd57d;
+    --tertiary-color-comp: #ffe2a8;
+    --quad-color-comp: #fff4dc;
+
+    --light-color: #ffffff;
+    --dark-color: #292e31;
+
+}
+
+@background-color: var(--background-color);
 @font-family: 'Source Sans Pro', sans-serif;
 
-@primary-color: #5f85e3;
-@secondary-color: #85a4f3;
-@tertiary-color: #aec4fa;
-@quad-color: #dfe8fe;
+@primary-color: var(--primary-color);
+@secondary-color: var(--secondary-color);
+@tertiary-color: var(--tertiary-color);
+@quad-color: var(--quad-color);
 
-@primary-color-comp: #ffc959;
-@secondary-color-comp: #ffd57d;
-@tertiary-color-comp: #ffe2a8;
-@quad-color-comp: #fff4dc;
+@primary-color-comp: var(--primary-color-comp);
+@secondary-color-comp: var(--secondary-color-comp);
+@tertiary-color-comp: var(--tertiary-color-comp);
+@quad-color-comp: var(--quad-color-comp);
 
-@light-color: #ffffff;
-@dark-color: #292e31;
+@light-color: var(--light-color);
+@dark-color: var(--dark-color);
 @line-height: 1rem + 1em;
 
 

@@ -9,15 +9,18 @@ const initialState = {
 
 // set lesson
 const updateStateInfo = (stateArray, action) => {
+    // weird console error where its saying the array isnt real, could be from it be compiled down to pre .filter
+    // stateArray is an Object { [...state] }
+    // action is an Object
     let updatedLesson = []
-    stateArray.filter(lesson => {
-    if (lesson.id === action.payload.id) {
-        updatedLesson = [...updatedLesson, action.payload]
-    } else {
-        updatedLesson = [...updatedLesson, lesson]
-    }
-  })
-  return updatedLesson
+    stateArray.filter(lesson => ( (lesson.id === action.payload.id ? updatedLesson = [...updatedLesson, action.payload]: updatedLesson = [...updatedLesson, lesson]) ) )
+    // if (lesson.id === action.payload.id) {
+    //     updatedLesson = [...updatedLesson, action.payload]
+    // } else {
+    //     updatedLesson = [...updatedLesson, lesson]
+    // }
+    //   })
+    return updatedLesson
 }
 
 // sets the state for nested states

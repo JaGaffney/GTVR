@@ -1,3 +1,16 @@
+:root {
+  --background-color: #efeeee;
+  --primary-color: #5f85e3;
+  --secondary-color: #85a4f3;
+  --tertiary-color: #aec4fa;
+  --quad-color: #dfe8fe;
+  --primary-color-comp: #ffc959;
+  --secondary-color-comp: #ffd57d;
+  --tertiary-color-comp: #ffe2a8;
+  --quad-color-comp: #fff4dc;
+  --light-color: #ffffff;
+  --dark-color: #292e31;
+}
 .reset {
   margin: 0;
   padding: 0;
@@ -8,16 +21,16 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #dfe8fe;
-  color: #292e31;
+  background-color: var(--quad-color);
+  color: var(--dark-color);
   width: 100%;
 }
 .App {
   margin: 0;
   padding: 0;
   display: grid;
-  background-color: #ffc959;
-  color: #292e31;
+  background-color: var(--primary-color-comp);
+  color: var(--dark-color);
   grid-template-columns: 100%;
   grid-template-rows: auto minmax(55rem, auto) auto;
   grid-template-areas: "headerArea" "mainArea" "footerArea";
@@ -98,13 +111,13 @@ body {
 .case__div-Area {
   width: 100%;
   min-height: 50rem;
-  background-color: #dfe8fe;
+  background-color: var(--quad-color);
   padding-bottom: 2rem;
   padding-top: 5rem;
 }
 .case__div-carousel {
-  background-color: #fff4dc;
-  border: solid 2px #5f85e3;
+  background-color: var(--quad-color-comp);
+  border: solid 2px var(--primary-color);
   border-radius: 0 30px 0 30px;
   display: grid;
   grid-template-columns: 40% 60%;
@@ -113,8 +126,8 @@ body {
   min-height: 60vh;
 }
 .case__div-carousel img {
-  border: solid 2px #5f85e3;
-  background-color: #dfe8fe;
+  border: solid 2px var(--primary-color);
+  background-color: var(--quad-color);
   height: 90%;
   width: 90%;
 }
@@ -138,7 +151,7 @@ body {
 .contact__div-Area {
   width: 100%;
   min-height: 50rem;
-  background-color: #dfe8fe;
+  background-color: var(--quad-color);
   padding-bottom: 2rem;
   padding-top: 2rem;
 }
@@ -167,7 +180,7 @@ body {
 .lessonDashboard__div-Area {
   width: 100%;
   grid-area: mainSection;
-  background-color: #dfe8fe;
+  background-color: var(--quad-color);
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1% 20% 74% 5%;
@@ -179,44 +192,66 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  border-right: solid 12px #ffc959;
+  border-right: solid 12px var(--primary-color-comp);
   padding-right: 1rem;
 }
 .PanelButton__container {
-  position: -webkit-sticky;
-  /* Safari */
-  position: sticky;
-  top: 0;
-  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 90%;
+  height: 90vh;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .PanelButton {
-  border: solid 5px #5f85e3;
-  border-radius: 30px 0 0 0;
-  background-color: #fff4dc;
-  height: 10rem;
-  margin-top: 2rem;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  min-height: 11rem;
+  width: 100%;
+  border: solid 5px var(--primary-color);
+  border-radius: 30px;
+  background-color: var(--quad-color-comp);
+  background: rgba(25, 43, 148, 0.233);
+  opacity: 0.5;
   text-align: center;
+  margin-bottom: 1rem;
 }
 .PanelButton:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-color: #ffd57d;
+  background-color: var(--secondary-color-comp);
+  opacity: 0.95;
+}
+.PanelButton-top {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-bottom: solid 5px var(--primary-color);
+  cursor: pointer;
+}
+.PanelButton-top h1 {
+  width: 100%;
+  margin-block-end: 0;
+}
+.PanelButton-top h5 {
+  width: 100%;
 }
 .PanelButton-bottom {
+  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 4rem;
+  min-height: 4rem;
   font-size: 2rem;
-  padding-top: 1rem;
   cursor: pointer;
 }
-.PanelButton-top {
-  border-bottom: solid 5px #5f85e3;
-  cursor: pointer;
+.active-panel {
+  background-color: var(--quad-color-comp);
+  opacity: 1;
 }
 .lessonDashboard__div-Main {
   grid-area: lessonAreaMain;
@@ -226,7 +261,7 @@ body {
 }
 .lessons_div {
   min-height: 30rem;
-  background-color: #dfe8fe;
+  background-color: var(--quad-color);
 }
 .lessonDashboard__div-container,
 .lessonLesson__div-container {
@@ -240,16 +275,16 @@ body {
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 28%;
-  background-color: #fff4dc;
+  flex: 1 1 300px;
+  background-color: var(--quad-color-comp);
   cursor: pointer;
   margin: 1rem;
-  border: solid 5px #5f85e3;
+  border: solid 5px var(--primary-color);
   border-radius: 30px 0 30px 30PX;
 }
 .lessonDashboard__card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-color: #ffd57d;
+  background-color: var(--secondary-color-comp);
 }
 .lessonDashboard__card img {
   border-radius: 0 30px 0 0;
@@ -263,15 +298,15 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 15rem;
-  background-color: #fff4dc;
+  background-color: var(--quad-color-comp);
   cursor: pointer;
   margin: 1rem;
-  border: solid 5px #5f85e3;
+  border: solid 5px var(--primary-color);
   border-radius: 30px 0 30px 30PX;
 }
 .lessonLesson__card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-color: #ffd57d;
+  background-color: var(--secondary-color-comp);
 }
 .lessonDashboard__card-deleteBtn {
   float: right;
@@ -280,17 +315,17 @@ body {
   padding: 0;
   font-size: 1.25rem;
   font-weight: bold;
-  color: #5f85e3;
+  color: var(--primary-color);
   background-color: inherit;
 }
 .lessonDashboard__card-deleteBtn:hover {
   color: red;
 }
 .lesson-img {
-  background-color: #5f85e3;
+  background-color: black;
   height: 12rem;
   width: 100%;
-  border: solid 3px #5f85e3;
+  border: solid 3px var(--primary-color);
   border-radius: 0 30px 0 0;
 }
 .lesson-img img {
@@ -302,34 +337,17 @@ body {
   height: 120px;
   width: 213px;
 }
-.btn {
-  background-color: #5f85e3;
-  color: #ffffff;
-  border: solid 5px #ffc959;
-  width: 25%;
-  min-width: 17rem;
-  height: 4rem;
-  font-size: 2rem;
-  cursor: pointer;
-}
-.btn:hover {
-  background-color: #fff4dc;
-  color: #292e31;
-  border: solid 5px #5f85e3;
-}
 .LessonSingle__container {
-  display: grid;
-  width: 100%;
-  grid-gap: 1rem;
+  background-color: var(--quad-color-comp);
+  border: solid 3px var(--primary-color);
   min-height: 50rem;
-  grid-template-columns: 100%;
-  grid-template-rows: 75% 25%;
-  grid-template-areas: "vidVideo" "vidInfo";
-  background-color: #fff4dc;
-  border: solid 3px #5f85e3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .LessonSingle__info {
-  grid-area: vidInfo;
+  order: 1;
   display: grid;
   grid-template-columns: 50% 20% 30%;
   grid-template-rows: 100%;
@@ -342,21 +360,28 @@ body {
 }
 .LessonSingle__video-controls {
   grid-area: vidInfoControls;
+  display: flex;
+  flex-direction: row;
 }
 .LessonSingle__video-controls button {
+  flex: 1 1 25%;
   cursor: pointer;
-  background-color: #fff4dc;
-  border: solid 2px #5f85e3;
+  background-color: var(--quad-color);
+  border: solid 2px var(--primary-color);
   color: black;
   height: 2rem;
   width: 2rem;
 }
+.LessonSingle__video-controls button:hover {
+  background-color: var(--primary-color-comp);
+}
 .LessonSingle__video-card {
-  grid-area: vidVideo;
+  order: 2;
+  align-content: center;
 }
 .LessonSingle__playlist {
   grid-area: vidPlaylist;
-  background-color: #85a4f3;
+  background-color: var(--secondary-color);
 }
 .modalForm-div {
   z-index: 1000;
@@ -368,11 +393,11 @@ body {
   top: 25%;
   left: 25%;
   display: flex;
-  background-color: #dfe8fe;
+  background-color: var(--quad-color);
 }
 .modalForm-container {
   width: 100%;
-  border: solid 5px #ffc959;
+  border: solid 5px var(--primary-color-comp);
   justify-content: center;
 }
 .form-group {
@@ -406,7 +431,7 @@ body {
   width: 50px;
   position: absolute;
   margin-top: 24px;
-  background-color: #ffc959;
+  background-color: var(--primary-color-comp);
   border-radius: 2px;
   transform: rotate(45deg);
   transition: all 0.3s ease-in;
@@ -416,7 +441,7 @@ body {
   width: 50px;
   position: absolute;
   margin-top: 24px;
-  background-color: #ffc959;
+  background-color: var(--primary-color-comp);
   border-radius: 2px;
   transform: rotate(-45deg);
   transition: all 0.3s ease-in;
@@ -427,38 +452,36 @@ body {
 }
 .close-container:hover .leftright {
   transform: rotate(-45deg);
-  background-color: #5f85e3;
+  background-color: var(--primary-color);
 }
 .close-container:hover .rightleft {
   transform: rotate(45deg);
-  background-color: #5f85e3;
+  background-color: var(--primary-color);
 }
 @media all and (max-width: 1000px) {
-  .homepage__div-container {
-    grid-template-columns: 100%;
-    grid-template-rows: 20% 40% 40%;
-    grid-template-areas: "mainTitle" "mainImage" "mainInfo";
-    min-height: 100vh;
-  }
-  .about__div-container {
-    grid-template-columns: 100%;
-    grid-template-rows: 20% 40% 40%;
-    grid-template-areas: "aboutTitle" "aboutImage" "aboutInfo";
-    min-height: 100vh;
-  }
   .case__div-carousel {
     grid-template-columns: 100%;
     grid-template-rows: 10% 30% 60%;
     grid-template-areas: "caseTitle" "caseBody" "caseImage";
     min-height: 100vh;
   }
+  .lessonDashboard__div-Area {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lessonDashboard__div-Side {
+    flex: 1 1;
+    border-right: none;
+    border-bottom: solid 12px var(--primary-color-comp);
+  }
+  .PanelButton__container {
+    max-height: auto;
+    padding: 0.4rem;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 @media all and (max-width: 770px) {
-  .lessonLesson__card {
-    flex: 1;
-    width: 33%;
-  }
-  .lessonDashboard__card {
-    width: 100%;
-  }
 }

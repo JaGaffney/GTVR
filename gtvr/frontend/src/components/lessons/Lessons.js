@@ -25,7 +25,6 @@ const Lessons = props => {
   const loadSingleLesson = (video) => {
     setLoadSingle(true)
     setVideoData(video)
-    console.log(props.subjectInfo)
     props.addSubjectInfo({subject: props.subjectInfo.subject,
                           subjectID: props.subjectInfo.subjectID, 
                           lesson: props.subjectInfo.lesson, 

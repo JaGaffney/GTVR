@@ -27,7 +27,16 @@ const SubjectDashboard = props => {
   useEffect(() => {
     props.getSubjects();
     return () => {
-      console.log("Cleaning up...")
+      // console.log("Cleaning up...")
+      // need to reset the subect data when unmounting to stop an error if going back to the page from another window
+      props.addSubjectInfo({subject: "", 
+        subjectID: "", 
+        lesson: "", 
+        lessonID: "", 
+        video: "",
+        videoID: "",
+        teacher: ""
+      })
     }
   }, []);
 
@@ -99,6 +108,10 @@ const SubjectDashboard = props => {
     })  
   }
 
+  // resets data to go back to LessonDashboard init page
+  const onVideoHandler = () => {
+  }
+
   const onDeleteSubject = (id) => {
     props.deleteSubject(id)
   }
@@ -145,6 +158,7 @@ const SubjectDashboard = props => {
       <div className="lessonDashboard__div-Side">
         <SidePanel  subjectHandler={onSubjectHandler.bind(this)}
                     lessonHandler={onLessonHandler.bind(this)}
+                    videoHandler={onVideoHandler.bind(this)}
                     formSubjectHandler={onFormHandler.bind(this)} 
                     formLessonHandler={onLessonFormHandler.bind(this)} 
                     formVideoHandler={onVideoFormHandler.bind(this)}

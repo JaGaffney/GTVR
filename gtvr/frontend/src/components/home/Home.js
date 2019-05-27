@@ -23,7 +23,6 @@ const Home = props => {
 
   return (
     <div className="homepage__div-Area">
-
       <Hero />
 
       <div className="homepage__div-main" >  
@@ -88,7 +87,7 @@ const Home = props => {
         </div>
       </div>
 
-      <ScrollAnimation animateIn="flipInX" animateOnce={true} offset={800}>
+      {/* <ScrollAnimation animateIn="flipInX" animateOnce={true} offset={800}>
       <div className="homepage__div-animations">
         <div>
           <Lottie 
@@ -124,7 +123,7 @@ const Home = props => {
           />
         </div>
       </div>
-      </ScrollAnimation>
+      </ScrollAnimation> */}
 
       <div className="homepage__div-about">
         <div className="homepage__div-about-container">
