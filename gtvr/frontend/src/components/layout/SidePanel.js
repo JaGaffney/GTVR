@@ -4,7 +4,7 @@ import { getSubjects } from '../../actions/lessons'
 
 const SidePanel = props => {
     // temp admin mode until accounts are made
-    let adminMode = false
+    let adminMode = true
     const PanelButton = (name, backHandler, addHandler, activeAddButton, type) => {
         return (
             <div className={`PanelButton ${(activeAddButton ? "active-panel": "")}`}>
