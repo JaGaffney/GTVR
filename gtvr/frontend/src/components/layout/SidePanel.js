@@ -3,16 +3,20 @@ import { connect } from 'react-redux'
 import { getSubjects } from '../../actions/lessons'
 
 const SidePanel = props => {
-
+    // temp admin mode until accounts are made
+    let adminMode = false
     const PanelButton = (name, backHandler, addHandler, activeAddButton, type) => {
         return (
-            <div className={"PanelButton " + (activeAddButton ? "active-panel": "")}>
+            <div className={`PanelButton ${(activeAddButton ? "active-panel": "")}`}>
                 <div className="PanelButton-top" onClick={backHandler}>
                     <h1>{type}</h1>
                     <h5>click to go to: {name}</h5>
                 </div>
-                <div className="PanelButton-bottom">
-                    <div onClick={addHandler}>{(activeAddButton ? "Add": "" )}</div>
+                
+                <div className={(adminMode ? "" : "admin-panel-deactive")}>
+                    <div className="PanelButton-bottom">
+                        <div onClick={addHandler}>{(activeAddButton ? "Add": "" )}</div>
+                    </div>
                 </div>
             </div>
         )

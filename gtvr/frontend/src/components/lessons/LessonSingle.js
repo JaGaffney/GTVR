@@ -27,11 +27,35 @@ function useInterval(callback, delay) {
 }
 
 const LessonSingle = props => {
+  let initWidth = window.innerWidth / 1.5
+  let initHeight = (9 / 16 ) * initWidth
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [videoSize, setVideoSize] = useState({height: initHeight, width: initWidth})
+
+  const aspectRatioCalc = (newWidth) => {
+    let aspectWidth = newWidth / 1.5
+    let newHeight = (videoSize.height / videoSize.width) * aspectWidth
+    setVideoSize({height: newHeight, width: aspectWidth})
+    document.querySelector('.LessonSingle__video-card-player').style = `width: ${videoSize.width}px; height: ${videoSize.height}px`;
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+      aspectRatioCalc(screenWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  })
 
   const [videoIDCode, setVideoID] = useState(null)
   const [player, setPlayer] = useState(null)
   const [playerReady, setPlayerReady] = useState(false)
   const [playButton, setPlayButton] = useState(true)
+  const [initLoad, setInitLoad] = useState(false)
 
   useEffect(() => {
     setVideoID(props.videoInfo.link)
@@ -100,43 +124,47 @@ const LessonSingle = props => {
     setPlayer(event.target)
     // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
+    if (!initLoad){
+      setInitLoad(true)
+      setTimeout(() => {
+        aspectRatioCalc(window.innerWidth)
+      }, 2000)
+    }
   }
 
   const onFullScreen = () => {
     console.log("Coming soon")
   }
 
-  const opts = {
-    height: '720',
-    width: '1280',
-  }
+
 
   return (
     <div className="LessonSingle__container">
+
       <div className="LessonSingle__video-card">
         <YouTube 
           videoId={videoIDCode}
-          opts={opts}
+          //opts={videoSize}
           onReady={onReady}
+          className="LessonSingle__video-card-player"
         />
       </div>
 
-    <div className="LessonSingle__playlist">
-    </div>
-
-    <div className="LessonSingle__info">
-
-      <h1 className="LessonSingle__title">{props.videoInfo.title}</h1>
+      <div className="LessonSingle__title">
+        <h1>{props.videoInfo.title}</h1>
+      </div>
 
       <div className="LessonSingle__video-controls">
-        {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
-        
-        <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
-        <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
-      </div>   
-        
-        
-      </div>
+          <h3>Teacher control panel</h3>
+          <h5>This panel gives you full control on what and when your students are viewing.</h5>
+          <div className="LessonSingle__video-controls-buttons">
+            {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
+            <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
+            <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
+          </div>
+      </div>  
+
+
     </div>
   )
 }

@@ -207,18 +207,16 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
     width: 90%;
-    height: 90vh;
+    height: 80vh;
     display: flex;
-    // flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
 }
 .PanelButton{
+    flex: 1;
     display: flex;
-    //flex-wrap: wrap;
-    align-content: center;
-    flex-direction: column;
-    min-height: 11rem;
+    flex-wrap: wrap;
+    min-height: 10rem;
     width: 100%;
     border: solid 5px @primary-color;
     border-radius: 30px;
@@ -233,13 +231,10 @@ body {
         opacity: 0.95;
     }; 
 }
+.PanelButton > * {
+    flex: 1 1 90%;
+}
 .PanelButton-top{
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    border-bottom: solid 5px @primary-color;
     cursor: pointer;
     h1{
         width: 100%;
@@ -247,21 +242,23 @@ body {
     }
     h5{
         width: 100%;
+        font-size: 1rem;
     }
 }
 .PanelButton-bottom{
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    min-height: 4rem;
+    border-top: solid 5px @primary-color;
+    justify-content: center;
+    align-content: center;
+    min-height: 3rem;
     font-size: 2rem;
     cursor: pointer;
 }
 .active-panel{
     background-color: @quad-color-comp;
     opacity: 1;
+}
+.admin-panel-deactive{
+    display: none;
 }
 
 
@@ -361,69 +358,64 @@ body {
     width: 213px;
 }
 
-
+// LessonSingle.js
 .LessonSingle__container{
     background-color: @quad-color-comp;
     border: solid 3px @primary-color;
-
     min-height: 50rem;
     width: 100%;
-
-    // display: grid;
-    // grid-gap: 1rem;
-    // grid-template-columns: 100%;
-    // grid-template-rows: 75% 25%;
-    // grid-template-areas:    "vidVideo"
-    //                         "vidInfo";
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.LessonSingle__title{
+    order: 1;
+    flex: 1 1 100%;
+    font-size: 1.5rem;
+}
+.LessonSingle__video-controls{
+    background-color: @quad-color;
+    order: 2;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-
-
+    align-content: center;
+    align-items: center;
+    border: solid 4px @primary-color;
+    border-radius: 30px;
+    padding-bottom: 1rem;
 }
-
-.LessonSingle__info{
-    order: 1;
-    display: grid;
-    grid-template-columns: 50% 20% 30%;
-    grid-template-rows: 100%;
-    grid-template-areas:    "vidInfoTitle . vidInfoControls";
-    width: 100%;
-}
-
-.LessonSingle__title{
-    grid-area: vidInfoTitle;
-    font-size: 1.3rem;
-}
-
-.LessonSingle__video-controls{
-    grid-area: vidInfoControls;
+.LessonSingle__video-controls-buttons{
     display: flex;
     flex-direction: row;
-
-    button{
-        flex: 1 1 25%;
+    justify-content: space-around;
+    width: 25%;
+    padding-bottom: 0.5rem;
+    button{ 
         cursor: pointer;
-        background-color: @quad-color;
+        background-color: @quad-color-comp;
         border: solid 2px @primary-color;
+        border-radius: 30px;
         color: black;
         height: 2rem;
-        width: 2rem;
+        min-width: 30%;
         &:hover{
             background-color: @primary-color-comp;
         }
     }
 }
-
 .LessonSingle__video-card{
-    order: 2;
+    order: 3;
     align-content: center;
+    background-color: black;
+    border: solid 4px @primary-color-comp;
 }
-
-.LessonSingle__playlist{
-    grid-area: vidPlaylist;
-    background-color: @secondary-color;
+.LessonSingle__video-card-player{
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -542,6 +534,11 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+    }
+
+    .LessonSingle__container{
+        //min-height: 10rem;
+        flex: 1 1 100%;
     }
 }
 

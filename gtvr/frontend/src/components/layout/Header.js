@@ -4,15 +4,6 @@ import ScrollAnimation from 'react-animate-on-scroll';
 
 const Header = props => {
   const [menu, setMenu] = useState(true)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize)
-      return () => {
-        window.removeEventListener("resize", handleResize)
-      }
-  })
 
   const onMenuHandler = (e) => {
     e.preventDefault()
