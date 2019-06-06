@@ -74,7 +74,7 @@ const LessonSingle = props => {
   useInterval(() => {
     // calls the server to see if there is any differences
     props.getVideo(props.videoInfo.id);
-    
+
     if (props.video.play) {
       //console.log('interval onPlayVideo')
       player.playVideo();
@@ -153,7 +153,7 @@ const LessonSingle = props => {
         <YouTube 
           video={videoIDCode}
           volume={volume}
-          controls={false}
+          controls={true}
           onReady={onReady}
           className="LessonSingle__video-card-player"
           playsInline={true}
