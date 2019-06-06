@@ -3,17 +3,32 @@ import { connect } from 'react-redux'
 import { getSubjects } from '../../actions/lessons'
 
 const SidePanel = props => {
-    // temp admin mode until accounts are made
-    let adminMode = true
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  
+    useEffect(() => {
+        const handleResize = () => setScreenWidth(window.innerWidth)
+
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    })
+
     const PanelButton = (name, backHandler, addHandler, activeAddButton, type) => {
+        let stickyScreenSize = ""
+        if (screenWidth < 800 && activeAddButton) {
+            stickyScreenSize = "sticky-panel"
+        }
+
         return (
-            <div className={`PanelButton ${(activeAddButton ? "active-panel": "")}`}>
+            <div className={`PanelButton ${(activeAddButton ? "active-panel ": "")} ${stickyScreenSize}`}>
                 <div className="PanelButton-top" onClick={backHandler}>
                     <h1>{type}</h1>
                     <h5>click to go to: {name}</h5>
                 </div>
                 
-                <div className={(adminMode ? "" : "admin-panel-deactive")}>
+                <div className={(props.teacherMode ? "" : "admin-panel-deactive")}>
                     <div className="PanelButton-bottom">
                         <div onClick={addHandler}>{(activeAddButton ? "Add": "" )}</div>
                     </div>
@@ -24,6 +39,17 @@ const SidePanel = props => {
 
     return (
         <div className="PanelButton__container">
+            <form>
+                <label>
+                Teacher Mode:
+                <input
+                    name="teacherMode"
+                    type="checkbox"
+                    checked={props.teacherMode}
+                    onChange={props.teacherModeHander} />
+                </label>
+            </form>
+
 
             {PanelButton(props.subjectInfo.subject, 
                         props.subjectHandler.bind(this), 

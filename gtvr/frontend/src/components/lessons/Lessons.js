@@ -81,7 +81,7 @@ const Lessons = props => {
     <>
 
     {(!loadSingle && LessonsPage )}
-    {(loadSingle && <LessonSingle videoInfo={videoData} lessonInfo={props.lessonInfo.id} /> )}
+    {(loadSingle && <LessonSingle videoInfo={videoData} lessonInfo={props.lessonInfo.id} teacherMode={props.teacherMode} /> )}
 
     </>
   )

@@ -59,7 +59,12 @@ const LessonDashboard = props => {
       <div className="lessonDashboard__div">
 
         <div className="lessonDashboard__div-container">
-          {(props.loadSingleLesson && <Lessons lessonInfo={props.lessonData} lessonID={props.subjectInfo.lessonID} teacherName={props.subjectInfo.teacher} /> )}
+          {(props.loadSingleLesson && <Lessons 
+                                        lessonInfo={props.lessonData} 
+                                        lessonID={props.subjectInfo.lessonID} 
+                                        teacherName={props.subjectInfo.teacher}
+                                        teacherMode={props.teacherMode}
+                                         /> )}
           {(!props.loadSingleLesson && tableGenerator() )}
         </div>
       </div>

@@ -252,6 +252,12 @@ body {
 .admin-panel-deactive {
   display: none;
 }
+.sticky-panel {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+}
 .lessonDashboard__div-Main {
   grid-area: lessonAreaMain;
 }
@@ -498,4 +504,7 @@ body {
   }
 }
 @media all and (max-width: 770px) {
+  .LessonSingle__video-controls {
+    width: 95%;
+  }
 }

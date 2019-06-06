@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
+import YouTube from '@u-wave/react-youtube';
 
 import { getVideo, updateVideo } from '../../actions/lessons'
+
 
 // interval module hook
 function useInterval(callback, delay) {
@@ -56,6 +57,7 @@ const LessonSingle = props => {
   const [playerReady, setPlayerReady] = useState(false)
   const [playButton, setPlayButton] = useState(true)
   const [initLoad, setInitLoad] = useState(false)
+  const [volume, setActiveVolume] = useState(1)
 
   useEffect(() => {
     setVideoID(props.videoInfo.link)
@@ -72,9 +74,7 @@ const LessonSingle = props => {
   useInterval(() => {
     // calls the server to see if there is any differences
     props.getVideo(props.videoInfo.id);
-
-    // NOTE: for some reason need to press it twice to get it to work or refresh needs ot be set for really quick
-
+    
     if (props.video.play) {
       //console.log('interval onPlayVideo')
       player.playVideo();
@@ -89,7 +89,6 @@ const LessonSingle = props => {
       // browser settings
       player.stopVideo();
     }
-
   }, 500);
 
   const onPlayVideo = () => {
@@ -136,17 +135,30 @@ const LessonSingle = props => {
     console.log("Coming soon")
   }
 
-
-
   return (
     <div className="LessonSingle__container">
 
       <div className="LessonSingle__video-card">
-        <YouTube 
+        {/* <YouTube 
           videoId={videoIDCode}
-          //opts={videoSize}
+          volume={volume}
+          controls={false}
           onReady={onReady}
           className="LessonSingle__video-card-player"
+          playsInline={true}
+          showRelatedVideos={false}
+          // modestBranding={true}
+          //opts={videoSize}
+        /> */}
+        <YouTube 
+          video={videoIDCode}
+          volume={volume}
+          controls={false}
+          onReady={onReady}
+          className="LessonSingle__video-card-player"
+          playsInline={true}
+          showRelatedVideos={false}
+          modestBranding={true}
         />
       </div>
 
@@ -154,16 +166,24 @@ const LessonSingle = props => {
         <h1>{props.videoInfo.title}</h1>
       </div>
 
-      <div className="LessonSingle__video-controls">
-          <h3>Teacher control panel</h3>
-          <h5>This panel gives you full control on what and when your students are viewing.</h5>
-          <div className="LessonSingle__video-controls-buttons">
-            {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
-            <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
-            <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
-          </div>
-      </div>  
+      <div className={(props.teacherMode ? "LessonSingle__video-controls" : "admin-panel-deactive")}>
+        <h3>Teacher control panel</h3>
+        <h5>This panel gives you full control on what and when your students are viewing.</h5>
+        <div className="LessonSingle__video-controls-buttons">
+          {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
+          <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
+          <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
+        </div>
 
+        <input
+          type="range"
+          value={volume}
+          min={0}
+          max={1}
+          step={0.01}
+          onChange={(event) => setActiveVolume(parseFloat(event.target.value))}
+        />
+      </div>  
 
     </div>
   )

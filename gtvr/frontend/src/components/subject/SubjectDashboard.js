@@ -23,6 +23,8 @@ const SubjectDashboard = props => {
   const [loadLessonForm, setLoadLessonForm] = useState(false);
   // Lessons.js
   const [loadVideoForm, setLoadVideoForm] = useState(false);
+  // SidePanel.js
+  const [teacherMode, setTeacherMode] = useState(true)
 
   useEffect(() => {
     props.getSubjects();
@@ -162,6 +164,8 @@ const SubjectDashboard = props => {
                     formSubjectHandler={onFormHandler.bind(this)} 
                     formLessonHandler={onLessonFormHandler.bind(this)} 
                     formVideoHandler={onVideoFormHandler.bind(this)}
+                    teacherModeHander={() => setTeacherMode(!teacherMode)}
+                    teacherMode={teacherMode}
                     
         />
       </div>
@@ -184,6 +188,7 @@ const SubjectDashboard = props => {
                                 loadSingleLesson={loadSingleLesson}
                                 lessonData={lessonData}
                                 loadLesson={loadLesson}
+                                teacherMode={teacherMode}
                             /> )}
 
             {(!loadSingle && tableGenerator() )}
