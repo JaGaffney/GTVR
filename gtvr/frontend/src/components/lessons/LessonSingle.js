@@ -5,7 +5,7 @@ import YouTube from '@u-wave/react-youtube';
 
 import { getVideo, updateVideo } from '../../actions/lessons'
 
-
+console.log(YouTube)
 // interval module hook
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -120,6 +120,7 @@ const LessonSingle = props => {
   }
 
   const onReady = (event) => {
+    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
     setPlayer(event.target)
     // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
@@ -131,9 +132,20 @@ const LessonSingle = props => {
     }
   }
 
+
   const onFullScreen = () => {
-    console.log("Coming soon")
+    document.getElementById('youtubePlayer').requestFullscreen()
   }
+
+  const testHandleClick = () => {
+    let test = document.getElementById('youtubePlayer')
+    // let test = document.getElementById('widget4').getAttribute("allow")
+    // console.log(test)
+    console.log(player)
+    // player.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
+    // console.log(player.a.allow)
+  }
+
 
   return (
     <div className="LessonSingle__container">
@@ -147,8 +159,10 @@ const LessonSingle = props => {
           className="LessonSingle__video-card-player"
           playsInline={true}
           showRelatedVideos={false}
-          // modestBranding={true}
-          //opts={videoSize}
+          opts={playerVars: { 
+                allowvr: 1
+            }
+          }
         /> */}
         <YouTube 
           video={videoIDCode}
@@ -159,10 +173,11 @@ const LessonSingle = props => {
           playsInline={true}
           showRelatedVideos={false}
           modestBranding={true}
+          id="youtubePlayer"
         />
       </div>
 
-      <div className="LessonSingle__title">
+      <div className="LessonSingle__title" onClick={testHandleClick}>
         <h1>{props.videoInfo.title}</h1>
       </div>
 
