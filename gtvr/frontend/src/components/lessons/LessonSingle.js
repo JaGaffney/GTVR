@@ -171,7 +171,7 @@ const LessonSingle = props => {
           controls={true}
           onReady={onReady}
           className="LessonSingle__video-card-player"
-          playsInline={false}
+          playsInline={true}
           showRelatedVideos={false}
           modestBranding={true}
           id="youtubePlayer"
@@ -204,7 +204,7 @@ const LessonSingle = props => {
                     //www.youtube.com/watch?v=${videoIDCode}
                     #Intent;
                       scheme=vnd.youtube;
-                      package=com.google.android.youtube;
+                      package=com.google.android.youtube
                       S.browser_fallback_url=market://details?id=com.google.android.youtube;
                   end`}>Launch in App</a>     
       </div>  
