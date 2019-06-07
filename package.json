@@ -30,6 +30,7 @@
   "dependencies": {
     "@u-wave/react-youtube": "^0.6.0",
     "axios": "^0.18.0",
+    "cardboard-vr-display": "^1.0.16",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-animate-on-scroll": "^2.1.5",

@@ -5,7 +5,6 @@ import YouTube from '@u-wave/react-youtube';
 
 import { getVideo, updateVideo } from '../../actions/lessons'
 
-console.log(YouTube)
 // interval module hook
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -120,7 +119,8 @@ const LessonSingle = props => {
   }
 
   const onReady = (event) => {
-    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
+    // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
+    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; vr;"
     setPlayer(event.target)
     // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
@@ -141,6 +141,7 @@ const LessonSingle = props => {
     let test = document.getElementById('youtubePlayer')
     // let test = document.getElementById('widget4').getAttribute("allow")
     // console.log(test)
+    player.getApiInterface()
     console.log(player)
     // player.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
     // console.log(player.a.allow)
@@ -170,7 +171,7 @@ const LessonSingle = props => {
           controls={true}
           onReady={onReady}
           className="LessonSingle__video-card-player"
-          playsInline={true}
+          playsInline={false}
           showRelatedVideos={false}
           modestBranding={true}
           id="youtubePlayer"
