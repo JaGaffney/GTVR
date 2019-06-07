@@ -200,13 +200,7 @@ const LessonSingle = props => {
           onChange={(event) => setActiveVolume(parseFloat(event.target.value))}
         />
 
-        <a href={`intent:
-                    //www.youtube.com/watch?v=${videoIDCode}
-                    #Intent;
-                      scheme=vnd.youtube;
-                      package=com.google.android.youtube
-                      S.browser_fallback_url=market://details?id=com.google.android.youtube;
-                  end`}>Launch in App</a>     
+        <a target="_blank" href={`vnd.youtube:${videoIDCode}`}>Launch in App</a>     
       </div>  
 
     </div>
