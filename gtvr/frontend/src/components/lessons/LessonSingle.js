@@ -199,6 +199,8 @@ const LessonSingle = props => {
           step={0.01}
           onChange={(event) => setActiveVolume(parseFloat(event.target.value))}
         />
+
+        <a href={`intent://www.youtube.com/watch?v=${videoIDCode}#Intent;scheme=http;package=com.google.android.apps.youtube.vr;end`}>test</a>     
       </div>  
 
     </div>
