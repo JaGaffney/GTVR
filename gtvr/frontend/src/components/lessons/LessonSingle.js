@@ -32,6 +32,8 @@ const LessonSingle = props => {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [videoSize, setVideoSize] = useState({height: initHeight, width: initWidth})
+  const [currentYaw, setCurrentYaw] = useState(0)
+  const [currentPitch, setCurrentPitch] = useState(0)
 
   const aspectRatioCalc = (newWidth) => {
     let aspectWidth = newWidth / 1.5
@@ -120,7 +122,7 @@ const LessonSingle = props => {
 
   const onReady = (event) => {
     // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
-    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; vr;"
+    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope;"
     setPlayer(event.target)
     // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
@@ -132,19 +134,29 @@ const LessonSingle = props => {
     }
   }
 
-
   const onFullScreen = () => {
     document.getElementById('youtubePlayer').requestFullscreen()
   }
 
   const testHandleClick = () => {
-    let test = document.getElementById('youtubePlayer')
-    // let test = document.getElementById('widget4').getAttribute("allow")
-    // console.log(test)
-    player.getApiInterface()
+    // need to get the current yaw and pitch from the phones data somehow
     console.log(player)
-    // player.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
-    // console.log(player.a.allow)
+    let properties = player.getSphericalProperties()
+
+    player.getOptions();
+    console.log(Object.keys(properties))
+    console.log(properties)
+    setCurrentYaw(properties.yaw)
+    console.log(currentYaw)
+    // how the properties need to be displayed
+    let sphericalProperties = {
+      fov: 100.0,
+      pitch: 0.7,
+      roll: 0,
+      yaw: 333.0,
+    }
+    // passed in as a object
+    player.setSphericalProperties(sphericalProperties)
   }
 
 
@@ -167,14 +179,16 @@ const LessonSingle = props => {
         /> */}
         <YouTube 
           video={videoIDCode}
+          allowFullscreen={true}
           volume={volume}
           controls={true}
           onReady={onReady}
           className="LessonSingle__video-card-player"
-          playsInline={true}
+          playsInline={false}
           showRelatedVideos={false}
           modestBranding={true}
           id="youtubePlayer"
+          style={{ width: "800px", zoom: 0.75 }}
         />
       </div>
 
@@ -183,10 +197,16 @@ const LessonSingle = props => {
       </div>
 
       <div className={(props.teacherMode ? "LessonSingle__video-controls" : "admin-panel-deactive")}>
+
+        <h1>{currentYaw}</h1>
         <h3>Teacher control panel</h3>
         <h5>This panel gives you full control on what and when your students are viewing.</h5>
         <div className="LessonSingle__video-controls-buttons">
-          {(playButton ? <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> : <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>)}
+          {(playButton ? 
+            <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> 
+            : 
+            <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>
+          )}
           <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
           <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
         </div>
