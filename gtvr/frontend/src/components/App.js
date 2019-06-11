@@ -22,6 +22,15 @@ import { Provider } from 'react-redux'
 import store from '../store'
 
 class App extends Component {
+
+  componentDidMount() {
+    // intitiates the youtube iframe api
+    let tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
   render() {
     return (
       <Provider store={store}>

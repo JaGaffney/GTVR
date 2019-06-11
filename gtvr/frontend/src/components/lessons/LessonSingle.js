@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 // import YouTube from 'react-youtube';
-import YouTube from '@u-wave/react-youtube';
+//import YouTube from '@u-wave/react-youtube';
+import YTReady from './youtubeReady'
 
 import { getVideo, updateVideo } from '../../actions/lessons'
 
+console.log(YTReady)
 // interval module hook
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -32,14 +34,14 @@ const LessonSingle = props => {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [videoSize, setVideoSize] = useState({height: initHeight, width: initWidth})
-  const [currentYaw, setCurrentYaw] = useState(0)
-  const [currentPitch, setCurrentPitch] = useState(0)
+  // const [currentYaw, setCurrentYaw] = useState(0)
+  // const [currentPitch, setCurrentPitch] = useState(0)
 
   const aspectRatioCalc = (newWidth) => {
     let aspectWidth = newWidth / 1.5
     let newHeight = (videoSize.height / videoSize.width) * aspectWidth
-    setVideoSize({height: newHeight, width: aspectWidth})
-    document.querySelector('.LessonSingle__video-card-player').style = `width: ${videoSize.width}px; height: ${videoSize.height}px`;
+    //setVideoSize({height: newHeight, width: aspectWidth})
+    //document.querySelector('.LessonSingle__video-card-player').style = `width: ${videoSize.width}px; height: ${videoSize.height}px`;
   }
 
   useEffect(() => {
@@ -70,6 +72,22 @@ const LessonSingle = props => {
       const playInfo = { play: false, stopped: true, paused: false }
       props.updateVideo(props.videoInfo.id, playInfo)
     }
+  }, [])
+
+  var tempPlayer;
+  useEffect(() => {
+    var youtubeReady = YTReady;
+    youtubeReady.then( (YT) => {
+      console.log(YT)
+      console.log("on int load")
+      setPlayer(new YT.Player('youtubePlayer', {
+        events: {
+          'onReady': onPlayerReady
+        }
+      }) )
+      //setPlayer(tempPlayer)
+    })
+    
   }, [])
 
   useInterval(() => {
@@ -122,7 +140,8 @@ const LessonSingle = props => {
 
   const onReady = (event) => {
     // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
-    event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope;"
+    // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    console.log("got here inside onReady")
     setPlayer(event.target)
     // needs a check to make sure player exists before trying to stop
     setPlayerReady(true)
@@ -135,33 +154,57 @@ const LessonSingle = props => {
   }
 
   const onFullScreen = () => {
+    console.log(document.getElementById('youtubePlayer'))
     document.getElementById('youtubePlayer').requestFullscreen()
   }
 
   const testHandleClick = () => {
     // need to get the current yaw and pitch from the phones data somehow
     console.log(player)
-    let properties = player.getSphericalProperties()
+    // let properties = player.getSphericalProperties()
 
-    player.getOptions();
-    console.log(Object.keys(properties))
-    console.log(properties)
-    setCurrentYaw(properties.yaw)
-    console.log(currentYaw)
-    // how the properties need to be displayed
-    let sphericalProperties = {
-      fov: 100.0,
-      pitch: 0.7,
-      roll: 0,
-      yaw: 333.0,
-    }
-    // passed in as a object
-    player.setSphericalProperties(sphericalProperties)
+    // player.getOptions();
+    // console.log(Object.keys(properties))
+    // console.log(properties)
+    // setCurrentYaw(properties.yaw)
+    // console.log(currentYaw)
+    // // how the properties need to be displayed
+    // let sphericalProperties = {
+    //   fov: 100.0,
+    //   pitch: 0.7,
+    //   roll: 0,
+    //   yaw: 333.0,
+    // }
+    // // passed in as a object
+    // player.setSphericalProperties(sphericalProperties)
   }
 
+  
+
+  function onPlayerReady(event){
+    console.log("onPlayerReady fired")
+    console.log(player)
+    console.log(event)
+    //console.log(event.target)
+    // console.log(event.target)
+    //document.getElementById('youtubePlayer').style.borderColor = '#FF6D00';
+    event.target.setVolume(100);
+    event.target.playVideo();
+  }
+  
+
+  const mouseOver = (event) =>{
+    console.log(event.target)
+    console.log(player)
+    console.log("gothere mouseOver")
+    //player.playVideo();
+
+ }
 
   return (
     <div className="LessonSingle__container">
+
+
 
       <div className="LessonSingle__video-card">
         {/* <YouTube 
@@ -177,7 +220,7 @@ const LessonSingle = props => {
             }
           }
         /> */}
-        <YouTube 
+        {/* <YouTube 
           video={videoIDCode}
           allowFullscreen={true}
           volume={volume}
@@ -188,8 +231,17 @@ const LessonSingle = props => {
           showRelatedVideos={false}
           modestBranding={true}
           id="youtubePlayer"
-          style={{ width: "800px", zoom: 0.75 }}
-        />
+          onMouseOver={ () => mouseOver() }
+        /> */}
+        {/* <div id='youtubePlayer'></div> */}
+      <iframe id="youtubePlayer"
+              width="640" 
+              height="360"
+              src={`https://www.youtube.com/embed/${videoIDCode}?enablejsapi=1`}
+              frameBorder="0"
+              allowFullScreen
+              onMouseOver={ (e) => mouseOver(e) }
+      ></iframe>
       </div>
 
       <div className="LessonSingle__title" onClick={testHandleClick}>
@@ -197,8 +249,6 @@ const LessonSingle = props => {
       </div>
 
       <div className={(props.teacherMode ? "LessonSingle__video-controls" : "admin-panel-deactive")}>
-
-        <h1>{currentYaw}</h1>
         <h3>Teacher control panel</h3>
         <h5>This panel gives you full control on what and when your students are viewing.</h5>
         <div className="LessonSingle__video-controls-buttons">
