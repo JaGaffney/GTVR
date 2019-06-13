@@ -40,8 +40,8 @@ const LessonSingle = props => {
   const aspectRatioCalc = (newWidth) => {
     let aspectWidth = newWidth / 1.5
     let newHeight = (videoSize.height / videoSize.width) * aspectWidth
-    //setVideoSize({height: newHeight, width: aspectWidth})
-    //document.querySelector('.LessonSingle__video-card-player').style = `width: ${videoSize.width}px; height: ${videoSize.height}px`;
+    setVideoSize({height: newHeight, width: aspectWidth})
+    document.querySelector('.LessonSingle__video-card-player').style = `width: ${videoSize.width}px; height: ${videoSize.height}px`;
   }
 
   useEffect(() => {
@@ -74,7 +74,6 @@ const LessonSingle = props => {
     }
   }, [])
 
-  var tempPlayer;
   useEffect(() => {
     var youtubeReady = YTReady;
     youtubeReady.then( (YT) => {
@@ -85,7 +84,6 @@ const LessonSingle = props => {
           'onReady': onPlayerReady
         }
       }) )
-      //setPlayer(tempPlayer)
     })
     
   }, [])
@@ -139,7 +137,6 @@ const LessonSingle = props => {
   }
 
   const onReady = (event) => {
-    // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; vr;"
     // event.target.a.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     console.log("got here inside onReady")
     setPlayer(event.target)
@@ -183,43 +180,13 @@ const LessonSingle = props => {
 
   function onPlayerReady(event){
     console.log("onPlayerReady fired")
-    console.log(player)
-    console.log(event)
-    //console.log(event.target)
-    // console.log(event.target)
-    //document.getElementById('youtubePlayer').style.borderColor = '#FF6D00';
-    event.target.setVolume(100);
-    event.target.playVideo();
+    setPlayerReady(true)
   }
   
-
-  const mouseOver = (event) =>{
-    console.log(event.target)
-    console.log(player)
-    console.log("gothere mouseOver")
-    //player.playVideo();
-
- }
-
   return (
     <div className="LessonSingle__container">
 
-
-
       <div className="LessonSingle__video-card">
-        {/* <YouTube 
-          videoId={videoIDCode}
-          volume={volume}
-          controls={false}
-          onReady={onReady}
-          className="LessonSingle__video-card-player"
-          playsInline={true}
-          showRelatedVideos={false}
-          opts={playerVars: { 
-                allowvr: 1
-            }
-          }
-        /> */}
         {/* <YouTube 
           video={videoIDCode}
           allowFullscreen={true}
@@ -233,15 +200,17 @@ const LessonSingle = props => {
           id="youtubePlayer"
           onMouseOver={ () => mouseOver() }
         /> */}
-        {/* <div id='youtubePlayer'></div> */}
       <iframe id="youtubePlayer"
               width="640" 
               height="360"
               src={`https://www.youtube.com/embed/${videoIDCode}?enablejsapi=1`}
               frameBorder="0"
               allowFullScreen
-              onMouseOver={ (e) => mouseOver(e) }
-      ></iframe>
+              className="LessonSingle__video-card-player"
+              allow="accelerometer; encrypted-media; gyroscope"
+      >
+      </iframe>
+      
       </div>
 
       <div className="LessonSingle__title" onClick={testHandleClick}>
