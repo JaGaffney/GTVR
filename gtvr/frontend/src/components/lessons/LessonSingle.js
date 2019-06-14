@@ -3,10 +3,17 @@ import { connect } from 'react-redux'
 // import YouTube from 'react-youtube';
 //import YouTube from '@u-wave/react-youtube';
 import YTReady from './youtubeReady'
+import Lottie from 'react-lottie';
 
 import { getVideo, updateVideo } from '../../actions/lessons'
 
-console.log(YTReady)
+
+import playAnimation from '../layout/animations/play.json'
+import pauseAnimation from '../layout/animations/pause.json'
+import stopAnimation from '../layout/animations/stop.json'
+import maxAnimation from '../layout/animations/max.json'
+
+
 // interval module hook
 function useInterval(callback, delay) {
   const savedCallback = useRef();
@@ -151,7 +158,6 @@ const LessonSingle = props => {
   }
 
   const onFullScreen = () => {
-    console.log(document.getElementById('youtubePlayer'))
     document.getElementById('youtubePlayer').requestFullscreen()
   }
 
@@ -182,9 +188,27 @@ const LessonSingle = props => {
     console.log("onPlayerReady fired")
     setPlayerReady(true)
   }
+
+  const animationGenerator = (type) => {
+    return (
+      <Lottie 
+        options={{
+          loop: false,
+          autoplay: false, 
+          animationData: type,
+        }}
+      height={15}
+      width={15} 
+    />
+    )
+  }
   
   return (
     <div className="LessonSingle__container">
+      <p className="LessonSingle__container-info">
+        <div><i>*Please note that if you are using an Apple phone you will need to launch the video in the Youtube app by clicking below</i></div>
+        <div><a target="_blank" href={`vnd.youtube:${videoIDCode}`}>'Launch in App'</a></div>
+      </p>
 
       <div className="LessonSingle__video-card">
         {/* <YouTube 
@@ -217,29 +241,30 @@ const LessonSingle = props => {
         <h1>{props.videoInfo.title}</h1>
       </div>
 
+
+
+
       <div className={(props.teacherMode ? "LessonSingle__video-controls" : "admin-panel-deactive")}>
         <h3>Teacher control panel</h3>
         <h5>This panel gives you full control on what and when your students are viewing.</h5>
         <div className="LessonSingle__video-controls-buttons">
           {(playButton ? 
-            <button onClick={onPlayVideo}><i className="fa fa-play"></i></button> 
+            <button onClick={onPlayVideo}>{animationGenerator(playAnimation)}</button> 
             : 
-            <button onClick={onPauseVideo}><i className="fa fa-pause"></i></button>
+            <button onClick={onPauseVideo}>{animationGenerator(pauseAnimation)}</button>
           )}
-          <button onClick={onStopVideo}><i className="fa fa-stop"></i></button>
-          <button onClick={onFullScreen}><i className="fa fa fa-expand"></i></button>
+          <button onClick={onStopVideo}>{animationGenerator(stopAnimation)}</button>
+          <button onClick={onFullScreen}>{animationGenerator(maxAnimation)}</button>
         </div>
 
-        <input
+        {/* <input
           type="range"
           value={volume}
           min={0}
           max={1}
           step={0.01}
           onChange={(event) => setActiveVolume(parseFloat(event.target.value))}
-        />
-
-        <a target="_blank" href={`vnd.youtube:${videoIDCode}`}>Launch in App</a>     
+        /> */}    
       </div>  
 
     </div>
