@@ -231,7 +231,7 @@ const LessonSingle = props => {
               frameBorder="0"
               allowFullScreen
               className="LessonSingle__video-card-player"
-              allow="accelerometer; encrypted-media; gyroscope"
+              allow="accelerometer; encrypted-media; gyroscope; xr"
       >
       </iframe>
       
