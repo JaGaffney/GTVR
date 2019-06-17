@@ -49,7 +49,7 @@ const SidePanel = props => {
 
     const desktopView = () => {
         return ( <>
-        <form>
+            <form>
                 <label>
                 Teacher Mode (demo only):
                 <input
@@ -88,6 +88,16 @@ const SidePanel = props => {
 
     const mobileView = () => {
         return ( <>
+            <form>
+                <label>
+                Teacher Mode (demo only):
+                <input
+                    name="teacherMode"
+                    type="checkbox"
+                    checked={props.teacherMode}
+                    onChange={props.teacherModeHander} />
+                </label>
+            </form>
 
             {MobilePanelButton(props.subjectInfo.subject, 
                         props.subjectHandler.bind(this), 

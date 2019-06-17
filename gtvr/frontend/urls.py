@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('test/', views.iframeTest)
+    path('test/', views.testIndex, name='test_index'),
+    path('testiframe/', views.iframeTest)
 ]
 
 

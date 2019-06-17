@@ -41,7 +41,7 @@ const LessonSingle = props => {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [videoSize, setVideoSize] = useState({height: initHeight, width: initWidth})
-  // const [currentYaw, setCurrentYaw] = useState(0)
+  const [currentYaw, setCurrentYaw] = useState(0)
   // const [currentPitch, setCurrentPitch] = useState(0)
 
   const aspectRatioCalc = (newWidth) => {
@@ -67,11 +67,21 @@ const LessonSingle = props => {
   const [playerReady, setPlayerReady] = useState(false)
   const [playButton, setPlayButton] = useState(true)
   const [initLoad, setInitLoad] = useState(false)
-  const [volume, setActiveVolume] = useState(1)
+  // const [volume, setActiveVolume] = useState(1)
+  const [testGyro, setTestGyro] = useState("Gyro")
 
   useEffect(() => {
     setVideoID(props.videoInfo.link)
     props.getVideo(props.videoInfo.id)
+
+    var youtubeReady = YTReady;
+    youtubeReady.then( (YT) => {
+      setPlayer(new YT.Player('youtubePlayer', {
+        events: {
+          'onReady': onPlayerReady
+        }
+      }) )
+    })
     return () => {
       console.log("Cleaning up...")
 
@@ -81,17 +91,23 @@ const LessonSingle = props => {
     }
   }, [])
 
+  function handleOrientation(event) {
+    var absolute = event.absolute;
+    var alpha    = event.alpha; // z axis
+    var beta     = event.beta; // x axis
+    var gamma    = event.gamma; // y axis
+    setTestGyro(beta)
+  
+    // Do stuff with the new orientation data
+
+  }
+
   useEffect(() => {
-    var youtubeReady = YTReady;
-    youtubeReady.then( (YT) => {
-      console.log(YT)
-      console.log("on int load")
-      setPlayer(new YT.Player('youtubePlayer', {
-        events: {
-          'onReady': onPlayerReady
-        }
-      }) )
-    })
+
+    window.addEventListener("deviceorientation", handleOrientation, true);
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation)
+    }
     
   }, [])
 
@@ -164,22 +180,22 @@ const LessonSingle = props => {
   const testHandleClick = () => {
     // need to get the current yaw and pitch from the phones data somehow
     console.log(player)
-    // let properties = player.getSphericalProperties()
+    let properties = player.getSphericalProperties()
 
-    // player.getOptions();
-    // console.log(Object.keys(properties))
-    // console.log(properties)
-    // setCurrentYaw(properties.yaw)
-    // console.log(currentYaw)
-    // // how the properties need to be displayed
-    // let sphericalProperties = {
-    //   fov: 100.0,
-    //   pitch: 0.7,
-    //   roll: 0,
-    //   yaw: 333.0,
-    // }
-    // // passed in as a object
-    // player.setSphericalProperties(sphericalProperties)
+    player.getOptions();
+    console.log(Object.keys(properties))
+    console.log(properties)
+    setCurrentYaw(properties.yaw)
+    console.log(currentYaw)
+    // how the properties need to be displayed
+    let sphericalProperties = {
+      fov: 100.0,
+      pitch: 0.7,
+      roll: 0,
+      yaw: 333.0,
+    }
+    // passed in as a object
+    player.setSphericalProperties(sphericalProperties)
   }
 
   
@@ -232,6 +248,7 @@ const LessonSingle = props => {
               allowFullScreen
               className="LessonSingle__video-card-player"
               allow="accelerometer; encrypted-media; gyroscope; xr"
+              allowvr="yes"
       >
       </iframe>
       
@@ -239,10 +256,8 @@ const LessonSingle = props => {
 
       <div className="LessonSingle__title" onClick={testHandleClick}>
         <h1>{props.videoInfo.title}</h1>
+        <h2>X axis = {testGyro} .</h2>
       </div>
-
-
-
 
       <div className={(props.teacherMode ? "LessonSingle__video-controls" : "admin-panel-deactive")}>
         <h3>Teacher control panel</h3>

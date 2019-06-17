@@ -47,10 +47,11 @@ html, body, iframe {
 </body>
 <script>
   var iframe = document.createElement('iframe');
-  iframe.src = 'test.html';
+  iframe.src = "{% url 'test_index' %}";
+//   iframe.src = 'https://www.youtube.com/embed/QKm-SOOMC4c';
   iframe.width = '100%';
   iframe.height = '100%';
-  iframe.setAttribute('allow', 'gyroscope; accelerometer');
+  iframe.setAttribute('allow', 'gyroscope; accelerometer; xr');
   document.body.appendChild(iframe);
 
   // iOS, cross-origin iframes cannot access devicemotion events, so the parent
