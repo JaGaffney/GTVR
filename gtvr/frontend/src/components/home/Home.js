@@ -13,14 +13,6 @@ import vrmonster from '../layout/animations/vrmonster.json'
 
 const Home = props => {
 
-  const handleMouseEnter = (e) => {
-    e.target.classList.add('animated', 'shake')
-  }
-
-  const handleMouseLeave = (e) => {
-    e.target.classList.remove('animated', 'shake')
-  }
-
   return (
     <div className="homepage__div-Area">
       <Hero />
@@ -130,7 +122,6 @@ const Home = props => {
 
           <ScrollAnimation className="homepage_div-about-info" animateIn="fadeInLeftBig" animateOnce={true} offset={800}>
             <div className="homepage_div-about-info-container">
-            
               <div className="homepage_div-about-title">
                 <h1>About GTVR staff</h1>
                 <h3>why make the program, James background etc</h3>
@@ -141,20 +132,21 @@ const Home = props => {
               </div>
               <div className="homepage_div-about-button">
                 <NavLink to="/about" 
-                  className="homepage_div-button-link" 
-                  onMouseEnter={handleMouseEnter} 
-                  onMouseLeave={handleMouseLeave}>
+                  className="homepage_div-button-link">
                     Find out more
                 </NavLink>
-              </div>
-              
+              </div> 
             </div>
-            
-            <ScrollAnimation className="homepage_div-about-image" animateIn="fadeInLeftBig" animateOnce={true} offset={800} delay={100}>
-              <img src={'./static/frontend/img/vrgrass.jpg'}></img>
-            </ScrollAnimation>
-
           </ScrollAnimation>
+
+          <ScrollAnimation className="homepage_div-about-empty" animateIn="fadeInLeftBig" animateOnce={true} offset={800}></ScrollAnimation>
+
+          <ScrollAnimation className="homepage_div-about-image" animateIn="fadeInLeftBig" animateOnce={true} offset={800} delay={100}>
+            <div className="homepage_div-about-image-container">
+              <img src={'./static/frontend/img/vrgrass.jpg'}></img>
+            </div>
+          </ScrollAnimation>
+
         </div>
       </div>
       
@@ -209,9 +201,7 @@ const Home = props => {
               </div>
               <div className="homepage_div-blog-button">
                 <NavLink to="/blog"                   
-                  className="homepage_div-button-link" 
-                  onMouseEnter={handleMouseEnter} 
-                  onMouseLeave={handleMouseLeave}>
+                  className="homepage_div-button-link">
                     Find out more
                 </NavLink>
               </div>
