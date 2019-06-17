@@ -490,7 +490,7 @@ body {
     grid-template-areas: ". lessonAreaPanel lessonAreaMain .";
   }
   .lessonDashboard__div {
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
   .lessonDashboard__card {
     border-radius: 0;
@@ -500,7 +500,7 @@ body {
   }
   .lessonDashboard__div-container {
     padding: 0;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
   .lessonDashboard__div-Side {
     border-right: none;
@@ -552,7 +552,7 @@ body {
   }
   .lessonLesson__div-container {
     padding: 0;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     width: 90%;
   }
   .lessonLesson__card {
@@ -560,10 +560,11 @@ body {
     margin: 0;
     margin-left: 0.5rem;
     border-radius: 0;
+    margin-bottom: 1rem;
   }
   .lessonLesson__card-container {
     padding: 0;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
   .LessonSingle__container {
     flex: 1 1 100%;
