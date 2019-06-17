@@ -97,6 +97,21 @@ const LessonSingle = props => {
     var beta     = event.beta; // x axis
     var gamma    = event.gamma; // y axis
     setTestGyro(beta)
+    // let sphericalProperties = {
+    //   fov: 100.0,
+    //   pitch: 0.7,
+    //   roll: 0,
+    //   yaw: 333.0,
+    // }
+    let sphericalProperties = {
+      fov: 100.0,
+      pitch: beta,
+      roll: 0,
+      yaw: gamma,
+    }
+
+    // passed in as a object
+    player.setSphericalProperties(sphericalProperties)
   
     // Do stuff with the new orientation data
 
