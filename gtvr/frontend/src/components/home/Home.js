@@ -154,8 +154,7 @@ const Home = props => {
         <div className="homepage__div-demo-container">
 
           <div className="homepage_div-demo-info">
-            <div className="homepage_div-demo-info-container">
-            <ScrollAnimation animateIn="slideInLeft" animateOnce={true} offset={500}>
+            <ScrollAnimation animateIn="slideInLeft" animateOnce={true} offset={500} className="homepage_div-demo-info-container">
               <div className="homepage_div-demo-title">
                 <h1>Live Demo</h1>
               </div>
@@ -163,17 +162,20 @@ const Home = props => {
                 <p>Feel free to use the online demo, you can add, delete, update and use a lite version of Teacher VR.</p>
                 <p>Or you can check out the video of Teacher VR in action.</p>
               </div>
+              <div className="homepage_div-demo-button">
+                <NavLink to="/subjects" 
+                  className="homepage_div-button-link">
+                    Find out more
+                </NavLink>
+              </div> 
             </ScrollAnimation>
-            </div>
           </div>
 
-          <div className="homepage_div-demo-image">
-          <ScrollAnimation animateIn="slideInRight" animateOnce={true} offset={800}>
+          <ScrollAnimation animateIn="slideInRight" animateOnce={true} offset={800}  className="homepage_div-demo-image">
             <div className="homepage__div-demo-image-container">
               <iframe src="https://player.vimeo.com/video/315917058?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameBorder="0" allowFullScreen=""></iframe>
             </div>
-            </ScrollAnimation>
-          </div>
+          </ScrollAnimation>
           
         </div>
       </div>
@@ -192,12 +194,13 @@ const Home = props => {
           <ScrollAnimation className="homepage_div-blog-info" animateIn="slideInLeft" animateOnce={true} offset={800}>
             <div className="homepage_div-blog-info-container">
               <div className="homepage_div-blog-title">
-                <h1>Blog style thing</h1>
+                <h1>Blog</h1>
                 <h4>Created with the lastest teaching research</h4>
               </div>
-              <div className="homepage_div-about-content">
+              <div className="homepage_div-blog-content">
                 <p>Master's thesis link potentially</p>
                 <p>Other random snippets or the Abstract</p>
+                <p>In excepteur proident pariatur sunt ullamco.</p>
               </div>
               <div className="homepage_div-blog-button">
                 <NavLink to="/blog"                   

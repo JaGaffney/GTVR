@@ -12,16 +12,14 @@ export class Footer extends Component {
           <p className="footer-links">
             <Link to="/">Home</Link>
             ·
-            <Link to="/lessons">Lessons</Link>
-            ·
-            <Link to="/about">About</Link>
+            <Link to="/subjects">Demp</Link>
             ·
             <Link to="/case">Case Study</Link>
             ·
             <Link to="/contact">Contact</Link>
           </p>
 
-          <p className="footer-company-name">Great Teacher VR &copy; 2019</p>
+          <p className="footer-company-name">Teacher VR &copy; 2019</p>
         </div>
 
         <div className="footer-center">
@@ -39,7 +37,7 @@ export class Footer extends Component {
 
         <div className="footer-right">
           <p className="footer-company-about">
-            <span>About Great Teacher VR</span>
+            <span>About Teacher VR</span>
             Bringing VR control back to the teachers
           </p>
 
