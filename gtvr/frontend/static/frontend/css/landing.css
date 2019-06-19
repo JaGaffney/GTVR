@@ -659,11 +659,13 @@
     grid-column: 1;
     grid-row: 3;
     height: 100%;
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-content: center;
-    align-items: center;
+  }
+  .homepage_div-blog-image img {
+    width: 96%;
   }
   .homepage_div-blog-info {
     grid-column: 1;

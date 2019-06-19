@@ -28,7 +28,6 @@
     "webpack-cli": "^3.3.4"
   },
   "dependencies": {
-    "@u-wave/react-youtube": "^0.6.0",
     "axios": "^0.18.1",
     "cardboard-vr-display": "^1.0.16",
     "prop-types": "^15.7.2",
