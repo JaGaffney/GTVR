@@ -5,11 +5,12 @@ const Contact = props => {
     <div className="contact__div-Area">
       <div className="contact__div">
           <div className="contact__div-title">
-            <h1>Contact</h1>
-            <h4>Add some generic tag line here</h4>
+            <h1>Contact page</h1>
+            <h4>This page is coming soon, for any inquired please conact me 
+              on my website <a href="https//jongaffney.tech">jongaffney.tech</a> or email me</h4>
           </div>
 
-          <div className="contact__div-body">
+          {/* <div className="contact__div-body">
           <p>Feel free to contact us below</p>
           
           <div className="contact__div-form">
@@ -47,6 +48,7 @@ const Contact = props => {
           </div>
 
           </div>
+       */}
       </div>
       
     </div>

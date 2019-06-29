@@ -12,9 +12,9 @@ export class Footer extends Component {
           <p className="footer-links">
             <Link to="/">Home</Link>
             ·
-            <Link to="/subjects">Demp</Link>
+            <Link to="/subjects">Demo</Link>
             ·
-            <Link to="/case">Case Study</Link>
+            <Link to="/case">Research</Link>
             ·
             <Link to="/contact">Contact</Link>
           </p>
@@ -25,7 +25,7 @@ export class Footer extends Component {
         <div className="footer-center">
           <div>
             <i className="fa fa-phone"></i>
-            <p>phone number here</p>
+            <p>000 000 000</p>
           </div>
 
           <div>
