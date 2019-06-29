@@ -24,12 +24,12 @@ export class Footer extends Component {
 
         <div className="footer-center">
           <div>
-            <i className="fa fa-phone"></i>
+            <i>Ph</i>
             <p>000 000 000</p>
           </div>
 
           <div>
-            <i className="fa fa-envelope"></i>
+            <i>Em</i>
             <p><a href="">jon.adam.gaffney@gmail.com</a></p>
           </div>
 
@@ -43,10 +43,10 @@ export class Footer extends Component {
 
           <div className="footer-icons">
 
-            <a href="#"><i className="fa fa-facebook"></i></a>
-            <a href="#"><i className="fa fa-twitter"></i></a>
-            <a href="https://trello.com/b/C18HgKfU/great-teacher-virtual-reality"><i className="fa fa-trello"></i></a>
-            <a href="https://github.com/JaGaffney/GTVR/"><i className="fa fa-github"></i></a>
+            <a href="#"><i>Fa</i></a>
+            <a href="#"><i>Tw</i></a>
+            <a href="https://trello.com/b/C18HgKfU/great-teacher-virtual-reality"><i>Tr</i></a>
+            <a href="https://github.com/JaGaffney/GTVR/"><i>Gi</i></a>
             <a href="https://jongaffney.tech/"><i>{'{ '}j</i></a>
 
           </div>
