@@ -173,7 +173,7 @@ const Home = props => {
 
           <ScrollAnimation animateIn="slideInRight" animateOnce={true} offset={800}  className="homepage_div-demo-image">
             <div className="homepage__div-demo-image-container">
-              <iframe src="https://player.vimeo.com/video/315917058?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameBorder="0" allowFullScreen=""></iframe>
+              <iframe src="https://player.vimeo.com/video/344548296?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameBorder="0" allowFullScreen=""></iframe>
             </div>
           </ScrollAnimation>
           
