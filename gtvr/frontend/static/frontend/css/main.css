@@ -54,6 +54,20 @@ body {
 .area__footer {
   grid-area: footerArea;
 }
+.btn {
+  width: 100px;
+  height: 3rem;
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  border: solid 3px white;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: var(--primary-color-comp);
+  color: black;
+  border: solid 3px var(--primary-color);
+}
 .error-input {
   border: 2px solid red;
   border-radius: 4px;
@@ -199,13 +213,13 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 90%;
-  height: 80vh;
+  height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .PanelButton {
-  flex: 1;
+  flex: 1 1 150px;
   display: flex;
   flex-wrap: wrap;
   min-height: 10rem;
@@ -274,7 +288,7 @@ body {
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  flex: 1 1 300px;
+  flex: 0 1 380px;
   background-color: var(--quad-color-comp);
   cursor: pointer;
   margin: 1rem;
