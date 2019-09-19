@@ -1,5 +1,8 @@
 # INFO #
 
+### online demo, db is wiped often so don't save anything important to it ###
+https://gtvr.pythonanywhere.com/#/
+
 ## Teacher VR (prev Great Teacher VR) ##
 ---------------------
 A VR teaching website created with React and Django to help teachers control their classroom VR experiences. Designed in collaboration with a Master's student teaching at Kangan University in order to solve their current teaching needs.
