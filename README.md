@@ -19,5 +19,5 @@ One of the main areas of development on this project was creating working VR cro
 * Django with Django rest
 * SQL lite to start then move to PostgrSQL later
 
-### Mobile Development###
-*Looking into react Native development in order to accommodate student requests after initial test.
+### Mobile Development ###
+* Looking into react Native development in order to accommodate student requests after initial test.
