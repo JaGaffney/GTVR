@@ -209,10 +209,7 @@ const Home = props => {
                                 </p>
                             </div>
                             <div className="homepage_div-blog-button">
-                                <NavLink
-                                    to="/case"
-                                    className="homepage_div-button-link comingSoon"
-                                >
+                                <NavLink to="/case" className="homepage_div-button-link">
                                     Find out more
                                 </NavLink>
                             </div>
