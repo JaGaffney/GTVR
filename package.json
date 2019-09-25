@@ -34,6 +34,7 @@
     "react": "^16.8.6",
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.7.0",
     "react-iframe": "^1.8.0",
     "react-lazy-hero": "^2.0.0",
     "react-leaf-carousel": "^1.2.2",

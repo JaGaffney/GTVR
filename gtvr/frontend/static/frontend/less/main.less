@@ -11,17 +11,18 @@ body {
 }
 
 // main app ///////////////////////////////////////////////////////////////////////////////
-.App{
+.App {
     .reset;
     display: grid;
     background-color: @primary-color-comp;
     color: @dark-color;
     grid-template-columns: 100%;
     grid-template-rows: auto minmax(55rem; auto) auto;
-    grid-template-areas:    "headerArea" 
-                            "mainArea"
-                            "footerArea";
-    grid-gap: 5px;           
+    grid-template-areas:
+        "headerArea"
+        "mainArea"
+        "footerArea";
+    grid-gap: 5px;
 }
 
 .backdrop {
@@ -33,22 +34,28 @@ body {
     background: rgba(0; 0; 0; 0.75);
     pointer-events: none;
 }
+.seperator {
+    height: 2px;
+    width: 90%;
+    margin: 20px 5%;
+    background: var(--alt-dark-color);
+}
 
 // Setting grid areas ///////////////////////////////////////////////////////////////////////////////
-.area__header{
+.area__header {
     grid-area: headerArea;
 }
 
-.area__main{
+.area__main {
     grid-area: mainArea;
 }
 
-.area__footer{
+.area__footer {
     grid-area: footerArea;
 }
 
 // Generics
-.btn{
+.btn {
     width: 100px;
     height: 3rem;
     font-size: 1.5rem;
@@ -57,7 +64,7 @@ body {
     border: solid 3px white;
     cursor: pointer;
 }
-.btn:hover{
+.btn:hover {
     background-color: @primary-color-comp;
     color: black;
     border: solid 3px @primary-color;
@@ -67,7 +74,7 @@ body {
     border: 2px solid red;
     border-radius: 4px;
 }
-  .error-text {
+.error-text {
     margin: 0.25em 0 0 0;
     padding: 0;
     color: red;
@@ -84,7 +91,7 @@ body {
     background-color: currentColor;
 }
 .arrow-left.icon:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 1px;
     top: -5px;
@@ -93,7 +100,7 @@ body {
     border-top: solid 1px currentColor;
     border-right: solid 1px currentColor;
     -webkit-transform: rotate(-135deg);
-            transform: rotate(-135deg);
+    transform: rotate(-135deg);
 }
 .plus.icon {
     color: #000;
@@ -102,100 +109,98 @@ body {
     margin-top: 10px;
 }
 .plus.icon:before {
-    content: '';
+    content: "";
     position: absolute;
     width: 15px;
     height: 1px;
     background-color: currentColor;
 }
 .plus.icon:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 15px;
     height: 1px;
     background-color: currentColor;
     -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 // CASE pages ///////////////////////////////////////////////////////////////////////////////
-.case__div-Area{
+.case__div-Area {
     width: 100%;
     min-height: 50rem;
     background-color: @quad-color;
     padding-bottom: 2rem;
     padding-top: 5rem;
-}
-.case__div-carousel{
-    background-color: @quad-color-comp;
-    border: solid 2px @primary-color;
-    border-radius: 0 30px 0 30px;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-template-rows: 10% 90%;
-    grid-template-areas:    "caseTitle caseImage" 
-                            "caseBody caseImage";
-    min-height: 60vh;
-    img{
-        border: solid 2px @primary-color;
-        background-color: @quad-color;
-        height: 90%;
-        width: 90%;
+    strong {
+        color: var(--primary-color);
     }
 }
-.case__div-carousel-image{
-    padding-top: 5%;
-    padding-right: 5%;
-    padding-bottom: 5%;
-    grid-area: caseImage;
-    img{
-        border-radius:30px 0 30px 0;
+.case__div-container {
+    margin: 0 6rem;
+}
+.case__div-title {
+    h1 {
+        font-size: 3rem;
+        color: var(--primary-color);
+    }
+    h3 {
+        font-size: 1.5rem;
     }
 }
-.case__div-carousel-title{
-    padding-left: 9%;
-    grid-area: caseTitle;
+.case__div-content {
+    p {
+        font-size: 1.3rem;
+    }
+    h3 {
+        font-size: 2rem;
+        color: var(--secondary-color);
+    }
+    img {
+        max-width: 70vw;
+    }
 }
-.case__div-carousel-body{
-    padding-left: 3%;
-    grid-area: caseBody;
+.case__div-references {
+}
+.case__div-appendices {
 }
 
 // Contact page ///////////////////////////////////////////////////////////////////////////////
-.contact__div-Area{
+.contact__div-Area {
     width: 100%;
     min-height: 50rem;
     background-color: @quad-color;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
-.contact__div{
+.contact__div {
     display: grid;
     grid-template-columns: 10% 80% 10%;
     grid-template-rows: 15% 25% 60%;
-    grid-template-areas:    ". contactTitle ." 
-                            ". contactBody ." 
-                            ". contactForm ."; 
+    grid-template-areas:
+        ". contactTitle ."
+        ". contactBody ."
+        ". contactForm .";
     min-height: 90vh;
 }
-.contact__div-title{
+.contact__div-title {
     grid-area: contactTitle;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
-.contact__div-body{
+.contact__div-body {
     grid-area: contactBody;
     padding-bottom: 2rem;
     padding-top: 5rem;
 }
-.contact__div-form{
+.contact__div-form {
     grid-area: contactForm;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
 
 // LESSONS page ///////////////////////////////////////////////////////////////////////////////
-.lessonDashboard__div-Area{
+.lessonDashboard__div-Area {
     width: 100%;
     grid-area: mainSection;
     background-color: @quad-color;
@@ -203,10 +208,10 @@ body {
     grid-gap: 1rem;
     grid-template-columns: 1% 20% 74% 5%;
     grid-template-rows: 100%;
-    grid-template-areas: ". lessonAreaPanel lessonAreaMain ."; 
+    grid-template-areas: ". lessonAreaPanel lessonAreaMain .";
 }
 
-.lessonDashboard__div-Side{
+.lessonDashboard__div-Side {
     grid-area: lessonAreaPanel;
     display: flex;
     flex-direction: column;
@@ -215,10 +220,10 @@ body {
     padding-right: 1rem;
 }
 
-.PanelButton__container{
+.PanelButton__container {
     // position: -webkit-sticky; /* Safari */
     // position: sticky;
-    // top: 0; 
+    // top: 0;
     margin-top: 1rem;
     margin-bottom: 1rem;
     width: 90%;
@@ -227,7 +232,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-.PanelButton{
+.PanelButton {
     flex: 1 1 150px;
     display: flex;
     flex-wrap: wrap;
@@ -237,30 +242,30 @@ body {
     border-radius: 30px;
     background-color: @quad-color-comp;
     background: rgba(25, 43, 148, 0.233);
-    opacity: 0.5; 
+    opacity: 0.5;
     text-align: center;
     margin-bottom: 1rem;
-    &:hover{
+    &:hover {
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
         opacity: 0.95;
-    }; 
+    }
 }
 .PanelButton > * {
     flex: 1 1 90%;
 }
-.PanelButton-top{
+.PanelButton-top {
     cursor: pointer;
-    h1{
+    h1 {
         width: 100%;
         margin-block-end: 0;
     }
-    h5{
+    h5 {
         width: 100%;
         font-size: 1rem;
     }
 }
-.PanelButton-bottom{
+.PanelButton-bottom {
     border-top: solid 5px @primary-color;
     justify-content: center;
     align-content: center;
@@ -268,35 +273,34 @@ body {
     font-size: 2rem;
     cursor: pointer;
 }
-.active-panel{
+.active-panel {
     background-color: @quad-color-comp;
     opacity: 1;
 }
-.admin-panel-deactive{
+.admin-panel-deactive {
     display: none;
 }
 // .sticky-panel{
 //     position: -webkit-sticky; /* Safari */
 //     position: sticky;
-//     top: 0; 
+//     top: 0;
 // }
 
-
-.lessonDashboard__div-Main{
+.lessonDashboard__div-Main {
     grid-area: lessonAreaMain;
 }
 
-.lessonDashboard__div{
+.lessonDashboard__div {
     width: 100%;
 }
 
-.lessons_div{
+.lessons_div {
     min-height: 30rem;
     background-color: @quad-color;
 }
 
 .lessonDashboard__div-container,
-.lessonLesson__div-container{
+.lessonLesson__div-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -304,7 +308,7 @@ body {
     margin-top: 1rem;
 }
 
-.lessonDashboard__card{
+.lessonDashboard__card {
     padding: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0;0;0;0.2);
     transition: 0.3s;
@@ -315,22 +319,22 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
-    border-radius: 30px 0 30px 30PX;
-    &:hover{
+    border-radius: 30px 0 30px 30px;
+    &:hover {
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
-    }   
-    img{
+    }
+    img {
         border-radius: 0 30px 0 0;
     }
 }
 
 .lessonDashboard__card-container,
-.lessonLesson__card-container{
+.lessonLesson__card-container {
     padding: 2px 16px;
 }
 
-.lessonLesson__card{
+.lessonLesson__card {
     padding: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0;0;0;0.2);
     transition: 0.3s;
@@ -339,14 +343,14 @@ body {
     cursor: pointer;
     margin: 1rem;
     border: solid 5px @primary-color;
-    border-radius: 30px 0 30px 30PX;
-    &:hover{
+    border-radius: 30px 0 30px 30px;
+    &:hover {
         box-shadow: 0 8px 16px 0 rgba(0;0;0;0.2);
         background-color: @secondary-color-comp;
-    } 
+    }
 }
 
-.lessonDashboard__card-deleteBtn{
+.lessonDashboard__card-deleteBtn {
     float: right;
     cursor: pointer;
     border: 0;
@@ -355,31 +359,31 @@ body {
     font-weight: bold;
     color: @primary-color;
     background-color: inherit;
-    &:hover{
+    &:hover {
         color: red;
     }
 }
 
-.lesson-img{
+.lesson-img {
     background-color: black;
     height: 12rem;
     width: 100%;
     border: solid 3px @primary-color;
     border-radius: 0 30px 0 0;
-    img{
+    img {
         height: 12rem;
         width: 100%;
     }
 }
 
-.temp-div-youtube{
+.temp-div-youtube {
     background-color: black;
     height: 120px;
     width: 213px;
 }
 
 // LessonSingle.js
-.LessonSingle__container{
+.LessonSingle__container {
     background-color: @quad-color-comp;
     border: solid 3px @primary-color;
     min-height: 50rem;
@@ -390,19 +394,19 @@ body {
     justify-content: space-evenly;
     text-align: center;
 }
-.LessonSingle__container-info{
+.LessonSingle__container-info {
     order: 1;
     flex: 1 1 100%;
     color: grey;
     justify-content: center;
 }
 
-.LessonSingle__title{
+.LessonSingle__title {
     order: 2;
     flex: 1 1 100%;
     font-size: 1.5rem;
 }
-.LessonSingle__video-controls{
+.LessonSingle__video-controls {
     background-color: @quad-color;
     order: 3;
     width: 30%;
@@ -415,13 +419,13 @@ body {
     border-radius: 30px;
     padding-bottom: 1rem;
 }
-.LessonSingle__video-controls-buttons{
+.LessonSingle__video-controls-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 25%;
     padding-bottom: 0.5rem;
-    button{ 
+    button {
         cursor: pointer;
         background-color: @quad-color-comp;
         border: solid 2px @primary-color;
@@ -429,25 +433,24 @@ body {
         color: black;
         height: 2rem;
         min-width: 30%;
-        &:hover{
+        &:hover {
             background-color: @primary-color-comp;
         }
     }
 }
-.LessonSingle__video-card{
+.LessonSingle__video-card {
     order: 4;
     align-content: center;
     background-color: black;
     border: solid 4px @primary-color-comp;
 }
-.LessonSingle__video-card-player{
+.LessonSingle__video-card-player {
     width: 100%;
     height: 100%;
 }
 
-
 // Modal ///////////////////////////////////////////////////////////////////////////////
-.modalForm-div{
+.modalForm-div {
     z-index: 1000;
     width: 50%;
     height: 40rem;
@@ -460,25 +463,25 @@ body {
     background-color: @quad-color;
 }
 
-.modalForm-container{
+.modalForm-container {
     width: 100%;
     border: solid 5px @primary-color-comp;
     justify-content: center;
 }
 
-.form-group{
+.form-group {
     justify-content: center;
     border: none;
     padding: 0.5rem;
-    label{
+    label {
         float: left;
         text-align: right;
         margin-right: 15px;
-        width: 100px;   
+        width: 100px;
         height: 2rem;
         font-size: 1.5rem;
     }
-    input{
+    input {
         width: 100%;
         height: 2rem;
         font-size: 1.5rem;
@@ -486,16 +489,16 @@ body {
 }
 
 // close button ///////////////////////////////////////////////////////////////////////////////
-.close-container{
+.close-container {
     position: absolute;
     right: 32px;
     top: 32px;
     width: 32px;
     height: 32px;
     cursor: pointer;
-  }
-  
-.leftright{
+}
+
+.leftright {
     height: 4px;
     width: 50px;
     position: absolute;
@@ -503,10 +506,10 @@ body {
     background-color: @primary-color-comp;
     border-radius: 2px;
     transform: rotate(45deg);
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
 }
 
-.rightleft{
+.rightleft {
     height: 4px;
     width: 50px;
     position: absolute;
@@ -514,64 +517,64 @@ body {
     background-color: @primary-color-comp;
     border-radius: 2px;
     transform: rotate(-45deg);
-    transition: all .3s ease-in;
+    transition: all 0.3s ease-in;
 }
 
-.close{
+.close {
     margin: 60px 0 0 5px;
     position: absolute;
 }
 
-.close-container:hover .leftright{
+.close-container:hover .leftright {
     transform: rotate(-45deg);
     background-color: @primary-color;
 }
-.close-container:hover .rightleft{
+.close-container:hover .rightleft {
     transform: rotate(45deg);
     background-color: @primary-color;
 }
 
-
 // Media Queriers ///////////////////////////////////////////////////////////////////////////////
-@media all and (max-width: 1000px){
-    .case__div-carousel{
+@media all and (max-width: 1000px) {
+    .case__div-carousel {
         grid-template-columns: 100%;
         grid-template-rows: 10% 30% 60%;
-        grid-template-areas:    "caseTitle" 
-                                "caseBody"
-                                "caseImage";
+        grid-template-areas:
+            "caseTitle"
+            "caseBody"
+            "caseImage";
         min-height: 100vh;
     }
 
-    .lessonDashboard__div-Area{
+    .lessonDashboard__div-Area {
         display: grid;
         grid-gap: 0.5rem;
         grid-template-columns: auto 20% 1fr auto;
         grid-template-rows: 1fr;
-        grid-template-areas: ". lessonAreaPanel lessonAreaMain ."; 
+        grid-template-areas: ". lessonAreaPanel lessonAreaMain .";
     }
-    .lessonDashboard__div{
+    .lessonDashboard__div {
         margin-bottom: 1rem;
     }
-    .lessonDashboard__card{
+    .lessonDashboard__card {
         border-radius: 0;
     }
 
-    .lessonDashboard__div-Main{
+    .lessonDashboard__div-Main {
         border-left: solid 5px @primary-color-comp;
     }
-    .lessonDashboard__div-container{
+    .lessonDashboard__div-container {
         padding: 0;
         margin-bottom: 1rem;
     }
-    .lessonDashboard__div-Side{
+    .lessonDashboard__div-Side {
         // flex: 1 1;
         border-right: none;
         border-bottom: none;
         padding-right: 0;
     }
 
-    .PanelButton__container{
+    .PanelButton__container {
         max-height: 50%;
         padding: 0;
         width: 100%;
@@ -579,7 +582,7 @@ body {
         flex-direction: column;
         justify-content: flex-start;
     }
-    .PanelButton{
+    .PanelButton {
         flex: 1;
         display: flex;
         flex-wrap: wrap;
@@ -591,55 +594,59 @@ body {
         border-radius: 0;
         background-color: @quad-color-comp;
         background: rgba(25, 43, 148, 0.233);
-        opacity: 0.5; 
+        opacity: 0.5;
         text-align: center;
-        margin-bottom: 1rem;   
+        margin-bottom: 1rem;
     }
-    .PanelButton-top{
+    .PanelButton-top {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-content: center;
         align-items: center;
-        span{
+        span {
             font-size: 1.2rem;
         }
-        .PanelButton-top-name{
+        .PanelButton-top-name {
             font-size: 0.8rem;
             text-emphasis: italic;
             padding-top: 1.5rem;
         }
     }
-    .active-panel{
+    .active-panel {
         background-color: @quad-color-comp;
         opacity: 1;
     }
 
-    .lessonLesson__div-container{
+    .lessonLesson__div-container {
         padding: 0;
         margin-bottom: 1rem;
         width: 90%;
     }
-    .lessonLesson__card{
+    .lessonLesson__card {
         width: 100%;
         margin: 0;
         margin-left: 0.5rem;
         border-radius: 0;
         margin-bottom: 1rem;
     }
-    .lessonLesson__card-container{
+    .lessonLesson__card-container {
         padding: 0;
         margin-bottom: 1rem;
     }
 
-
-    .LessonSingle__container{
+    .LessonSingle__container {
         //min-height: 10rem;
         flex: 1 1 100%;
     }
 
-    .LessonSingle__video-controls-buttons{
+    .LessonSingle__video-controls-buttons {
         width: 100%;
+    }
+
+    .case__div-container {
+        text-align: left;
+        margin: 0 2rem;
     }
 }
 
@@ -652,8 +659,7 @@ body {
     // .lessonDashboard__card{
     //     width: 100%;
     // }
-    .LessonSingle__video-controls{
+    .LessonSingle__video-controls {
         width: 95%;
     }
 }
-

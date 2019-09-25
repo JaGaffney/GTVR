@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import Lottie from "react-lottie";
-import ScrollAnimation from "react-animate-on-scroll";
 
 import Hero from "./Hero";
-import SimpleSlider from "../layout/Carousel";
-
-// lotties animations
-import chevronright from "../layout/animations/chevronright.json";
-import book from "../layout/animations/book.json";
-import vrmonster from "../layout/animations/vrmonster.json";
 
 const Home = props => {
+    const [minHeight, setMinHeight] = useState("95vh");
+
     return (
         <div className="homepage__div-Area">
-            <Hero />
+            <Hero minHeight={minHeight} />
 
             <div className="homepage__div-main">
                 <div className="homepage__div-main-container">
                     <div className="homepage__div-main-image">
-                        <div className="homepage__div-main-image-container">
+                        {/* <div className="homepage__div-main-image-container">
                             <img
                                 src={"https://unsplash.it/2000/1050"}
                                 style={{
@@ -30,45 +24,51 @@ const Home = props => {
                             ></img>
                             <h3>about </h3>
                             <p>Us.</p>
-                        </div>
+                        </div> */}
 
                         <div className="homepage__div-main-image-container">
-                            <img
-                                src={"https://unsplash.it/2000/1057"}
-                                style={{
-                                    backgroundColor: "black",
-                                    height: "25rem",
-                                    width: "20rem"
-                                }}
-                            ></img>
+                            <Link to="/subjects" style={{ zIndex: 10 }}>
+                                <img
+                                    src="./static/frontend/img/demo.jpg"
+                                    style={{
+                                        backgroundColor: "black",
+                                        height: "25rem",
+                                        width: "20rem"
+                                    }}
+                                ></img>
+                            </Link>
                             <h3>demo</h3>
                             <p>A live action demo of what Teacher VR offers.</p>
                         </div>
 
                         <div className="homepage__div-main-image-container">
-                            <img
-                                src={"https://unsplash.it/2000/1051"}
-                                style={{
-                                    backgroundColor: "black",
-                                    height: "25rem",
-                                    width: "20rem"
-                                }}
-                            ></img>
-                            <h3>Research </h3>
+                            <Link to="/case" style={{ zIndex: 10 }}>
+                                <img
+                                    src="./static/frontend/img/research.jpg"
+                                    style={{
+                                        backgroundColor: "black",
+                                        height: "25rem",
+                                        width: "20rem"
+                                    }}
+                                ></img>
+                            </Link>
+                            <h3>research </h3>
                             <p>VR teaching impacts on student development.</p>
                         </div>
 
-                        <div className="homepage__div-main-image-container">
-                            <img
-                                src={"https://unsplash.it/2000/1052"}
-                                style={{
-                                    backgroundColor: "black",
-                                    height: "25rem",
-                                    width: "20rem"
-                                }}
-                            ></img>
-                            <h3>Testimonials</h3>
-                            <p>See what people are saying about us.</p>
+                        <div className="homepage__div-main-image-container comingSoon">
+                            <Link to="/" style={{ zIndex: 10 }}>
+                                <img
+                                    src="./static/frontend/img/development.jpg"
+                                    style={{
+                                        backgroundColor: "black",
+                                        height: "25rem",
+                                        width: "20rem"
+                                    }}
+                                ></img>
+                            </Link>
+                            <h3>download the app</h3>
+                            <p>Andriod and iOS version coming soon</p>
                         </div>
                     </div>
 
@@ -91,79 +91,36 @@ const Home = props => {
                             <p>
                                 Teacher VR was designed to solve the real world issue of
                                 teachers being unable to teacher a VR lesson where all
-                                students are in sync with each other. Teacher VR solves
-                                this issue by allowing the teacher to have full control on
-                                when, where and how the Virtual reality experience flows.
-                                Teacher VR has been developed with the latest website
-                                technology created by Facebook and can either be
-                                incorporated into your existing website or you can use the
-                                Teacher VR domain.
+                                students are in sync with each other.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* <ScrollAnimation animateIn="flipInX" animateOnce={true} offset={800}>
-      <div className="homepage__div-animations">
-        <div>
-          <Lottie 
-            options={{
-              loop: true,
-              autoplay: true, 
-              animationData: book,
-            }}
-            height={300}
-            width={300} 
-          />
-        </div>
-        <div>
-          <Lottie 
-            options={{
-              loop: true,
-              autoplay: true, 
-              animationData: chevronright,
-            }}
-            height={300}
-            width={300} 
-          />
-        </div>
-        <div>
-          <Lottie 
-            options={{
-              loop: true,
-              autoplay: true, 
-              animationData: vrmonster,
-            }}
-            height={300}
-            width={300} 
-          />
-        </div>
-      </div>
-      </ScrollAnimation> */}
-
             <div className="homepage__div-about">
                 <div className="homepage__div-about-container">
                     <div className="homepage_div-about-info">
                         <div className="homepage_div-about-info-container">
                             <div className="homepage_div-about-title">
-                                <h1>About GTVR staff</h1>
-                                <h3>why make the program, James background etc</h3>
+                                <h1>Purpose of Teacher VR</h1>
+                                <h3></h3>
                             </div>
                             <div className="homepage_div-about-content">
                                 <p>
-                                    Dolor amet dolore magna ipsum. Ipsum do occaecat
-                                    adipisicing dolor minim tempor consequat dolore est
-                                    duis lab
-                                </p>
-                                <p>
-                                    Dolor amet dolore magna ipsum. Ipsum do occaecat
-                                    adipisicing dolor minim tempor consequat dolore est
-                                    duis lab
+                                    VR teacher was created in order to allow teachers to
+                                    control their classroom VR experience. This is
+                                    achieved by the teacher to creating lesson plans in
+                                    advance which students can easily gain access no
+                                    matter their English or technological skill level to
+                                    allow for simultaneous learning.
                                 </p>
                             </div>
                             <div className="homepage_div-about-button">
-                                <NavLink to="/about" className="homepage_div-button-link">
+                                <NavLink
+                                    // to="/about"
+                                    className="homepage_div-button-link comingSoon"
+                                >
                                     Find out more
                                 </NavLink>
                             </div>
@@ -174,7 +131,7 @@ const Home = props => {
 
                     <div className="homepage_div-about-image">
                         <div className="homepage_div-about-image-container">
-                            <img src={"./static/frontend/img/vrgrass.jpg"}></img>
+                            <img src="./static/frontend/img/vr-women.jpg"></img>
                         </div>
                     </div>
                 </div>
@@ -219,28 +176,43 @@ const Home = props => {
                     </div>
                 </div>
             </div>
-
+            {/* 
             <div className="homepage__div-testimonial">
                 <div className="homepage__div-testimonial-container">
                     <SimpleSlider />
                 </div>
-            </div>
+            </div> */}
 
             <div className="homepage__div-blog">
                 <div className="homepage__div-blog-container">
                     <div className="homepage_div-blog-info">
                         <div className="homepage_div-blog-info-container">
                             <div className="homepage_div-blog-title">
-                                <h1>Blog</h1>
-                                <h4>Created with the lastest teaching research</h4>
+                                <h1>Research</h1>
+                                <h4>
+                                    'Virtual reality: Encouraging more personalised
+                                    responses in discussions' 2019, James Hallal and
+                                    Joseph Lewis.
+                                </h4>
                             </div>
                             <div className="homepage_div-blog-content">
-                                <p>Master's thesis link potentially</p>
-                                <p>Other random snippets or the Abstract</p>
-                                <p>In excepteur proident pariatur sunt ullamco.</p>
+                                <p>
+                                    "Students found that VR texts were engaging and
+                                    allowed them to connect more deeply with the topic.
+                                    Throughout the research, students responded positively
+                                    to the ‘real-life’ experience. An 8% median increase
+                                    was seen in the engaging and responding performance
+                                    indicator. Improvements are also evident in the
+                                    discourse analysis, which created a more authentic
+                                    discussion, and the focus groups, which allowed the
+                                    students to provide feedback about their experience."
+                                </p>
                             </div>
                             <div className="homepage_div-blog-button">
-                                <NavLink to="/blog" className="homepage_div-button-link">
+                                <NavLink
+                                    to="/case"
+                                    className="homepage_div-button-link comingSoon"
+                                >
                                     Find out more
                                 </NavLink>
                             </div>
@@ -248,7 +220,7 @@ const Home = props => {
                     </div>
 
                     <div className="homepage_div-blog-image">
-                        <img src={"https://unsplash.it/2000/1057"}></img>
+                        <img src="./static/frontend/img/vr-classroom.jpg"></img>
                     </div>
                 </div>
             </div>
