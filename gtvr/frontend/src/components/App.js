@@ -14,7 +14,6 @@ import Footer from "./layout/Footer";
 // pages
 import Home from "./home/Home";
 import Case from "./common/Case";
-import Contact from "./common/Contact";
 import SubjectDashboard from "./subject/SubjectDashboard";
 
 // Redux store
@@ -43,7 +42,6 @@ class App extends Component {
                             <Switch>
                                 <Route exact path="/" component={Home} />
                                 <Route exact path="/case" component={Case} />
-                                <Route exact path="/contact" component={Contact} />
                                 <Route
                                     exact
                                     path="/subjects"

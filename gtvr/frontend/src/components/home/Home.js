@@ -28,14 +28,7 @@ const Home = props => {
 
                         <div className="homepage__div-main-image-container">
                             <Link to="/subjects" style={{ zIndex: 10 }}>
-                                <img
-                                    src="./static/frontend/img/demo.jpg"
-                                    style={{
-                                        backgroundColor: "black",
-                                        height: "25rem",
-                                        width: "20rem"
-                                    }}
-                                ></img>
+                                <img src="./static/frontend/img/demo.jpg"></img>
                             </Link>
                             <h3>demo</h3>
                             <p>A live action demo of what Teacher VR offers.</p>
@@ -43,14 +36,7 @@ const Home = props => {
 
                         <div className="homepage__div-main-image-container">
                             <Link to="/case" style={{ zIndex: 10 }}>
-                                <img
-                                    src="./static/frontend/img/research.jpg"
-                                    style={{
-                                        backgroundColor: "black",
-                                        height: "25rem",
-                                        width: "20rem"
-                                    }}
-                                ></img>
+                                <img src="./static/frontend/img/research.jpg"></img>
                             </Link>
                             <h3>research </h3>
                             <p>VR teaching impacts on student development.</p>
@@ -58,14 +44,7 @@ const Home = props => {
 
                         <div className="homepage__div-main-image-container comingSoon">
                             <Link to="/" style={{ zIndex: 10 }}>
-                                <img
-                                    src="./static/frontend/img/development.jpg"
-                                    style={{
-                                        backgroundColor: "black",
-                                        height: "25rem",
-                                        width: "20rem"
-                                    }}
-                                ></img>
+                                <img src="./static/frontend/img/development.jpg"></img>
                             </Link>
                             <h3>download the app</h3>
                             <p>Andriod and iOS version coming soon</p>
@@ -167,11 +146,18 @@ const Home = props => {
 
                     <div className="homepage_div-demo-image">
                         <div className="homepage__div-demo-image-container">
-                            <iframe
+                            <div
+                                style={{
+                                    background: "black",
+                                    height: "100%",
+                                    width: "90%"
+                                }}
+                            ></div>
+                            {/* <iframe
                                 src="https://player.vimeo.com/video/344548296?app=1&amp;background=1&amp;autoplay=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0"
                                 frameBorder="0"
                                 allowFullScreen=""
-                            ></iframe>
+                            ></iframe> */}
                         </div>
                     </div>
                 </div>

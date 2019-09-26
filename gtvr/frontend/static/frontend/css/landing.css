@@ -96,9 +96,10 @@
 .homepage__div-main-image {
   grid-area: mainImage;
   max-height: 20rem;
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(3, minmax(20rem, 2fr));
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .homepage__div-main-image-container {
   display: flex;
@@ -451,6 +452,9 @@
   grid-row: 3;
 }
 @media all and (max-width: 1400px) {
+  .homepage__div-main-container {
+    padding-bottom: 15rem;
+  }
   .homepage__div-demo {
     padding-bottom: 15rem;
     margin-top: 15rem;
@@ -522,14 +526,10 @@
     padding-left: 3%;
   }
   .homepage__div-main-container {
-    padding-bottom: 60rem;
+    padding-bottom: 10rem;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "mainInfo" "mainImage";
-  }
-  .homepage__div-main-image-container img {
-    -webkit-filter: grayscale(0%);
-    filter: grayscale(0%);
   }
   .homepage__div-about {
     padding-top: 15rem;
@@ -554,9 +554,16 @@
   }
   .homepage_div-about-image {
     height: 100%;
-    width: 98%;
+    width: 100%;
     grid-column: 1;
     grid-row: 3;
+  }
+  .homepage_div-about-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50% !important;
+    width: 80% !important;
   }
   .homepage_div-about-info-container {
     justify-content: center;
@@ -584,6 +591,7 @@
     max-height: 75rem;
     grid-template-columns: 100%;
     grid-template-rows: 1fr 0.1fr 1fr;
+    width: 100%;
   }
   .homepage_div-demo-info {
     grid-column: 1;
@@ -692,6 +700,7 @@
   .homepage_div-blog-title {
     grid-column: 2;
     grid-row: 1;
+    max-width: 100%;
   }
   .homepage_div-blog-content {
     grid-column: 2;
@@ -699,11 +708,16 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
   }
   .homepage_div-blog-button {
     justify-content: center;
     grid-column: 2;
     grid-row: 3;
+  }
+}
+@media all and (max-width: 730px) {
+  .homepage__div-main-container {
+    padding-bottom: 30rem;
   }
 }
